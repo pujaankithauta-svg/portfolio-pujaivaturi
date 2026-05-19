@@ -282,21 +282,24 @@ function HeroPage({ dark, setPage }) {
 
       <div style={{maxWidth:1200,margin:"0 auto",padding:"0 60px",display:"grid",gridTemplateColumns:"1fr 1fr",alignItems:"center",minHeight:"calc(100vh - 60px)",gap:40}}>
         <div style={{animation:"fadeUp 0.9s ease both"}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 16px",marginBottom:28}}>
-            <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite"}}/>
-            <span style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.1em",fontWeight:600}}>OPEN TO SENIOR / STAFF ROLES</span>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:24,maxWidth:"100%"}}>
+            <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
+            <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(48px,6vw,78px)",fontWeight:800,lineHeight:0.95,color:txt,marginBottom:18,letterSpacing:"-0.035em"}}>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(44px,6vw,78px)",fontWeight:800,lineHeight:0.95,color:txt,marginBottom:18,letterSpacing:"-0.035em"}}>
             Puja<br/>
             <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
           </h1>
-          <p style={{fontSize:16,color:sub,maxWidth:480,lineHeight:1.75,marginBottom:24,fontWeight:300}}>
-            I build intelligent systems — from enterprise data lakehouses processing <strong style={{color:dark?"rgba(228,232,244,0.75)":"rgba(10,15,30,0.8)",fontWeight:500}}>$25B portfolios</strong> to end-to-end AI agents that reason, speak, and act.
+          <p style={{fontSize:16,color:sub,maxWidth:520,lineHeight:1.75,marginBottom:12,fontWeight:300}}>
+            I build intelligent systems — from enterprise data lakehouses processing <strong style={{color:dark?"rgba(228,232,244,0.85)":"rgba(10,15,30,0.85)",fontWeight:600}}>$25B portfolios</strong> across <strong style={{color:"#00D4AA",fontWeight:600}}>Finance, Healthcare & Social Networking</strong> domains, to end-to-end AI agents that reason, speak, and act.
+          </p>
+          <p style={{fontSize:13.5,color:sub,maxWidth:520,lineHeight:1.7,marginBottom:24,fontWeight:300}}>
+            Full ownership of <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>lakehouses, warehouses, dashboards</strong>, and <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>Legacy → PySpark</strong> modernizations.
           </p>
 
           {/* Role chips */}
           <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:24}}>
-            {["Data Engineering","ETL / Migrations","Agentic AI","GenAI / RAG","Multi-Cloud"].map((r,i)=>(
+            {["Data Engineering","ETL / Migrations","Lakehouse · Warehouse","Agentic AI","GenAI / RAG","Multi-Cloud"].map((r,i)=>(
               <span key={r} style={{background:i===0?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.12)"):(dark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.04)"),border:i===0?"1px solid rgba(0,212,170,0.25)":`1px solid ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.06)"}`,borderRadius:7,padding:"5px 12px",fontSize:12,color:i===0?"#00D4AA":sub,fontWeight:i===0?600:400}}>{r}</span>
             ))}
           </div>
