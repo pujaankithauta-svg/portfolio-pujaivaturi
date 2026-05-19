@@ -484,7 +484,7 @@ function ProjectsPage({ dark }) {
             </div>
           </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(460px,1fr))",gap:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(min(100%,320px),1fr))",gap:14}}>
           {filtered.map(p=>{
             const open=openId===p.id;
             return (
