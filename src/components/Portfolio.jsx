@@ -311,55 +311,56 @@ function HeroPage({ dark, setPage }) {
       <div style={{position:"absolute",width:600,height:600,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(0,212,170,0.07) 0%,transparent 70%)":"radial-gradient(circle,rgba(0,212,170,0.12) 0%,transparent 70%)",top:"-100px",left:"-100px",pointerEvents:"none"}}/>
       <div style={{position:"absolute",width:500,height:500,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(124,92,252,0.06) 0%,transparent 70%)":"radial-gradient(circle,rgba(124,92,252,0.1) 0%,transparent 70%)",bottom:"0px",right:"-80px",pointerEvents:"none"}}/>
 
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"40px 24px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))",alignItems:"center",minHeight:"calc(100vh - 60px)",gap:32}}>
+      <div style={{maxWidth:1200,margin:"0 auto",padding:"32px 20px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",alignItems:"start",gap:36}}>
         <div style={{animation:"fadeUp 0.9s ease both"}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:24,maxWidth:"100%"}}>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:20,maxWidth:"100%"}}>
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(44px,6vw,78px)",fontWeight:800,lineHeight:0.95,color:txt,marginBottom:18,letterSpacing:"-0.035em"}}>
-            Puja<br/>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,6vw,72px)",fontWeight:800,lineHeight:0.98,color:txt,marginBottom:20,letterSpacing:"-0.035em"}}>
+            Puja{" "}
             <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
           </h1>
-          <p style={{fontSize:16,color:sub,maxWidth:520,lineHeight:1.75,marginBottom:12,fontWeight:300}}>
-            I build intelligent systems — from enterprise data lakehouses processing <strong style={{color:dark?"rgba(228,232,244,0.85)":"rgba(10,15,30,0.85)",fontWeight:600}}>$25B portfolios</strong> across <strong style={{color:"#00D4AA",fontWeight:600}}>Finance, Healthcare & Social Networking</strong> domains, to end-to-end AI agents that reason, speak, and act.
-          </p>
-          <p style={{fontSize:13.5,color:sub,maxWidth:520,lineHeight:1.7,marginBottom:24,fontWeight:300}}>
-            Full ownership of <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>lakehouses, warehouses, dashboards</strong>, and <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>Legacy → PySpark</strong> modernizations.
-          </p>
 
-          {/* Role chips */}
-          <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:24}}>
-            {["Data Engineering","ETL / Migrations","Lakehouse · Warehouse","Agentic AI","GenAI / RAG","Multi-Cloud"].map((r,i)=>(
-              <span key={r} style={{background:i===0?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.12)"):(dark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.04)"),border:i===0?"1px solid rgba(0,212,170,0.25)":`1px solid ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.06)"}`,borderRadius:7,padding:"5px 12px",fontSize:12,color:i===0?"#00D4AA":sub,fontWeight:i===0?600:400}}>{r}</span>
-            ))}
+          {/* About me — quirky, italic, fun */}
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:560}}>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
+              Hi, I'm Puja — a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> by day, an <strong style={{color:"#7C5CFC",fontWeight:700}}>Agentic AI tinkerer</strong> by everything-else. I babysit a $25B mortgage lakehouse with 5,000+ tables (yes, I know all their names) and I've taught it to answer questions in under five minutes — down from a polite two weeks.
+            </p>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
+              I move data around <strong>Finance, Healthcare and Social Networking</strong> like it's my full-time hobby — building Medallion lakehouses, ETL pipelines across Azure / AWS / GCP, Power BI dashboards, and dragging crusty SAS scripts kicking and screaming into PySpark.
+            </p>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,fontWeight:400}}>
+              On the side I ship AI agents that <strong>read PDFs, listen to doctors, and run interviews</strong>. Five of them so far. They're polite. Mostly.
+            </p>
           </div>
 
-          {/* Stats */}
-          <div style={{display:"flex",gap:24,marginBottom:32,flexWrap:"wrap"}}>
-            {[{n:"4+",l:"Years Exp"},{n:"$25B",l:"Lakehouse Owned"},{n:"30+",l:"Projects Delivered"},{n:"5",l:"AI Agents Built"}].map(s=>(
-              <div key={s.l}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:24,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
-                <div style={{fontSize:11,color:sub,marginTop:2}}>{s.l}</div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:32}}>
-            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 26px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
+            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
               ✦ Talk to My AI
             </button>
-            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 26px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
           </div>
 
+          {/* Compact stats row */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:28,maxWidth:560}}>
+            {[{n:"4+",l:"Years Exp"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
+              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.7)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"10px 12px"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:22,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
+                <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+
           {/* Skill ticker */}
-          <div style={{marginBottom:8}}>
+          <div>
             <div style={{fontSize:10,color:sub,letterSpacing:"0.1em",marginBottom:8,fontWeight:500}}>TOOLS & TECHNOLOGIES</div>
             <SkillTicker dark={dark}/>
           </div>
         </div>
+
 
         {/* Right illustration */}
         <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative"}}>
