@@ -301,6 +301,27 @@ function Nav({ page, setPage, dark, setDark }) {
   );
 }
 
+/* ── Typewriter ── */
+function Typewriter({ text, speed = 38 }) {
+  const [shown, setShown] = useState("");
+  useEffect(() => {
+    setShown("");
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setShown(text.slice(0, i));
+      if (i >= text.length) clearInterval(id);
+    }, speed);
+    return () => clearInterval(id);
+  }, [text, speed]);
+  return (
+    <span>
+      <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 60%,#F97316 100%)",backgroundClip:"text"}}>{shown}</span>
+      <span style={{display:"inline-block",width:"2px",height:"1em",marginLeft:2,background:"#00D4AA",verticalAlign:"-0.12em",animation:"blink 1s steps(1) infinite"}}/>
+    </span>
+  );
+}
+
 /* ── HERO ── */
 function HeroPage({ dark, setPage }) {
   const bg = dark?"#080c16":"#f7f9ff";
