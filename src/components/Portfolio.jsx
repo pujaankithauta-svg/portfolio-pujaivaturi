@@ -718,6 +718,7 @@ export default function Portfolio() {
       {page==="Experience"&&<ExperiencePage dark={dark}/>}
       {page==="Projects"&&<ProjectsPage dark={dark}/>}
       {page==="Skills"&&<SkillsPage dark={dark}/>}
+      {page==="Publications"&&<PublicationsPage dark={dark}/>}
       {page==="AI Chat"&&<AIChatPage dark={dark}/>}
       {page==="Contact"&&<ContactPage dark={dark}/>}
     </div>
