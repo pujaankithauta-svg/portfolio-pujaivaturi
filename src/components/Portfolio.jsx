@@ -458,6 +458,12 @@ function ProjectsPage({ dark }) {
             return (
               <div key={p.id} onClick={()=>setOpenId(open?null:p.id)} style={{background:cardBg,border:`1px solid ${open?p.color+"40":cardBorder}`,borderRadius:16,overflow:"hidden",cursor:"pointer",transition:"all 0.3s"}}>
                 <div style={{height:3,background:`linear-gradient(90deg,${p.color},${p.accent})`}}/>
+                {p.image && (
+                  <div style={{position:"relative",height:160,overflow:"hidden",background:`linear-gradient(135deg,${p.color}22,${p.accent}22)`}}>
+                    <img src={p.image} alt={p.title} loading="lazy" onError={(e)=>{e.currentTarget.style.display="none";}} style={{width:"100%",height:"100%",objectFit:"cover",opacity:0.85,transition:"transform 0.5s",filter:dark?"brightness(0.85)":"none"}}/>
+                    <div style={{position:"absolute",inset:0,background:`linear-gradient(to top, ${dark?"rgba(8,12,22,0.85)":"rgba(247,249,255,0.7)"} 0%, transparent 60%)`,pointerEvents:"none"}}/>
+                  </div>
+                )}
                 <div style={{padding:"18px 20px"}}>
                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}}>
                     <div>
