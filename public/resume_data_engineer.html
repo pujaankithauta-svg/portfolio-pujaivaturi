@@ -1,165 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
+<html lang="en"><head><meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Puja Ivaturi – Software Engineer – Data</title>
+<title>Puja Ivaturi – Data Engineer</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',sans-serif;background:#f4f6f9;color:#1a1f2e;font-size:13px;line-height:1.55;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{font-family:'Inter',sans-serif;background:#f4f6f9;color:#1a1f2e;font-size:12.5px;line-height:1.55;print-color-adjust:exact;-webkit-print-color-adjust:exact}
   .page{background:#fff;max-width:850px;margin:0 auto;padding:0}
-  /* HEADER */
-  .header{background:linear-gradient(135deg,#00897B 0%,#1a1f2e 100%);color:#fff;padding:32px 40px 28px;position:relative;overflow:hidden}
+  .header{color:#fff;padding:30px 38px 24px;position:relative;overflow:hidden}
   .header::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05)}
   .header::after{content:'';position:absolute;right:60px;bottom:-60px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.04)}
   .name{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.03em;color:#fff;position:relative;z-index:1}
-  .job-title{font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:4px;letter-spacing:0.04em;position:relative;z-index:1}
-  .contact-row{display:flex;gap:20px;margin-top:16px;flex-wrap:wrap;position:relative;z-index:1}
-  .contact-item{font-size:11.5px;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:5px}
-  .highlights-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1}
-  .highlight-item{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:#fff;font-weight:500}
-  /* BODY */
-  .body{display:grid;grid-template-columns:280px 1fr;gap:0}
-  .sidebar{background:#f8fafc;border-right:1px solid #eef0f4;padding:28px 24px}
-  .main{padding:28px 32px}
-  /* SECTIONS */
-  .section-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#00897B;margin-bottom:10px;padding-bottom:5px;border-bottom:2px solid #e0f5f2}
-  .section{margin-bottom:22px}
-  /* SUMMARY */
-  .summary{font-size:12.5px;color:#3d4555;line-height:1.7;margin-bottom:22px;padding:14px;background:#e0f5f2;border-left:3px solid #00897B;border-radius:0 6px 6px 0}
-  /* SKILLS */
-  .skill-group{margin-bottom:12px}
-  .skill-cat{font-size:11px;font-weight:600;color:#1a1f2e;margin-bottom:5px}
-  .skill-tags{display:flex;flex-wrap:wrap;gap:4px}
-  .skill-tag{background:#fff;border:1px solid #e0e4eb;border-radius:4px;padding:2px 7px;font-size:10.5px;color:#4a5568}
-  /* EDUCATION */
-  .edu-block{margin-bottom:12px}
-  .edu-degree{font-size:12px;font-weight:600;color:#1a1f2e}
-  .edu-school{font-size:11.5px;color:#4a5568;margin-top:1px}
-  .edu-meta{font-size:10.5px;color:#00897B;margin-top:2px;font-weight:500}
-  /* EXPERIENCE */
-  .exp-block{margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid #eef0f4}
+  .job-title{font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:4px;letter-spacing:0.04em;position:relative;z-index:1}
+  .tagline{font-size:11.5px;color:rgba(255,255,255,0.65);margin-top:6px;font-style:italic;position:relative;z-index:1}
+  .contact-row{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap;position:relative;z-index:1}
+  .contact-item{font-size:11px;color:rgba(255,255,255,0.82)}
+  .highlights-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;position:relative;z-index:1}
+  .highlight-item{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:4px 11px;font-size:10.5px;color:#fff;font-weight:500}
+  .body{display:grid;grid-template-columns:270px 1fr;gap:0}
+  .sidebar{background:#f8fafc;border-right:1px solid #eef0f4;padding:26px 22px}
+  .main{padding:26px 30px}
+  .section{margin-bottom:20px}
+  .section-label{font-size:9.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:9px;padding-bottom:5px;border-bottom:2px solid}
+  .summary{font-size:12px;color:#3d4555;line-height:1.7;margin-bottom:20px;padding:13px 14px;border-left:3px solid;border-radius:0 6px 6px 0}
+  .skill-group{margin-bottom:11px}
+  .skill-cat{font-size:10.5px;font-weight:600;color:#1a1f2e;margin-bottom:4px}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:3px}
+  .skill-tag{background:#fff;border:1px solid #e0e4eb;border-radius:4px;padding:2px 7px;font-size:10px;color:#4a5568}
+  .edu-block{margin-bottom:11px}
+  .edu-degree{font-size:11.5px;font-weight:600;color:#1a1f2e}
+  .edu-school{font-size:11px;color:#4a5568;margin-top:1px}
+  .edu-meta{font-size:10px;margin-top:2px;font-weight:500}
+  .exp-block{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eef0f4}
   .exp-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-  .exp-left{flex:1}
-  .exp-right{text-align:right;flex-shrink:0;margin-left:16px}
-  .exp-title{font-size:13.5px;font-weight:700;color:#1a1f2e;font-family:'Bricolage Grotesque',sans-serif}
-  .exp-company{font-size:12.5px;font-weight:600;color:#00897B;margin-top:2px}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:12px}
+  .exp-title{font-size:13px;font-weight:700;color:#1a1f2e;font-family:'Bricolage Grotesque',sans-serif}
+  .exp-company{font-size:12px;font-weight:600;margin-top:2px}
   .exp-domain{font-size:10.5px;color:#8896aa;margin-top:1px}
-  .exp-period{font-size:11px;font-weight:500;color:#1a1f2e;background:#e0f5f2;padding:3px 9px;border-radius:4px}
-  .exp-location{font-size:10.5px;color:#8896aa;margin-top:3px}
-  .exp-bullets{padding-left:16px;margin-top:6px}
-  .exp-bullets li{font-size:12px;color:#3d4555;margin-bottom:4px;line-height:1.6}
+  .exp-right{text-align:right;flex-shrink:0}
+  .exp-period{font-size:10.5px;font-weight:500;color:#1a1f2e;padding:3px 9px;border-radius:4px;display:inline-block}
+  .exp-location{font-size:10px;color:#8896aa;margin-top:3px}
+  .star-block{margin-top:6px}
+  .star-line{font-size:11.5px;color:#3d4555;margin-bottom:3px;line-height:1.55;padding-left:14px;position:relative}
+  .star-line .lbl{font-weight:700;color:#1a1f2e;margin-right:4px}
+  .exp-bullets{padding-left:15px;margin-top:6px}
+  .exp-bullets li{font-size:11.5px;color:#3d4555;margin-bottom:3px;line-height:1.55}
+  @media print{body{background:#fff}.page{box-shadow:none;max-width:100%}@page{margin:0.4in 0.45in;size:letter}}
+  @media screen{.page{box-shadow:0 4px 40px rgba(0,0,0,0.12);margin:20px auto}}
+
+  .header{background:linear-gradient(135deg,#00897B 0%,#1a1f2e 100%)}
+  .section-label{color:#00897B;border-bottom-color:#e0f5f2}
+  .summary{background:#e0f5f2;border-left-color:#00897B}
+  .edu-meta{color:#00897B}
+  .exp-company{color:#00897B}
+  .exp-period{background:#e0f5f2}
   .exp-bullets li::marker{color:#00897B}
-  @media print{
-    body{background:#fff}
-    .page{box-shadow:none;max-width:100%}
-    @page{margin:0.4in 0.5in;size:letter}
-  }
-  @media screen{
-    .page{box-shadow:0 4px 40px rgba(0,0,0,0.12);margin:20px auto}
-  }
-</style>
-</head>
-<body>
-<div class="page">
+  .star-line::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:#00897B}
+</style></head>
+<body><div class="page">
   <div class="header">
     <div class="name">Puja Ivaturi</div>
     <div class="job-title">Software Engineer – Data</div>
+    <div class="tagline">I build intelligent systems that turn data into decisions.</div>
+    
     <div class="contact-row">
       <span class="contact-item">✉ pujaankitha.uta@gmail.com</span>
       <span class="contact-item">◎ 682-699-1060</span>
       <span class="contact-item">↗ linkedin.com/in/pujai</span>
       <span class="contact-item">📍 Dallas-Fort Worth, TX</span>
     </div>
-    <div class="highlights-row"><div class="highlight-item">✦ 5,000+ Tables · 42 DBs · $25B Lakehouse</div><div class="highlight-item">✦ 35+ ETL Pipelines (Azure/AWS/GCP)</div><div class="highlight-item">✦ 2M+ Healthcare Records Migrated</div><div class="highlight-item">✦ 100+ SAS→PySpark Conversions</div></div>
-  </div>
 
+    <div class="highlights-row"><div class="highlight-item">✦ $25B Lakehouse · 5,000+ Tables · 42 DBs</div><div class="highlight-item">✦ 35+ Production ETL/ELT Pipelines</div><div class="highlight-item">✦ 2M+ Healthcare Records Migrated (HIPAA)</div><div class="highlight-item">✦ 250+ Legacy SAS → PySpark Conversions</div></div>
+  </div>
   <div class="body">
-    <div class="sidebar">
-      <div class="section">
-        <div class="section-label">Technical Skills</div>
-        <div class="skill-group"><div class="skill-cat">Data Engineering</div><div class="skill-tags"><span class="skill-tag">Medallion Lakehouse</span><span class="skill-tag">ETL/ELT Pipelines</span><span class="skill-tag">CDC & SCD Type 2</span><span class="skill-tag">Delta MERGE</span><span class="skill-tag">Schema Evolution</span><span class="skill-tag">Data Modeling</span><span class="skill-tag">Batch & Streaming</span><span class="skill-tag">Data Governance</span></div></div><div class="skill-group"><div class="skill-cat">Cloud Platforms</div><div class="skill-tags"><span class="skill-tag">Azure Data Factory</span><span class="skill-tag">Azure Databricks</span><span class="skill-tag">Azure Synapse Analytics</span><span class="skill-tag">ADLS Gen2</span><span class="skill-tag">Azure Event Hubs</span><span class="skill-tag">AWS Glue</span><span class="skill-tag">AWS EMR</span><span class="skill-tag">AWS Redshift</span><span class="skill-tag">AWS Kinesis</span><span class="skill-tag">AWS DMS</span><span class="skill-tag">GCP Dataflow</span><span class="skill-tag">BigQuery</span></div></div><div class="skill-group"><div class="skill-cat">Databases & Storage</div><div class="skill-tags"><span class="skill-tag">Snowflake</span><span class="skill-tag">SQL Server</span><span class="skill-tag">Oracle</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Delta Lake</span><span class="skill-tag">Apache Parquet</span></div></div><div class="skill-group"><div class="skill-cat">DevOps & Governance</div><div class="skill-tags"><span class="skill-tag">Terraform</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">IAM / RBAC</span><span class="skill-tag">HIPAA Compliance</span><span class="skill-tag">Data Lineage</span><span class="skill-tag">Great Expectations</span></div></div><div class="skill-group"><div class="skill-cat">Languages</div><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">PySpark</span><span class="skill-tag">SQL / T-SQL</span><span class="skill-tag">Scala</span><span class="skill-tag">Java</span><span class="skill-tag">Bash</span></div></div><div class="skill-group"><div class="skill-cat">BI & Visualization</div><div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">AWS QuickSight</span><span class="skill-tag">Semantic Models</span></div></div>
-      </div>
+    <div class="sidebar"><div class="section"><div class="section-label">Technical Skills</div><div class="skill-group"><div class="skill-cat">Data Engineering</div><div class="skill-tags"><span class="skill-tag">Medallion Lakehouse</span><span class="skill-tag">ETL / ELT Pipelines</span><span class="skill-tag">CDC & SCD Type 2</span><span class="skill-tag">Delta MERGE / Upserts</span><span class="skill-tag">Schema Evolution</span><span class="skill-tag">Dimensional Modeling</span><span class="skill-tag">Star & Snowflake Schemas</span><span class="skill-tag">Batch + Streaming</span><span class="skill-tag">Data Governance</span></div></div><div class="skill-group"><div class="skill-cat">Distributed Compute & Storage</div><div class="skill-tags"><span class="skill-tag">PySpark</span><span class="skill-tag">Spark SQL</span><span class="skill-tag">Delta Lake</span><span class="skill-tag">Parquet / ORC</span><span class="skill-tag">Object Storage Lakehouse</span><span class="skill-tag">Columnar Warehouses</span><span class="skill-tag">MPP Query Engines</span><span class="skill-tag">Lakehouse Catalogs</span></div></div><div class="skill-group"><div class="skill-cat">Pipeline & Orchestration</div><div class="skill-tags"><span class="skill-tag">Managed Spark Notebooks</span><span class="skill-tag">Workflow Orchestrators</span><span class="skill-tag">Event Streaming (Kafka)</span><span class="skill-tag">Change-Data-Capture Ingestion</span><span class="skill-tag">Serverless Functions</span><span class="skill-tag">Message Queues</span></div></div><div class="skill-group"><div class="skill-cat">Databases</div><div class="skill-tags"><span class="skill-tag">SQL Server</span><span class="skill-tag">Oracle</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Snowflake-class Warehouses</span></div></div><div class="skill-group"><div class="skill-cat">BI & Semantic Layer</div><div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Semantic Models</span><span class="skill-tag">DAX</span><span class="skill-tag">Row-Level Security</span></div></div><div class="skill-group"><div class="skill-cat">DevOps & Governance</div><div class="skill-tags"><span class="skill-tag">Terraform (IaC)</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">IAM / RBAC</span><span class="skill-tag">HIPAA Controls</span><span class="skill-tag">Data Lineage</span><span class="skill-tag">Great Expectations</span><span class="skill-tag">DQ Frameworks</span></div></div><div class="skill-group"><div class="skill-cat">Languages</div><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">PySpark</span><span class="skill-tag">SQL / T-SQL</span><span class="skill-tag">Scala</span><span class="skill-tag">Bash</span></div></div></div>
       <div class="section">
         <div class="section-label">Education</div>
-        
-        <div class="edu-block">
-          <div class="edu-degree">MS Computer Science</div>
-          <div class="edu-school">University of Texas at Arlington</div>
-          <div class="edu-meta">GPA 3.9/4.0 &nbsp;·&nbsp; Dec 2023</div>
-        </div>
-        <div class="edu-block">
-          <div class="edu-degree">BTech Computer Science</div>
-          <div class="edu-school">Ramachandra College of Engineering</div>
-          <div class="edu-meta">GPA 3.7/4.0 &nbsp;·&nbsp; Jul 2021</div>
-        </div>
+        <div class="edu-block"><div class="edu-degree">MS Computer Science</div><div class="edu-school">University of Texas at Arlington</div><div class="edu-meta">GPA 3.9/4.0 · Dec 2023</div></div>
+        <div class="edu-block"><div class="edu-degree">BTech Computer Science</div><div class="edu-school">Ramachandra College of Engineering</div><div class="edu-meta">GPA 3.7/4.0 · Jul 2021</div></div>
       </div>
-    </div>
+</div>
     <div class="main">
       <div class="section-label">Professional Summary</div>
-      <div class="summary">Results-driven Data Engineer with 4+ years of experience architecting enterprise-scale cloud data platforms across Azure, AWS, and GCP. Expert in Medallion Lakehouse design, real-time streaming pipelines, and large-scale migrations. Delivered a $25B mortgage data platform with 5,000+ tables across 42 databases, 35+ production ETL pipelines, and 2M+ healthcare record migrations. Proven ability to own complex data infrastructure end-to-end — from raw ingestion to curated analytics layers powering business intelligence.</div>
+      <div class="summary">Data Engineer with 4+ years building enterprise-scale lakehouses, streaming pipelines, and analytics platforms across Finance, Healthcare, and Social Networking. Owner of a $25B mortgage data platform spanning 5,000+ tables across 42 databases. Built 35+ production ETL/ELT pipelines, migrated 2M+ patient records into a HIPAA-compliant lake, and modernized 250+ legacy SAS programs into PySpark. Delivers end-to-end: ingestion → modeling → governance → curated Gold layer → BI dashboards.</div>
       <div class="section-label">Experience</div>
       
         <div class="exp-block">
           <div class="exp-header">
-            <div class="exp-left">
-              <div class="exp-title">Software Engineer – Data</div>
-              <div class="exp-company">Farmer Mac</div>
-              <div class="exp-domain">Banking · Federal Mortgage</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-period">Jul 2025 – Present</div>
-              <div class="exp-location">Washington D.C. (Remote)</div>
-            </div>
+            <div><div class="exp-title">Software Engineer – Data</div><div class="exp-company">Farmer Mac</div><div class="exp-domain">Banking · Federal Mortgage · $25B Portfolio</div></div>
+            <div class="exp-right"><div class="exp-period">Jul 2025 – Present</div><div class="exp-location">Washington D.C. (Remote)</div></div>
           </div>
-          <ul class="exp-bullets"><li>Architected and owned $25B enterprise Medallion Lakehouse (Landing → Bronze → Silver → Gold) spanning 5,000+ tables across 42 databases — achieving 99.9% data accuracy and sub-5-minute reporting cycles</li><li>Built 35+ production ETL/ELT pipelines across Azure (Data Factory, Databricks), AWS (Glue, EMR), and GCP (Dataflow) covering batch, streaming, and CDC ingestion patterns</li><li>Migrated Thomson Reuters, Moody's Analytics, and Bloomberg financial databases into unified lakehouse; created cross-vendor semantic models powering sub-second Power BI dashboards</li><li>Developed end-to-end Loan Document Intelligence app: AI extracts data from 100+ PDFs → joins lakehouse → editable React frontend → publishes back to source tables on submit</li><li>Built financial dashboards and Power BI semantic models for Cash Window, Loan Admin, Loan Log, and Moody's analytics — serving business users, data scientists, and analysts</li><li>Implemented enterprise data quality framework (automated DQ checks, lineage tracking, anomaly alerting) and provisioned Dev/Test/UAT environments with IAM/RBAC via Terraform</li><li>Converted 150+ legacy SAS/SQL procedures to PySpark; migrated 1TB+ on-prem SQL Server data to cloud lakehouse with zero data loss</li></ul>
+          <div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Mortgage portfolio data lived in 42 siloed source databases with 5,000+ tables across vendor feeds, loan systems, and accounting ledgers; reporting cycles took 2+ weeks and reconciliation was manual.</div><div class="star-line"><span class="lbl">Task.</span>Own design and delivery of a single enterprise Medallion Lakehouse (Landing → Bronze → Silver → Gold) that becomes the source of truth for the entire $25B portfolio.</div><div class="star-line"><span class="lbl">Action.</span>Architected layered ingestion patterns (full loads, incremental CDC, SCD Type 2 with Delta MERGE), modeled conformed dimensions for Loan, Borrower, Property, Counterparty, and Time; standardized 200+ business rules into reusable Gold marts; provisioned Dev / Test / UAT / Prod with infrastructure-as-code and RBAC.</div><div class="star-line"><span class="lbl">Outcome.</span>$25B portfolio reconciled daily with 99.9% data accuracy; report refresh dropped from 2 weeks to under 5 minutes; freed the analytics team from manual stitching.</div></div><div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Finance and risk teams pulled overlapping data from Thomson Reuters, Moody's, and Bloomberg feeds into spreadsheets, with no shared semantic layer.</div><div class="star-line"><span class="lbl">Task.</span>Unify external vendor feeds into the lakehouse and serve them through governed semantic models.</div><div class="star-line"><span class="lbl">Action.</span>Built ingestion pipelines for each vendor with schema-evolution handling, deduplication, and slowly-changing reference data; modeled cross-vendor Gold tables for ratings, pricing, and counterparty exposure; published Power BI semantic models with row-level security for Cash Window, Loan Admin, Loan Log, and Moody's analytics.</div><div class="star-line"><span class="lbl">Outcome.</span>Sub-second dashboard performance for 200+ business users; eliminated 6 redundant vendor extracts and ~30 hours/week of manual reconciliation.</div></div><div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Pipelines failed silently and bad data reached Gold tables, eroding trust in downstream reports.</div><div class="star-line"><span class="lbl">Task.</span>Stand up an enterprise data-quality and lineage framework across all 35+ pipelines.</div><div class="star-line"><span class="lbl">Action.</span>Built a reusable DQ framework with row counts, null thresholds, referential checks, schema drift detection, and statistical anomaly alerts; instrumented end-to-end lineage from source columns through Gold marts; wired alerts into incident channels with on-call rotations.</div><div class="star-line"><span class="lbl">Outcome.</span>Detected and contained 4 critical data incidents pre-release; cut Mean-Time-To-Detect from days to under 15 minutes.</div></div><div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Legacy SAS and stored-procedure code blocked migration to distributed compute and prevented cost optimization.</div><div class="star-line"><span class="lbl">Task.</span>Modernize legacy analytical code into PySpark while preserving exact business logic.</div><div class="star-line"><span class="lbl">Action.</span>Reverse-engineered 150+ SAS data steps, PROC SQL, and macros; rewrote in PySpark / Spark SQL with unit tests and parity-validation harness against legacy outputs; containerized batch jobs and scheduled via managed orchestration.</div><div class="star-line"><span class="lbl">Outcome.</span>60–80% runtime reduction on heavy batches; retired the legacy SAS license footprint; unblocked the move to a fully cloud-native stack.</div></div><ul class="exp-bullets"><li>Built Loan Document Intelligence pipeline: 100+ PDFs/day extracted, joined against lakehouse, surfaced through a React UI, and written back into source tables.</li><li>Migrated 1 TB+ on-prem SQL Server data with zero data loss using staged CDC and reconciliation snapshots.</li></ul>
         </div>
         <div class="exp-block">
           <div class="exp-header">
-            <div class="exp-left">
-              <div class="exp-title">Software Engineer – Data</div>
-              <div class="exp-company">Aesthetic Record</div>
-              <div class="exp-domain">Healthcare · EMR · Clinical AI</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-period">Oct 2024 – Jun 2025</div>
-              <div class="exp-location">Irving, TX (Remote)</div>
-            </div>
+            <div><div class="exp-title">Software Engineer – Data</div><div class="exp-company">Aesthetic Record</div><div class="exp-domain">Healthcare · EMR · Clinical Analytics</div></div>
+            <div class="exp-right"><div class="exp-period">Oct 2024 – Jun 2025</div><div class="exp-location">Irving, TX (Remote)</div></div>
           </div>
-          <ul class="exp-bullets"><li>Led migration of 60+ EMR/EHR client databases (2M+ patient records) from MySQL, MongoDB, and legacy proprietary systems into unified HIPAA-compliant cloud data lake</li><li>Designed clinical dimensional models for appointments, claims, provider performance, and billing; implemented CDC-based near-real-time sync across 6,000+ active client databases</li><li>Built healthcare analytics dashboards for Appointments scheduling, Revenue analytics, and Busy Hours heatmaps — enabling clinical ops decision-making</li><li>Enforced HIPAA-compliant field-level encryption, data masking, audit logging, and RBAC across all 60+ client tenants</li></ul>
+          <div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>60+ EMR/EHR client tenants ran on a mix of MySQL, MongoDB, and legacy proprietary stores; analytics were per-tenant, slow, and not HIPAA-defensible.</div><div class="star-line"><span class="lbl">Task.</span>Consolidate 2M+ patient records into a unified, HIPAA-compliant clinical data lake with tenant isolation.</div><div class="star-line"><span class="lbl">Action.</span>Designed multi-tenant ingestion with CDC-based near-real-time sync across 6,000+ active client databases; modeled clinical dimensions for Appointments, Claims, Provider, Procedure, Billing, and Patient; enforced field-level encryption, masking, audit logging, and tenant-scoped RBAC.</div><div class="star-line"><span class="lbl">Outcome.</span>2M+ records migrated with zero PHI exposure; standardized analytics across all tenants; passed HIPAA controls review on first audit.</div></div><div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Clinic operators had no view into utilization, revenue mix, or staffing pressure.</div><div class="star-line"><span class="lbl">Task.</span>Deliver self-serve analytics for clinical operations and revenue.</div><div class="star-line"><span class="lbl">Action.</span>Built curated marts and dashboards for Appointment scheduling, Revenue analytics, Provider productivity, and Busy-Hours heatmaps; tuned semantic models for sub-2-second response on the largest tenants.</div><div class="star-line"><span class="lbl">Outcome.</span>Adopted by clinical-ops leadership across 60+ tenants; informed staffing decisions that lifted utilization 12%.</div></div>
         </div>
         <div class="exp-block">
           <div class="exp-header">
-            <div class="exp-left">
-              <div class="exp-title">Software Engineer – Data</div>
-              <div class="exp-company">Ogha Inc</div>
-              <div class="exp-domain">Social Media · Job Matching Startup</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-period">Feb 2024 – Sep 2024</div>
-              <div class="exp-location">Remote (USA)</div>
-            </div>
+            <div><div class="exp-title">Software Engineer – Data</div><div class="exp-company">Ogha Inc</div><div class="exp-domain">Social Networking · Job-Matching Startup</div></div>
+            <div class="exp-right"><div class="exp-period">Feb 2024 – Sep 2024</div><div class="exp-location">Remote (USA)</div></div>
           </div>
-          <ul class="exp-bullets"><li>Built high-volume data pipelines processing 50,000+ records/day for job-matching and feed personalization using Kafka streaming, Lambda, SNS/SQS</li><li>Designed job-matching dimensional data models and real-time personalization pipelines; improved API and database performance by 70% using Redis caching and async processing</li><li>Built Python Flask backend services, REST APIs, and microservices connecting data pipelines to React frontend components</li></ul>
+          <div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>A new social + job-matching product needed a real-time feed and matching layer from day one, with no existing data backbone.</div><div class="star-line"><span class="lbl">Task.</span>Stand up the streaming + analytics foundation for personalization and job matching.</div><div class="star-line"><span class="lbl">Action.</span>Built high-volume streaming pipelines processing 50,000+ events/day with Kafka, serverless functions, and pub/sub queues; modeled dimensional marts for Candidate, Job, Interaction, and Match; introduced Redis caching and async processing on hot read paths.</div><div class="star-line"><span class="lbl">Outcome.</span>API and DB read latency dropped 70%; matching jobs that took minutes became near real-time; supported 10× user-load growth without re-architecture.</div></div><ul class="exp-bullets"><li>Implemented Python Flask services and REST APIs that exposed curated data to React frontends.</li></ul>
         </div>
         <div class="exp-block">
           <div class="exp-header">
-            <div class="exp-left">
-              <div class="exp-title">Software Engineer – Data</div>
-              <div class="exp-company">Tata Consultancy Services (Sanofi)</div>
-              <div class="exp-domain">Pharma · Life Sciences</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-period">Aug 2021 – Aug 2022</div>
-              <div class="exp-location">India</div>
-            </div>
+            <div><div class="exp-title">Software Engineer – Data</div><div class="exp-company">Tata Consultancy Services (Sanofi)</div><div class="exp-domain">Pharma · Life Sciences</div></div>
+            <div class="exp-right"><div class="exp-period">Aug 2021 – Aug 2022</div><div class="exp-location">India</div></div>
           </div>
-          <ul class="exp-bullets"><li>Built enterprise data lakes and warehouses processing 200GB+ daily for global pharma operations across multiple therapeutic areas</li><li>Converted 100+ legacy SAS programs (data steps, PROC SQL, macros) to cloud-native PySpark — achieving 60% improvement in analytical query runtime</li><li>Built real-time pharmacovigilance pipelines for FDA/EMA regulatory compliance and MLOps workflows for model deployment and monitoring</li></ul>
+          <div class="star-block"><div class="star-line"><span class="lbl">Situation.</span>Global pharma analytics ran on a legacy SAS codebase processing 200 GB+ daily, with brittle batches and rising license cost.</div><div class="star-line"><span class="lbl">Task.</span>Modernize the analytics estate and stand up regulated real-time pipelines.</div><div class="star-line"><span class="lbl">Action.</span>Migrated 100+ SAS programs (data steps, PROC SQL, macros) into PySpark with parity tests; built real-time pharmacovigilance pipelines for FDA / EMA signal detection; introduced MLOps workflows for model deployment, drift monitoring, and retraining.</div><div class="star-line"><span class="lbl">Outcome.</span>60% query-runtime improvement; regulatory signal latency reduced from hours to minutes; reproducible model deployments adopted by 3 therapeutic-area teams.</div></div>
         </div>
     </div>
   </div>
-</div>
-</body>
-</html>
+</div></body></html>
