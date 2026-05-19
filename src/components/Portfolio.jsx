@@ -246,7 +246,7 @@ function ResumeDownload({ dark }) {
 }
 
 /* ── NAV ── */
-const pages = ["Home","Experience","Projects","Skills","AI Chat","Contact"];
+const pages = ["Home","Experience","Projects","Skills","Publications","AI Chat","Contact"];
 function Nav({ page, setPage, dark, setDark }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(()=>{ const h=()=>setScrolled(window.scrollY>10); window.addEventListener("scroll",h); return()=>window.removeEventListener("scroll",h); },[]);
