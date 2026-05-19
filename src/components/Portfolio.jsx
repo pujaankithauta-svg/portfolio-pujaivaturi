@@ -40,7 +40,30 @@ const toolGroups = [
 ];
 
 /* ── PROJECTS (Data Engineering first, Agentic AI second) ── */
-const IMG = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70`;
+/* Vector cartoon illustration generator — colored gradient + giant emoji + decorative shapes */
+const SVG = (emoji, c1, c2) => {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 360'>
+    <defs>
+      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+        <stop offset='0%' stop-color='${c1}'/>
+        <stop offset='100%' stop-color='${c2}'/>
+      </linearGradient>
+      <radialGradient id='r' cx='50%' cy='50%' r='50%'>
+        <stop offset='0%' stop-color='white' stop-opacity='0.25'/>
+        <stop offset='100%' stop-color='white' stop-opacity='0'/>
+      </radialGradient>
+    </defs>
+    <rect width='600' height='360' fill='url(#g)'/>
+    <circle cx='110' cy='90' r='70' fill='white' fill-opacity='0.12'/>
+    <circle cx='510' cy='280' r='100' fill='white' fill-opacity='0.10'/>
+    <circle cx='470' cy='80' r='28' fill='white' fill-opacity='0.18'/>
+    <rect x='60' y='250' width='90' height='60' rx='14' fill='white' fill-opacity='0.14'/>
+    <rect width='600' height='360' fill='url(#r)'/>
+    <text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-size='150'>${emoji}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+const IMG = (emoji, c1 = "#7C5CFC", c2 = "#00D4AA") => SVG(emoji, c1, c2);
 const allProjects = [
   // ===== DATA ENGINEERING =====
   { id:"lakehouse", cat:"Data Engineering", tag:"$25B · Enterprise · Banking", title:"Enterprise $25B Mortgage Lakehouse", sub:"Farmer Mac · Medallion Architecture", color:"#00D4AA", accent:"#00ffc8",
