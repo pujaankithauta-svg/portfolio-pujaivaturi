@@ -577,10 +577,10 @@ function AIChatPage({ dark }) {
     setInput(""); const updated=[...messages,{role:"user",content:msg}];
     setMessages(updated); setLoading(true);
     try {
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:800,system:SYSTEM_PROMPT,messages:updated.map(m=>({role:m.role,content:m.content}))})});
+      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({system:SYSTEM_PROMPT,messages:updated.map(m=>({role:m.role,content:m.content}))})});
       const data=await res.json();
-      const reply=data.content?.find(b=>b.type==="text")?.text||"Sorry, something went wrong.";
+      const reply=(data&&data.reply)||(data&&data.error)||"Sorry, something went wrong.";
       setMessages(p=>[...p,{role:"assistant",content:reply}]);
     } catch{setMessages(p=>[...p,{role:"assistant",content:"Connection error. Please try again."}]);}
     setLoading(false);
