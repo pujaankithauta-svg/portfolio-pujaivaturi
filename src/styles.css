@@ -142,3 +142,7 @@
     color: var(--color-foreground);
   }
 }
+
+@media (max-width: 760px) {
+  .exp-grid { grid-template-columns: 1fr !important; }
+}
