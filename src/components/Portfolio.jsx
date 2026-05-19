@@ -251,10 +251,9 @@ function Nav({ page, setPage, dark, setDark }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(()=>{ const h=()=>setScrolled(window.scrollY>10); window.addEventListener("scroll",h); return()=>window.removeEventListener("scroll",h); },[]);
   return (
-    <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,background:scrolled?(dark?"rgba(8,12,22,0.94)":"rgba(248,250,255,0.94)"):"transparent",backdropFilter:scrolled?"blur(24px)":"none",borderBottom:scrolled?`1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`:"none",padding:"0 40px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",transition:"all 0.3s"}}>
-      <div onClick={()=>setPage("Home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer"}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
-      <div style={{display:"flex",gap:2}}>
-        {pages.map(p=>(
+    <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,background:scrolled?(dark?"rgba(8,12,22,0.94)":"rgba(248,250,255,0.94)"):(dark?"rgba(8,12,22,0.6)":"rgba(248,250,255,0.6)"),backdropFilter:"blur(20px)",borderBottom:scrolled?`1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`:"none",padding:"0 16px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,transition:"all 0.3s"}}>
+      <div onClick={()=>setPage("Home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer",flexShrink:0}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
+      <div style={{display:"flex",gap:2,overflowX:"auto",scrollbarWidth:"none",msOverflowStyle:"none",flex:1,justifyContent:"center",minWidth:0}}>
           <button key={p} onClick={()=>setPage(p)} style={{background:page===p?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):"transparent",border:"none",borderRadius:8,color:page===p?"#00D4AA":(dark?"rgba(255,255,255,0.45)":"rgba(10,15,30,0.5)"),padding:"6px 12px",cursor:"pointer",fontSize:12,transition:"all 0.2s"}}>
             {p}
           </button>
