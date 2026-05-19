@@ -1,4 +1,4 @@
 declare module "@/components/Portfolio.jsx" {
-  const Portfolio: React.ComponentType;
+  const Portfolio: (props: Record<string, unknown>) => JSX.Element;
   export default Portfolio;
 }
