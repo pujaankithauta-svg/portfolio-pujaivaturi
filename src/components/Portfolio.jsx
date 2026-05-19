@@ -614,6 +614,40 @@ function AIChatPage({ dark }) {
   );
 }
 
+/* ── PUBLICATIONS ── */
+function PublicationsPage({ dark }) {
+  const bg=dark?"#080c16":"#f7f9ff"; const txt=dark?"#e4e8f4":"#0a0f1e";
+  const sub=dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
+  const cardBg=dark?"rgba(255,255,255,0.025)":"rgba(255,255,255,0.85)";
+  const cardBorder=dark?"rgba(255,255,255,0.07)":"rgba(0,0,0,0.07)";
+  return (
+    <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
+      <div style={{maxWidth:980,margin:"0 auto",padding:"0 24px"}}>
+        <div style={{marginBottom:36}}>
+          <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Publications & Writing</div>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(32px,5vw,44px)",fontWeight:800,color:txt,letterSpacing:"-0.025em",marginBottom:8}}>Articles, Posts & Research</h2>
+          <p style={{color:sub,fontSize:14,fontWeight:300,maxWidth:600}}>Selected writing on data engineering, cloud platforms, agentic AI systems, and peer-reviewed research.</p>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(320px,1fr))",gap:14}}>
+          {publications.map(p=>(
+            <a key={p.title} href={p.href} target="_blank" rel="noreferrer" style={{textDecoration:"none",background:cardBg,border:`1px solid ${cardBorder}`,borderRadius:16,padding:"20px 22px",display:"flex",flexDirection:"column",gap:10,transition:"all 0.25s",borderTop:`3px solid ${p.color}`}}
+              onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.borderColor=p.color+"60";}}
+              onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.borderColor=cardBorder;}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:8}}>
+                <span style={{background:p.color+"18",color:p.color,fontSize:10,padding:"3px 10px",borderRadius:20,fontWeight:700,letterSpacing:"0.06em"}}>{p.type.toUpperCase()}</span>
+                <span style={{color:sub,fontSize:11}}>{p.outlet} ↗</span>
+              </div>
+              <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:16,color:txt,lineHeight:1.3}}>{p.title}</h3>
+              <p style={{color:sub,fontSize:13,lineHeight:1.6,fontWeight:300}}>{p.desc}</p>
+              <div style={{color:p.color,fontSize:12,fontWeight:600,marginTop:4}}>Read full article →</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── CONTACT ── */
 function ContactPage({ dark }) {
   const bg=dark?"#080c16":"#f7f9ff"; const txt=dark?"#e4e8f4":"#0a0f1e";
