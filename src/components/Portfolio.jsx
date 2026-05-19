@@ -40,67 +40,90 @@ const toolGroups = [
 ];
 
 /* ── PROJECTS (Data Engineering first, Agentic AI second) ── */
-const IMG = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70`;
+/* Vector cartoon illustration generator — colored gradient + giant emoji + decorative shapes */
+const SVG = (emoji, c1, c2) => {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 360'>
+    <defs>
+      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+        <stop offset='0%' stop-color='${c1}'/>
+        <stop offset='100%' stop-color='${c2}'/>
+      </linearGradient>
+      <radialGradient id='r' cx='50%' cy='50%' r='50%'>
+        <stop offset='0%' stop-color='white' stop-opacity='0.25'/>
+        <stop offset='100%' stop-color='white' stop-opacity='0'/>
+      </radialGradient>
+    </defs>
+    <rect width='600' height='360' fill='url(#g)'/>
+    <circle cx='110' cy='90' r='70' fill='white' fill-opacity='0.12'/>
+    <circle cx='510' cy='280' r='100' fill='white' fill-opacity='0.10'/>
+    <circle cx='470' cy='80' r='28' fill='white' fill-opacity='0.18'/>
+    <rect x='60' y='250' width='90' height='60' rx='14' fill='white' fill-opacity='0.14'/>
+    <rect width='600' height='360' fill='url(#r)'/>
+    <text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-size='150'>${emoji}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+const IMG = (emoji, c1 = "#7C5CFC", c2 = "#00D4AA") => SVG(emoji, c1, c2);
 const allProjects = [
   // ===== DATA ENGINEERING =====
   { id:"lakehouse", cat:"Data Engineering", tag:"$25B · Enterprise · Banking", title:"Enterprise $25B Mortgage Lakehouse", sub:"Farmer Mac · Medallion Architecture", color:"#00D4AA", accent:"#00ffc8",
-    image: IMG("1558494949-ef010cbdcc31"),
+    image: IMG("🏦","#00897B","#00D4AA"),
     stats:[{v:"5,000+",l:"Tables"},{v:"42",l:"Databases"},{v:"$25B",l:"Portfolio"},{v:"<5 min",l:"Reporting"}],
     desc:"Architected and owned an enterprise Medallion Lakehouse (Landing → Bronze → Silver → Gold) for a $25B federal mortgage portfolio spanning 5,000+ tables across 42 databases — replacing a 2-week manual cycle with sub-5-minute AI-enabled pipelines.",
     bullets:["Designed end-to-end architecture across 5,000+ tables / 42 databases with SCD Type 2, historical tracking, and regulatory audit trails","Ingested from 10+ heterogeneous sources: SQL Server, Oracle, FTP, REST APIs, file shares — all with delta load strategies","Real-time financial event pipelines with Kafka-compatible streaming for position and transaction data","Enforced enterprise RBAC, data lineage, encryption, and governance across all lakehouse zones","Reduced reporting from 2 weeks to under 5 minutes using RAG + Azure OpenAI document processing"] },
   { id:"etl", cat:"Data Engineering · Multi-Cloud", tag:"Azure · AWS · GCP", title:"35+ ETL Pipelines — Multi-Cloud", sub:"Farmer Mac & Portfolio", color:"#00D4AA", accent:"#00ffc8",
-    image: IMG("1451187580459-43490279c0fa"),
+    image: IMG("☁️","#0099ff","#00D4AA"),
     stats:[{v:"35+",l:"Pipelines"},{v:"3 Clouds",l:"Azure/AWS/GCP"},{v:"Batch+Stream",l:"Both Modes"},{v:"1TB+",l:"Data Moved"}],
     desc:"Designed, built, and maintained 35+ production ETL/ELT pipelines across Azure, AWS, and GCP — batch loads, streaming ingest, CDC pipelines, and file-based integrations.",
     bullets:["Azure: Data Factory, Databricks PySpark, ADLS Gen2, Synapse Analytics","AWS: Glue jobs, EMR clusters, DMS for CDC, Kinesis Firehose, Redshift","GCP: Dataflow pipelines, BigQuery loads, Cloud Storage staging","SCD Type 2, MERGE upserts, Delta table compaction, schema evolution handling","Moved 1TB+ on-prem data to cloud with full audit trails and rollback capability"] },
   { id:"sas", cat:"Data Engineering · Modernization", tag:"PySpark · Legacy → Cloud", title:"100+ SAS → PySpark Modernization", sub:"Multi-company · Code Migration", color:"#F59E0B", accent:"#fbbf24",
-    image: IMG("1555066931-4365d14bab8c"),
+    image: IMG("⚡","#F59E0B","#fbbf24"),
     stats:[{v:"100+",l:"Scripts Converted"},{v:"~60%",l:"Perf Gain"},{v:"Cloud",l:"Native"},{v:"Zero",l:"Data Loss"}],
     desc:"Converted 100+ legacy SAS/SQL procedural scripts to cloud-native PySpark, unlocking distributed compute, version control, CI/CD, and a 60% performance improvement on analytical workloads.",
     bullets:["Audited 100+ SAS programs: data steps, PROC SQL, macros, and statistical procedures","Translated to PySpark DataFrame APIs and Spark SQL; output parity validated row-by-row","Optimized for Spark: partition pruning, broadcast joins, columnstore caching","Delivered 60% runtime improvement; fully version-controlled in Git with CI/CD pipelines"] },
   { id:"emr", cat:"Data Engineering · Healthcare", tag:"HIPAA · CDC · Migration", title:"60+ EMR/EHR Client Migrations", sub:"Aesthetic Record · Healthcare Data", color:"#10B981", accent:"#34d399",
-    image: IMG("1576091160399-112ba8d25d1d"),
+    image: IMG("🏥","#10B981","#34d399"),
     stats:[{v:"60+",l:"Clients"},{v:"2M+",l:"Patient Records"},{v:"6,000",l:"Client DBs"},{v:"HIPAA",l:"Compliant"}],
     desc:"Led migration of 60+ healthcare client databases into a unified HIPAA-compliant cloud data lake — 2M+ patient records across disparate legacy EMR/EHR systems with near-real-time CDC sync.",
     bullets:["Migrated MySQL, MongoDB, legacy EMR proprietary systems, and REST APIs into unified cloud data lake","Designed clinical dimensional models for appointments, claims, encounters, provider performance, and billing","CDC-based near-real-time sync across 6,000 active client databases with conflict resolution","HIPAA-compliant masking, field-level encryption, audit logging, and RBAC for all 60+ client tenants","Healthcare dashboards: Appointments, Revenue analytics, Busy Hours heatmaps for clinical ops"] },
   { id:"dashboards", cat:"Data Engineering · Analytics", tag:"Power BI · Finance · Healthcare", title:"Financial & Healthcare Dashboards", sub:"Farmer Mac & Aesthetic Record · BI", color:"#8B5CF6", accent:"#a78bfa",
-    image: IMG("1551288049-bebda4e38f71"),
+    image: IMG("📊","#8B5CF6","#a78bfa"),
     stats:[{v:"10+",l:"Dashboards"},{v:"2 Domains",l:"Finance+Health"},{v:"Semantic",l:"Models"},{v:"Sub-second",l:"Refresh"}],
     desc:"Built Power BI dashboards and semantic models for two enterprise domains: financial (Cash Window, Loan Admin, Loan Log, Moody's) and healthcare (Appointments, Revenue, Busy Hours).",
     bullets:["Financial dashboards: Cash Window, Loan Admin, Loan Log tracking, Moody's analytics views","Healthcare dashboards: Appointments scheduling, Revenue analytics, Busy Hours heatmaps","Built semantic models (tabular models) on Gold lakehouse layer for self-serve analytics","Row-level security and column masking by role — business users, analysts, and executives","Sub-second query performance via columnstore indexing and pre-aggregated measures"] },
   { id:"bloomberg", cat:"Data Engineering · Finance", tag:"Bloomberg · Moody's · Reuters", title:"Bloomberg, Moody's & Reuters Migrations", sub:"Farmer Mac · Financial Data", color:"#8B5CF6", accent:"#a78bfa",
-    image: IMG("1611974789855-9c2a0a7236a3"),
+    image: IMG("📈","#6366F1","#a78bfa"),
     stats:[{v:"3",l:"Major Vendors"},{v:"Tier-1",l:"Financial Data"},{v:"Real-time",l:"Feeds"},{v:"<5 sec",l:"Queries"}],
     desc:"Migrated Thomson Reuters, Moody's Analytics, and Bloomberg financial databases into the enterprise lakehouse for unified credit risk and portfolio analytics.",
     bullets:["Thomson Reuters: market pricing feeds, bond reference data, news sentiment via API and SFTP","Moody's Analytics: credit ratings, risk scores, issuer hierarchy joined to internal loan data","Bloomberg: fixed-income benchmarks, yield curves, pricing snaps via Bloomberg Data License","Unified financial data model mapping all three vendor schemas to lakehouse entities","Business analysts query cross-vendor financial data in Power BI under 5 seconds"] },
   { id:"dq", cat:"Data Engineering · Governance", tag:"Quality · Lineage · IAM", title:"Data Quality & Governance Framework", sub:"Farmer Mac · Enterprise Governance", color:"#06B6D4", accent:"#22d3ee",
-    image: IMG("1614728894747-a83421e2b9c9"),
+    image: IMG("🛡️","#06B6D4","#22d3ee"),
     stats:[{v:"Automated",l:"DQ Checks"},{v:"Lineage",l:"Tracked"},{v:"Multi-tier",l:"Validation"},{v:"Zero",l:"Silent Failures"}],
     desc:"Implemented an enterprise data quality and governance framework across the lakehouse — automated validation checks, data lineage tracking, anomaly alerting, and IAM/RBAC enforcement.",
     bullets:["Automated DQ checks at every layer: schema validation, null checks, referential integrity, range validation","Validators flag anomalies before data promotes to Silver and Gold layers","Full lineage tracking: every column traces back to source, transformation logic, and pipeline","Alerting pipeline notifies data owners of DQ failures with context","IAM + RBAC policies enforced at storage, compute, and serving layers"] },
   { id:"environments", cat:"Data Engineering · DevOps", tag:"Dev · Test · UAT · Terraform", title:"Dev / Test / UAT Environments & IAM", sub:"Farmer Mac · Enterprise DevOps", color:"#F97316", accent:"#fb923c",
-    image: IMG("1605379399642-870262d3d051"),
+    image: IMG("⚙️","#F97316","#fb923c"),
     stats:[{v:"3",l:"Environments"},{v:"Terraform",l:"Provisioned"},{v:"IAM",l:"Enforced"},{v:"Zero",l:"Prod Incidents"}],
     desc:"Built and maintained isolated Dev, Test, and UAT environments for the enterprise lakehouse — complete with IAM policies, RBAC, CI/CD pipelines, and promotion workflows with zero production incidents.",
     bullets:["Provisioned Dev/Test/UAT in Azure with Terraform — identical configs, separate identities","IAM with least-privilege access: developers write to Dev, testers promote to Test, owners approve UAT→Prod","CI/CD pipelines with automated testing gates — DQ checks required before promotion","RBAC at every layer: Databricks workspace, ADLS Gen2 ACLs, Synapse Analytics roles","Zero unplanned production incidents — all changes via promotion workflow with audit trail"] },
   // ===== AGENTIC AI =====
   { id:"loan-doc", cat:"Agentic AI · Full Stack", tag:"GenAI · RAG · React", title:"Loan Document Intelligence App", sub:"Farmer Mac · AI + Full Stack", color:"#7C5CFC", accent:"#a78bfa",
-    image: IMG("1450101499163-c8848c66ca85"),
+    image: IMG("📄","#7C5CFC","#a78bfa"),
     stats:[{v:"100+",l:"PDFs/batch"},{v:"RAG",l:"Architecture"},{v:"Full Stack",l:"End-to-End"},{v:"<1hr",l:"vs 2 weeks"}],
     desc:"End-to-end agentic system: clients upload 100+ loan PDFs → Azure Document Intelligence + OpenAI extracts data → RAG joins against 5,000+ lakehouse tables → editable React frontend → publishes back to source on submit.",
     bullets:["Azure OpenAI + Document Intelligence pipeline extracts, classifies, and validates unstructured loan PDF data","RAG layer joins extracted fields against 5,000+ lakehouse tables to resolve entities and flag discrepancies","React frontend renders extracted loan data with field validation and inline AI suggestions","Flask backend connects AI pipeline to frontend and handles submit → lakehouse write-back","100+ PDFs per batch with async processing, error recovery, and full audit logging"] },
   { id:"dictation", cat:"Agentic AI · Healthcare", tag:"Voice AI · GenAI · Telehealth", title:"AI Dictation & Telehealth Notes Tool", sub:"Aesthetic Record · Clinical AI", color:"#EC4899", accent:"#f472b6",
-    image: IMG("1579684385127-1ef15d508118"),
+    image: IMG("🎙️","#EC4899","#f472b6"),
     stats:[{v:"Real-time",l:"Transcription"},{v:"Voice AI",l:"Powered"},{v:"Auto",l:"SOAP Notes"},{v:"~60%",l:"Time Saved"}],
     desc:"AI-powered dictation tool that listens to telehealth appointment visits and auto-generates structured procedural clinical notes (SOAP format) — replacing manual post-visit documentation entirely.",
     bullets:["Real-time speech-to-text transcription of telehealth visit audio using Whisper and AssemblyAI","LLM pipeline structures raw transcript into SOAP clinical notes: chief complaint, assessment, plan, medications","Supports multiple specialties — primary care, dermatology, mental health — with specialty-specific templates","Integrates with EMR systems to push finalized notes directly into patient charts in under 90 seconds","Cut post-visit documentation from 20 minutes to under 8 minutes per patient"] },
   { id:"interview-agent", cat:"Agentic AI · Full Stack", tag:"GenAI · Voice AI · React", title:"Interview Preparation AI Agent", sub:"Ogha Inc · Agentic System", color:"#F97316", accent:"#fb923c",
-    image: IMG("1573497019940-1c28c88b4f3e"),
+    image: IMG("🤖","#F97316","#fb923c"),
     stats:[{v:"RAG",l:"Powered"},{v:"Voice AI",l:"Enabled"},{v:"Full Stack",l:"Delivered"},{v:"Real-time",l:"Coaching"}],
     desc:"Full agentic app built from scratch: React frontend, Flask backend, RAG pipeline, and voice AI. Generates personalized role-specific interview questions and delivers real-time AI coaching feedback.",
     bullets:["Resume + JD ingested → chunked → embedded → vector DB → RAG retrieval for grounded question generation","AssemblyAI integration for real-time speech-to-text; answers transcribed and evaluated by LLM","AWS Bedrock powers question generation, answer evaluation, and improvement coaching","React frontend: resume upload, JD input, live interview session with mic capture, AI feedback panel","Flask REST backend with async job queues for pipeline orchestration and result caching"] },
   { id:"marketing-agent", cat:"Agentic AI · Automation", tag:"LLM · n8n · GenAI", title:"Marketing AI Agent", sub:"Ogha Inc · Content Automation", color:"#14B8A6", accent:"#2dd4bf",
-    image: IMG("1432888622747-4eb9a8efeb07"),
+    image: IMG("📣","#14B8A6","#2dd4bf"),
     stats:[{v:"LLM",l:"Powered"},{v:"n8n",l:"Orchestrated"},{v:"Multi-channel",l:"Output"},{v:"~80%",l:"Time Saved"}],
     desc:"AI-driven marketing automation: ingests product data, user signals, and campaign briefs → auto-generates LinkedIn posts, email campaigns, and ad copy at scale with n8n workflow orchestration.",
     bullets:["n8n workflow orchestration connects data feeds, LLM generation layer, and publishing endpoints","LLM pipeline generates platform-specific content: LinkedIn posts, email subject lines, ad copy, campaign summaries","Ingests product catalogs, user behavior feeds, and engagement analytics to personalize output per segment","Scheduled and trigger-based execution — campaigns auto-launch on user events or calendar schedules","Reduced manual content creation time by ~80% for the growth team"] },
@@ -112,6 +135,14 @@ const publications = [
   { title:"Data Loading Techniques in Modern Data Engineering", outlet:"LinkedIn", type:"Post", color:"#7C5CFC", desc:"Practical patterns for batch, streaming, CDC, and incremental data loading across ETL workflows in AWS.", href:"https://www.linkedin.com/posts/pujai_dataengineering-etl-aws-activity-7423114549379301376-iTOz" },
   { title:"Cloud Data Engineering Tools: AWS, GCP & Azure with Real-time Use Cases", outlet:"LinkedIn", type:"Post", color:"#F97316", desc:"Comparing AWS, GCP, and Azure data engineering stacks with concrete real-time scenarios.", href:"https://www.linkedin.com/posts/pujai_dataengineering-bigdata-cloudcomputing-activity-7422409684164190209-bhWt" },
   { title:"Research Paper — IJEAT (Vol. 9, Issue 2)", outlet:"IJEAT Journal", type:"Research", color:"#EC4899", desc:"Peer-reviewed research published in the International Journal of Engineering and Advanced Technology.", href:"https://www.ijeat.org/wp-content/uploads/papers/v9i2/B5122129219.pdf" },
+  { title:"Medallion Lakehouse Architecture — Bronze, Silver, Gold Explained", outlet:"LinkedIn", type:"Post", color:"#00D4AA", desc:"Why the Medallion pattern wins for enterprise lakehouses — and how to lay out the zones in practice.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"SCD Type 2 & Delta MERGE at Scale", outlet:"LinkedIn", type:"Post", color:"#10B981", desc:"Hands-on take on slowly changing dimensions and idempotent MERGE on Delta Lake across 5,000+ tables.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"From SAS to PySpark — A Migration Playbook", outlet:"LinkedIn", type:"Post", color:"#F59E0B", desc:"Field notes from converting 100+ legacy SAS scripts into distributed PySpark with 60% perf gains.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"Building RAG Pipelines That Actually Work in Production", outlet:"LinkedIn", type:"Post", color:"#7C5CFC", desc:"Real-world RAG over 5,000+ lakehouse tables — chunking, retrieval, grounding, and evaluation.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"Voice AI for Telehealth: Whisper + LLMs for SOAP Notes", outlet:"LinkedIn", type:"Post", color:"#EC4899", desc:"How real-time transcription + structured prompting cut clinical documentation time by 60%.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"n8n + LLMs: Orchestrating Marketing AI Agents", outlet:"LinkedIn", type:"Post", color:"#14B8A6", desc:"A pragmatic recipe for chaining LLM calls with n8n to ship multi-channel marketing automation.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"Data Quality at Lakehouse Scale — Great Expectations Patterns", outlet:"LinkedIn", type:"Post", color:"#06B6D4", desc:"Schema, null, referential, and range checks promoted between Bronze, Silver, and Gold.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
+  { title:"IAM, RBAC & HIPAA in Cloud Data Platforms", outlet:"LinkedIn", type:"Post", color:"#F97316", desc:"How least-privilege, audit logging, and field-level encryption come together for healthcare data.", href:"https://www.linkedin.com/in/pujai/recent-activity/all/" },
 ];
 
 const experiences = [
@@ -280,55 +311,56 @@ function HeroPage({ dark, setPage }) {
       <div style={{position:"absolute",width:600,height:600,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(0,212,170,0.07) 0%,transparent 70%)":"radial-gradient(circle,rgba(0,212,170,0.12) 0%,transparent 70%)",top:"-100px",left:"-100px",pointerEvents:"none"}}/>
       <div style={{position:"absolute",width:500,height:500,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(124,92,252,0.06) 0%,transparent 70%)":"radial-gradient(circle,rgba(124,92,252,0.1) 0%,transparent 70%)",bottom:"0px",right:"-80px",pointerEvents:"none"}}/>
 
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"40px 24px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))",alignItems:"center",minHeight:"calc(100vh - 60px)",gap:32}}>
+      <div style={{maxWidth:1200,margin:"0 auto",padding:"32px 20px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",alignItems:"start",gap:36}}>
         <div style={{animation:"fadeUp 0.9s ease both"}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:24,maxWidth:"100%"}}>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:20,maxWidth:"100%"}}>
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(44px,6vw,78px)",fontWeight:800,lineHeight:0.95,color:txt,marginBottom:18,letterSpacing:"-0.035em"}}>
-            Puja<br/>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,6vw,72px)",fontWeight:800,lineHeight:0.98,color:txt,marginBottom:20,letterSpacing:"-0.035em"}}>
+            Puja{" "}
             <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
           </h1>
-          <p style={{fontSize:16,color:sub,maxWidth:520,lineHeight:1.75,marginBottom:12,fontWeight:300}}>
-            I build intelligent systems — from enterprise data lakehouses processing <strong style={{color:dark?"rgba(228,232,244,0.85)":"rgba(10,15,30,0.85)",fontWeight:600}}>$25B portfolios</strong> across <strong style={{color:"#00D4AA",fontWeight:600}}>Finance, Healthcare & Social Networking</strong> domains, to end-to-end AI agents that reason, speak, and act.
-          </p>
-          <p style={{fontSize:13.5,color:sub,maxWidth:520,lineHeight:1.7,marginBottom:24,fontWeight:300}}>
-            Full ownership of <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>lakehouses, warehouses, dashboards</strong>, and <strong style={{color:dark?"rgba(228,232,244,0.8)":"rgba(10,15,30,0.8)",fontWeight:500}}>Legacy → PySpark</strong> modernizations.
-          </p>
 
-          {/* Role chips */}
-          <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:24}}>
-            {["Data Engineering","ETL / Migrations","Lakehouse · Warehouse","Agentic AI","GenAI / RAG","Multi-Cloud"].map((r,i)=>(
-              <span key={r} style={{background:i===0?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.12)"):(dark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.04)"),border:i===0?"1px solid rgba(0,212,170,0.25)":`1px solid ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.06)"}`,borderRadius:7,padding:"5px 12px",fontSize:12,color:i===0?"#00D4AA":sub,fontWeight:i===0?600:400}}>{r}</span>
-            ))}
+          {/* About me — quirky, italic, fun */}
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:560}}>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
+              Hi, I'm Puja — a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> by day, an <strong style={{color:"#7C5CFC",fontWeight:700}}>Agentic AI tinkerer</strong> by everything-else. I babysit a $25B mortgage lakehouse with 5,000+ tables (yes, I know all their names) and I've taught it to answer questions in under five minutes — down from a polite two weeks.
+            </p>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
+              I move data around <strong>Finance, Healthcare and Social Networking</strong> like it's my full-time hobby — building Medallion lakehouses, ETL pipelines across Azure / AWS / GCP, Power BI dashboards, and dragging crusty SAS scripts kicking and screaming into PySpark.
+            </p>
+            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,fontWeight:400}}>
+              On the side I ship AI agents that <strong>read PDFs, listen to doctors, and run interviews</strong>. Five of them so far. They're polite. Mostly.
+            </p>
           </div>
 
-          {/* Stats */}
-          <div style={{display:"flex",gap:24,marginBottom:32,flexWrap:"wrap"}}>
-            {[{n:"4+",l:"Years Exp"},{n:"$25B",l:"Lakehouse Owned"},{n:"30+",l:"Projects Delivered"},{n:"5",l:"AI Agents Built"}].map(s=>(
-              <div key={s.l}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:24,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
-                <div style={{fontSize:11,color:sub,marginTop:2}}>{s.l}</div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:32}}>
-            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 26px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
+            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
               ✦ Talk to My AI
             </button>
-            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 26px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
           </div>
 
+          {/* Compact stats row */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:28,maxWidth:560}}>
+            {[{n:"4+",l:"Years Exp"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
+              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.7)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"10px 12px"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:22,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
+                <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+
           {/* Skill ticker */}
-          <div style={{marginBottom:8}}>
+          <div>
             <div style={{fontSize:10,color:sub,letterSpacing:"0.1em",marginBottom:8,fontWeight:500}}>TOOLS & TECHNOLOGIES</div>
             <SkillTicker dark={dark}/>
           </div>
         </div>
+
 
         {/* Right illustration */}
         <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative"}}>
@@ -363,12 +395,12 @@ function ExperiencePage({ dark }) {
   const exp=experiences[active];
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:48}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Career</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em"}}>Where I've Built</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:24}}>
+        <div className="exp-grid" style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:24}}>
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
             {experiences.map((e,i)=>(
               <button key={i} onClick={()=>setActive(i)} style={{background:active===i?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):(dark?"rgba(255,255,255,0.02)":"rgba(0,0,0,0.02)"),border:`1px solid ${active===i?"rgba(0,212,170,0.32)":cardBorder}`,borderRadius:12,padding:"14px 16px",cursor:"pointer",textAlign:"left",transition:"all 0.22s"}}>
@@ -435,7 +467,7 @@ function ProjectsPage({ dark }) {
   });
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1180,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1180,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Portfolio</div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",flexWrap:"wrap",gap:16}}>
@@ -452,7 +484,7 @@ function ProjectsPage({ dark }) {
             </div>
           </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(460px,1fr))",gap:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(min(100%,320px),1fr))",gap:14}}>
           {filtered.map(p=>{
             const open=openId===p.id;
             return (
@@ -512,7 +544,7 @@ function SkillsPage({ dark }) {
   const sub=dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Stack</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em",marginBottom:8}}>Tools & Technologies</h2>
@@ -555,7 +587,7 @@ function AIChatPage({ dark }) {
   }
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:40}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Interactive</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em",marginBottom:8}}>Talk to My Resume</h2>
@@ -656,7 +688,7 @@ function ContactPage({ dark }) {
   const cardBorder=dark?"rgba(255,255,255,0.07)":"rgba(0,0,0,0.07)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:900,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:900,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Contact</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em"}}>Let's Connect</h2>
