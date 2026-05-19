@@ -395,7 +395,7 @@ function ExperiencePage({ dark }) {
   const exp=experiences[active];
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:48}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Career</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em"}}>Where I've Built</h2>
@@ -467,7 +467,7 @@ function ProjectsPage({ dark }) {
   });
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1180,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1180,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Portfolio</div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",flexWrap:"wrap",gap:16}}>
@@ -544,7 +544,7 @@ function SkillsPage({ dark }) {
   const sub=dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Stack</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em",marginBottom:8}}>Tools & Technologies</h2>
@@ -587,7 +587,7 @@ function AIChatPage({ dark }) {
   }
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:40}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Interactive</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em",marginBottom:8}}>Talk to My Resume</h2>
@@ -688,7 +688,7 @@ function ContactPage({ dark }) {
   const cardBorder=dark?"rgba(255,255,255,0.07)":"rgba(0,0,0,0.07)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:80,paddingBottom:80}}>
-      <div style={{maxWidth:900,margin:"0 auto",padding:"0 60px"}}>
+      <div style={{maxWidth:900,margin:"0 auto",padding:"0 clamp(16px,4vw,60px)"}}>
         <div style={{marginBottom:44}}>
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Contact</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em"}}>Let's Connect</h2>
