@@ -400,7 +400,7 @@ function ExperiencePage({ dark }) {
           <div style={{color:"#00D4AA",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:12,fontWeight:600}}>Career</div>
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:40,fontWeight:800,color:txt,letterSpacing:"-0.025em"}}>Where I've Built</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,240px),1fr))",gap:24}}>
+        <div className="exp-grid" style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:24}}>
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
             {experiences.map((e,i)=>(
               <button key={i} onClick={()=>setActive(i)} style={{background:active===i?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):(dark?"rgba(255,255,255,0.02)":"rgba(0,0,0,0.02)"),border:`1px solid ${active===i?"rgba(0,212,170,0.32)":cardBorder}`,borderRadius:12,padding:"14px 16px",cursor:"pointer",textAlign:"left",transition:"all 0.22s"}}>
