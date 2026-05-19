@@ -317,21 +317,23 @@ function HeroPage({ dark, setPage }) {
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,6vw,72px)",fontWeight:800,lineHeight:0.98,color:txt,marginBottom:20,letterSpacing:"-0.035em"}}>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(34px,5.6vw,64px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
             Puja{" "}
             <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
           </h1>
 
-          {/* About me — quirky, italic, fun */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:560}}>
-            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
-              Hi, I'm Puja — a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> by day, an <strong style={{color:"#7C5CFC",fontWeight:700}}>Agentic AI tinkerer</strong> by everything-else. I babysit a $25B mortgage lakehouse with 5,000+ tables (yes, I know all their names) and I've taught it to answer questions in under five minutes — down from a polite two weeks.
+          {/* Animated headline */}
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(20px,2.6vw,30px)",fontWeight:700,lineHeight:1.25,color:txt,marginBottom:22,letterSpacing:"-0.02em",minHeight:"2.6em"}}>
+            <Typewriter text="I build intelligent systems that turn data into decisions." />
+          </h2>
+
+          {/* About me — concise, professional pitch */}
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:580}}>
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400}}>
+              I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with 4+ years building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$25B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
-            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,marginBottom:12,fontWeight:400}}>
-              I move data around <strong>Finance, Healthcare and Social Networking</strong> like it's my full-time hobby — building Medallion lakehouses, ETL pipelines across Azure / AWS / GCP, Power BI dashboards, and dragging crusty SAS scripts kicking and screaming into PySpark.
-            </p>
-            <p style={{fontStyle:"italic",fontSize:15,color:dark?"rgba(228,232,244,0.78)":"rgba(10,15,30,0.78)",lineHeight:1.75,fontWeight:400}}>
-              On the side I ship AI agents that <strong>read PDFs, listen to doctors, and run interviews</strong>. Five of them so far. They're polite. Mostly.
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400}}>
+              Beyond pipelines, I've shipped <strong>5 production AI agents</strong> — document intelligence over loan portfolios, real-time clinical dictation, RAG over 2M+ patient records, an interview-prep voice agent, and a marketing content agent — delivering each end-to-end across data, AI backend, and React frontend.
             </p>
           </div>
 
