@@ -555,12 +555,23 @@ function ProjectsPage({ dark }) {
                   <div style={{padding:"0 20px 20px",animation:"fadeUp 0.3s ease"}}>
                     <div style={{height:1,background:`linear-gradient(90deg,${p.color}28,transparent)`,marginBottom:14}}/>
                     <p style={{color:sub,fontSize:13,lineHeight:1.75,marginBottom:14}}>{p.desc}</p>
-                    {p.bullets.map((b,i)=>(
+                    {p.bullets&&p.bullets.map((b,i)=>(
                       <div key={i} style={{display:"flex",gap:10,marginBottom:9}}>
                         <span style={{width:18,height:18,borderRadius:"50%",background:p.color+"18",border:`1px solid ${p.color}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:p.color,flexShrink:0,marginTop:2,fontWeight:700}}>{i+1}</span>
                         <span style={{color:sub,fontSize:12.5,lineHeight:1.65}}>{b}</span>
                       </div>
                     ))}
+                    <div style={{marginTop:14,paddingTop:12,borderTop:`1px dashed ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.08)"}`}}>
+                      {p.blog ? (
+                        <a href={p.blog} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{display:"inline-flex",alignItems:"center",gap:8,color:p.color,fontSize:12,fontWeight:600,textDecoration:"none"}}>
+                          📝 Read full Medium write-up →
+                        </a>
+                      ) : (
+                        <span style={{display:"inline-flex",alignItems:"center",gap:8,color:sub,fontSize:11.5,fontStyle:"italic"}}>
+                          📝 Detailed Medium write-up coming soon
+                        </span>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
