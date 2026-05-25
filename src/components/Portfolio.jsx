@@ -380,7 +380,7 @@ function HeroPage({ dark, onJump }) {
 
           {/* Compact stats row */}
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:28,maxWidth:560}}>
-            {[{n:"4+",l:"Years Exp"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
+            {[{n:"4",l:"Industries"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
               <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.7)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"10px 12px"}}>
                 <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:22,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
                 <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
