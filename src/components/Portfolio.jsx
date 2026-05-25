@@ -279,18 +279,26 @@ function ResumeDownload({ dark }) {
   );
 }
 
-/* ── NAV ── */
-const pages = ["Home","Experience","Projects","Skills","Publications","AI Chat","Contact"];
-function Nav({ page, setPage, dark, setDark }) {
+/* ── NAV (single-page anchor scroll) ── */
+const pages = [
+  { label:"Home",         id:"home" },
+  { label:"Experience",   id:"experience" },
+  { label:"Projects",     id:"projects" },
+  { label:"Skills",       id:"skills" },
+  { label:"Publications", id:"publications" },
+  { label:"AI Chat",      id:"aichat" },
+  { label:"Contact",      id:"contact" },
+];
+function Nav({ active, dark, setDark, onJump }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(()=>{ const h=()=>setScrolled(window.scrollY>10); window.addEventListener("scroll",h); return()=>window.removeEventListener("scroll",h); },[]);
   return (
     <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,background:scrolled?(dark?"rgba(8,12,22,0.94)":"rgba(248,250,255,0.94)"):(dark?"rgba(8,12,22,0.6)":"rgba(248,250,255,0.6)"),backdropFilter:"blur(20px)",borderBottom:scrolled?`1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`:"none",padding:"0 16px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,transition:"all 0.3s"}}>
-      <div onClick={()=>setPage("Home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer",flexShrink:0}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
+      <div onClick={()=>onJump("home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer",flexShrink:0}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
       <div style={{display:"flex",gap:2,overflowX:"auto",scrollbarWidth:"none",msOverflowStyle:"none",flex:1,justifyContent:"center",minWidth:0}}>
         {pages.map(p=>(
-          <button key={p} onClick={()=>setPage(p)} style={{flexShrink:0,background:page===p?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):"transparent",border:"none",borderRadius:8,color:page===p?"#00D4AA":(dark?"rgba(255,255,255,0.45)":"rgba(10,15,30,0.5)"),padding:"6px 10px",cursor:"pointer",fontSize:12,transition:"all 0.2s",whiteSpace:"nowrap"}}>
-            {p}
+          <button key={p.id} onClick={()=>onJump(p.id)} style={{flexShrink:0,background:active===p.id?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):"transparent",border:"none",borderRadius:8,color:active===p.id?"#00D4AA":(dark?"rgba(255,255,255,0.45)":"rgba(10,15,30,0.5)"),padding:"6px 10px",cursor:"pointer",fontSize:12,transition:"all 0.2s",whiteSpace:"nowrap"}}>
+            {p.label}
           </button>
         ))}
       </div>
