@@ -161,7 +161,7 @@ const experiences = [
 ];
 
 const recruiterModes = {
-  "Data Engineer": "Puja is a Data Engineer with 4+ years building enterprise cloud data platforms. She owns a $25B Medallion Lakehouse with 5,000+ tables across 42 databases, migrated Thomson Reuters/Moody's/Bloomberg, built 35+ production ETL/ELT pipelines (batch + streaming + CDC), and converted 100+ SAS programs to PySpark. She delivers measurable results: 1TB+ migrations, 2M+ patient records, sub-5-minute reporting.",
+  "Data Engineer": "Puja is a Data Engineer with experience building enterprise cloud data platforms. She owns a $25B Medallion Lakehouse with 5,000+ tables across 42 databases, migrated Thomson Reuters/Moody's/Bloomberg, built 35+ production ETL/ELT pipelines (batch + streaming + CDC), and converted 100+ SAS programs to PySpark. She has shipped 1TB+ migrations, 2M+ patient record loads, and sub-5-minute reporting.",
   "Agentic AI / GenAI": "Puja ships production AI agents. She's built 5 complete systems: an Interview Prep Agent with RAG + voice AI, a Marketing Agent with LLM + n8n, an AI Dictation tool for telehealth (60% doc time saved), a Loan Document Intelligence app processing 100+ PDFs, and 1 more agentic system at Ogha. All built full-stack — data pipeline, AI backend, and React frontend.",
   "Full Stack + Data": "Puja brings rare full-stack + data + AI depth. She builds React frontends, Flask backends, REST APIs, and connects them to intelligent data pipelines and LLM agents. At Ogha and Farmer Mac she delivered complete systems end-to-end — from Kafka streams and PySpark to Azure OpenAI APIs and interactive React UIs.",
 };
