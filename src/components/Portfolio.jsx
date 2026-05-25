@@ -148,7 +148,7 @@ const publications = [
 const experiences = [
   { title:"Software Engineer – Data & Agentic AI", company:"Farmer Mac", period:"Jul 2025 – Present", domain:"Banking · Federal Mortgage", color:"#00D4AA",
     summary:"Owns the $25B mortgage data platform end-to-end — Medallion Lakehouse, AI document intelligence, financial dashboards, and governance.",
-    highlights:["$25B Lakehouse: 5,000+ tables / 42 databases, 99.9% accuracy","35+ ETL pipelines across Azure, AWS, GCP","Loan Document Intelligence AI app (full-stack: React + Flask + RAG)","Bloomberg, Moody's, Reuters DB migrations","Financial dashboards + Power BI semantic models","Data quality framework + Dev/Test/UAT + IAM/RBAC"] },
+    highlights:["$25B Lakehouse: 5,000+ tables / 42 databases, 99.9% accuracy","35+ production ETL/ELT pipelines (batch + streaming + CDC)","Loan Document Intelligence AI app (full-stack: React + Flask + RAG)","Bloomberg, Moody's, Reuters DB migrations","Financial dashboards + Power BI semantic models","Data quality framework + Dev/Test/UAT + IAM/RBAC"] },
   { title:"Software Engineer – Data & Agentic AI", company:"Aesthetic Record", period:"Oct 2024 – Jun 2025", domain:"Healthcare · EMR · Clinical AI", color:"#7C5CFC",
     summary:"Led 60+ healthcare data migrations and built AI clinical tools — telehealth dictation agent and clinical chatbot.",
     highlights:["60+ EMR/EHR client DB migrations (2M+ patient records)","AI dictation tool for telehealth: real-time voice → SOAP notes","AI clinical chatbot (LangChain + OpenAI + Whisper) — 60% time saved","Near-real-time CDC sync across 6,000 client DBs","Healthcare dashboards: Appointments, Revenue, Busy Hours","HIPAA-compliant security, audit logging, RBAC"] },
