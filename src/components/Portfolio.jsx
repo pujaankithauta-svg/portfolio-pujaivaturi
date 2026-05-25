@@ -334,7 +334,7 @@ function Typewriter({ text, speed = 38 }) {
 }
 
 /* ── HERO ── */
-function HeroPage({ dark, setPage }) {
+function HeroPage({ dark, onJump }) {
   const bg = dark?"#080c16":"#f7f9ff";
   const txt = dark?"#e4e8f4":"#0a0f1e";
   const sub = dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
