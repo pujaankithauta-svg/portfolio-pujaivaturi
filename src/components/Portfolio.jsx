@@ -18,7 +18,7 @@ PUJA IVATURI — Software Engineer, Data & Agentic AI | 4+ years experience
 Email: pujaankitha.uta@gmail.com | Phone: 682-699-1060 | LinkedIn: linkedin.com/in/pujai
 
 EXPERIENCE:
-1. Farmer Mac (Jul 2025–Present) | Banking — $25B lakehouse (5,000+ tables, 42 databases, 99.9% accuracy), 35+ ETL pipelines (Azure/AWS/GCP), Loan Document Intelligence AI app (full-stack), Bloomberg/Moody's/Reuters migrations, Power BI dashboards, data quality framework, IAM/RBAC, dev/test/UAT environments
+1. Farmer Mac (Jul 2025–Present) | Banking — $25B lakehouse (5,000+ tables, 42 databases, 99.9% accuracy), 35+ production ETL/ELT pipelines (batch + streaming + CDC), Loan Document Intelligence AI app (full-stack), Bloomberg/Moody's/Reuters migrations, Power BI dashboards, data quality framework, IAM/RBAC, dev/test/UAT environments
 2. Aesthetic Record (Oct 2024–Jun 2025) | Healthcare — 60+ EMR/EHR client migrations (2M+ records), AI clinical dictation tool for telehealth (60% doc time reduction), HIPAA compliance
 3. Ogha Inc (Feb 2024–Sep 2024) | Startup — 5 AI agents: Interview Prep Agent, Marketing Agent + 3 more; full-stack React+Flask
 4. TCS (Aug 2021–Aug 2022) | Pharma — 100+ SAS→PySpark, 200GB/day pipelines
