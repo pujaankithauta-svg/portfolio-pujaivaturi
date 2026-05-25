@@ -232,10 +232,15 @@ function ResumeDownload({ dark }) {
   const [open, setOpen] = useState(false);
   const txt = dark ? "#e4e8f0" : "#0a0f1e";
 
-  function downloadResume(type) {
-    const html = type === "data" ? RESUME_DATA_HTML : RESUME_AI_HTML;
+  function fileFor(type) {
+    return type === "data" ? "/resume_data_engineer.html" : "/resume_agentic_ai.html";
+  }
+
+  async function downloadResume(type) {
+    const res = await fetch(fileFor(type));
+    const html = await res.text();
     const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.html" : "Puja_Ivaturi_Agentic_AI.html";
-    const blob = new Blob([html],{type:"text/html"});
+    const blob = new Blob([html], { type: "text/html" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url; a.download = name; a.click();
@@ -244,11 +249,9 @@ function ResumeDownload({ dark }) {
   }
 
   function openResume(type) {
-    const html = type === "data" ? RESUME_DATA_HTML : RESUME_AI_HTML;
-    const blob = new Blob([html],{type:"text/html"});
-    const url = URL.createObjectURL(blob);
-    window.open(url,"_blank");
+    window.open(fileFor(type), "_blank");
   }
+
 
   return (
     <div style={{position:"relative"}}>
