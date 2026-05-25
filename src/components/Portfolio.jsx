@@ -18,7 +18,7 @@ PUJA IVATURI — Software Engineer, Data & Agentic AI | 4+ years experience
 Email: pujaankitha.uta@gmail.com | Phone: 682-699-1060 | LinkedIn: linkedin.com/in/pujai
 
 EXPERIENCE:
-1. Farmer Mac (Jul 2025–Present) | Banking — $25B lakehouse (5,000+ tables, 42 databases, 99.9% accuracy), 35+ ETL pipelines (Azure/AWS/GCP), Loan Document Intelligence AI app (full-stack), Bloomberg/Moody's/Reuters migrations, Power BI dashboards, data quality framework, IAM/RBAC, dev/test/UAT environments
+1. Farmer Mac (Jul 2025–Present) | Banking — $25B lakehouse (5,000+ tables, 42 databases, 99.9% accuracy), 35+ production ETL/ELT pipelines (batch + streaming + CDC), Loan Document Intelligence AI app (full-stack), Bloomberg/Moody's/Reuters migrations, Power BI dashboards, data quality framework, IAM/RBAC, dev/test/UAT environments
 2. Aesthetic Record (Oct 2024–Jun 2025) | Healthcare — 60+ EMR/EHR client migrations (2M+ records), AI clinical dictation tool for telehealth (60% doc time reduction), HIPAA compliance
 3. Ogha Inc (Feb 2024–Sep 2024) | Startup — 5 AI agents: Interview Prep Agent, Marketing Agent + 3 more; full-stack React+Flask
 4. TCS (Aug 2021–Aug 2022) | Pharma — 100+ SAS→PySpark, 200GB/day pipelines
@@ -71,11 +71,11 @@ const allProjects = [
     stats:[{v:"5,000+",l:"Tables"},{v:"42",l:"Databases"},{v:"$25B",l:"Portfolio"},{v:"<5 min",l:"Reporting"}],
     desc:"Architected and owned an enterprise Medallion Lakehouse (Landing → Bronze → Silver → Gold) for a $25B federal mortgage portfolio spanning 5,000+ tables across 42 databases — replacing a 2-week manual cycle with sub-5-minute AI-enabled pipelines.",
     bullets:["Designed end-to-end architecture across 5,000+ tables / 42 databases with SCD Type 2, historical tracking, and regulatory audit trails","Ingested from 10+ heterogeneous sources: SQL Server, Oracle, FTP, REST APIs, file shares — all with delta load strategies","Real-time financial event pipelines with Kafka-compatible streaming for position and transaction data","Enforced enterprise RBAC, data lineage, encryption, and governance across all lakehouse zones","Reduced reporting from 2 weeks to under 5 minutes using RAG + Azure OpenAI document processing"] },
-  { id:"etl", cat:"Data Engineering · Multi-Cloud", tag:"Azure · AWS · GCP", title:"35+ ETL Pipelines — Multi-Cloud", sub:"Farmer Mac & Portfolio", color:"#00D4AA", accent:"#00ffc8",
+  { id:"etl", cat:"Data Engineering · Pipelines", tag:"ETL · ELT · CDC · Streaming", title:"35+ Production ETL/ELT Pipelines", sub:"Farmer Mac & Portfolio", color:"#00D4AA", accent:"#00ffc8",
     image: IMG("☁️","#0099ff","#00D4AA"),
-    stats:[{v:"35+",l:"Pipelines"},{v:"3 Clouds",l:"Azure/AWS/GCP"},{v:"Batch+Stream",l:"Both Modes"},{v:"1TB+",l:"Data Moved"}],
-    desc:"Designed, built, and maintained 35+ production ETL/ELT pipelines across Azure, AWS, and GCP — batch loads, streaming ingest, CDC pipelines, and file-based integrations.",
-    bullets:["Azure: Data Factory, Databricks PySpark, ADLS Gen2, Synapse Analytics","AWS: Glue jobs, EMR clusters, DMS for CDC, Kinesis Firehose, Redshift","GCP: Dataflow pipelines, BigQuery loads, Cloud Storage staging","SCD Type 2, MERGE upserts, Delta table compaction, schema evolution handling","Moved 1TB+ on-prem data to cloud with full audit trails and rollback capability"] },
+    stats:[{v:"35+",l:"Pipelines"},{v:"Batch+Stream",l:"Both Modes"},{v:"1TB+",l:"Data Moved"},{v:"99.9%",l:"Accuracy"}],
+    desc:"Designed, built, and maintained 35+ production ETL/ELT pipelines — batch loads, streaming ingest, CDC, and file-based integrations with full audit and rollback.",
+    bullets:["Managed Spark notebooks + workflow orchestrators for scheduled and event-driven runs","CDC pipelines with Delta MERGE upserts, SCD Type 2, and schema-evolution handling","Streaming ingest via Kafka / Event Hubs into Bronze with idempotent commits","Moved 1TB+ on-prem data to lakehouse with full audit trails and rollback capability"] },
   { id:"sas", cat:"Data Engineering · Modernization", tag:"PySpark · Legacy → Cloud", title:"100+ SAS → PySpark Modernization", sub:"Multi-company · Code Migration", color:"#F59E0B", accent:"#fbbf24",
     image: IMG("⚡","#F59E0B","#fbbf24"),
     stats:[{v:"100+",l:"Scripts Converted"},{v:"~60%",l:"Perf Gain"},{v:"Cloud",l:"Native"},{v:"Zero",l:"Data Loss"}],
@@ -148,7 +148,7 @@ const publications = [
 const experiences = [
   { title:"Software Engineer – Data & Agentic AI", company:"Farmer Mac", period:"Jul 2025 – Present", domain:"Banking · Federal Mortgage", color:"#00D4AA",
     summary:"Owns the $25B mortgage data platform end-to-end — Medallion Lakehouse, AI document intelligence, financial dashboards, and governance.",
-    highlights:["$25B Lakehouse: 5,000+ tables / 42 databases, 99.9% accuracy","35+ ETL pipelines across Azure, AWS, GCP","Loan Document Intelligence AI app (full-stack: React + Flask + RAG)","Bloomberg, Moody's, Reuters DB migrations","Financial dashboards + Power BI semantic models","Data quality framework + Dev/Test/UAT + IAM/RBAC"] },
+    highlights:["$25B Lakehouse: 5,000+ tables / 42 databases, 99.9% accuracy","35+ production ETL/ELT pipelines (batch + streaming + CDC)","Loan Document Intelligence AI app (full-stack: React + Flask + RAG)","Bloomberg, Moody's, Reuters DB migrations","Financial dashboards + Power BI semantic models","Data quality framework + Dev/Test/UAT + IAM/RBAC"] },
   { title:"Software Engineer – Data & Agentic AI", company:"Aesthetic Record", period:"Oct 2024 – Jun 2025", domain:"Healthcare · EMR · Clinical AI", color:"#7C5CFC",
     summary:"Led 60+ healthcare data migrations and built AI clinical tools — telehealth dictation agent and clinical chatbot.",
     highlights:["60+ EMR/EHR client DB migrations (2M+ patient records)","AI dictation tool for telehealth: real-time voice → SOAP notes","AI clinical chatbot (LangChain + OpenAI + Whisper) — 60% time saved","Near-real-time CDC sync across 6,000 client DBs","Healthcare dashboards: Appointments, Revenue, Busy Hours","HIPAA-compliant security, audit logging, RBAC"] },
@@ -161,7 +161,7 @@ const experiences = [
 ];
 
 const recruiterModes = {
-  "Data Engineer": "Puja is a Data Engineer with 4+ years building enterprise cloud data platforms. She owns a $25B Medallion Lakehouse with 5,000+ tables across 42 databases, migrated Thomson Reuters/Moody's/Bloomberg, built 35+ production ETL pipelines across Azure/AWS/GCP, and converted 100+ SAS programs to PySpark. She delivers measurable results: 1TB+ migrations, 2M+ patient records, sub-5-minute reporting.",
+  "Data Engineer": "Puja is a Data Engineer with 4+ years building enterprise cloud data platforms. She owns a $25B Medallion Lakehouse with 5,000+ tables across 42 databases, migrated Thomson Reuters/Moody's/Bloomberg, built 35+ production ETL/ELT pipelines (batch + streaming + CDC), and converted 100+ SAS programs to PySpark. She delivers measurable results: 1TB+ migrations, 2M+ patient records, sub-5-minute reporting.",
   "Agentic AI / GenAI": "Puja ships production AI agents. She's built 5 complete systems: an Interview Prep Agent with RAG + voice AI, a Marketing Agent with LLM + n8n, an AI Dictation tool for telehealth (60% doc time saved), a Loan Document Intelligence app processing 100+ PDFs, and 1 more agentic system at Ogha. All built full-stack — data pipeline, AI backend, and React frontend.",
   "Full Stack + Data": "Puja brings rare full-stack + data + AI depth. She builds React frontends, Flask backends, REST APIs, and connects them to intelligent data pipelines and LLM agents. At Ogha and Farmer Mac she delivered complete systems end-to-end — from Kafka streams and PySpark to Azure OpenAI APIs and interactive React UIs.",
 };
@@ -279,18 +279,26 @@ function ResumeDownload({ dark }) {
   );
 }
 
-/* ── NAV ── */
-const pages = ["Home","Experience","Projects","Skills","Publications","AI Chat","Contact"];
-function Nav({ page, setPage, dark, setDark }) {
+/* ── NAV (single-page anchor scroll) ── */
+const pages = [
+  { label:"Home",         id:"home" },
+  { label:"Experience",   id:"experience" },
+  { label:"Projects",     id:"projects" },
+  { label:"Skills",       id:"skills" },
+  { label:"Publications", id:"publications" },
+  { label:"AI Chat",      id:"aichat" },
+  { label:"Contact",      id:"contact" },
+];
+function Nav({ active, dark, setDark, onJump }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(()=>{ const h=()=>setScrolled(window.scrollY>10); window.addEventListener("scroll",h); return()=>window.removeEventListener("scroll",h); },[]);
   return (
     <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,background:scrolled?(dark?"rgba(8,12,22,0.94)":"rgba(248,250,255,0.94)"):(dark?"rgba(8,12,22,0.6)":"rgba(248,250,255,0.6)"),backdropFilter:"blur(20px)",borderBottom:scrolled?`1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`:"none",padding:"0 16px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,transition:"all 0.3s"}}>
-      <div onClick={()=>setPage("Home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer",flexShrink:0}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
+      <div onClick={()=>onJump("home")} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:22,color:dark?"#fff":"#0a0f1e",letterSpacing:"-0.03em",cursor:"pointer",flexShrink:0}}>pi<span style={{color:"#00D4AA"}}>.</span></div>
       <div style={{display:"flex",gap:2,overflowX:"auto",scrollbarWidth:"none",msOverflowStyle:"none",flex:1,justifyContent:"center",minWidth:0}}>
         {pages.map(p=>(
-          <button key={p} onClick={()=>setPage(p)} style={{flexShrink:0,background:page===p?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):"transparent",border:"none",borderRadius:8,color:page===p?"#00D4AA":(dark?"rgba(255,255,255,0.45)":"rgba(10,15,30,0.5)"),padding:"6px 10px",cursor:"pointer",fontSize:12,transition:"all 0.2s",whiteSpace:"nowrap"}}>
-            {p}
+          <button key={p.id} onClick={()=>onJump(p.id)} style={{flexShrink:0,background:active===p.id?(dark?"rgba(0,212,170,0.1)":"rgba(0,212,170,0.08)"):"transparent",border:"none",borderRadius:8,color:active===p.id?"#00D4AA":(dark?"rgba(255,255,255,0.45)":"rgba(10,15,30,0.5)"),padding:"6px 10px",cursor:"pointer",fontSize:12,transition:"all 0.2s",whiteSpace:"nowrap"}}>
+            {p.label}
           </button>
         ))}
       </div>
@@ -326,7 +334,7 @@ function Typewriter({ text, speed = 38 }) {
 }
 
 /* ── HERO ── */
-function HeroPage({ dark, setPage }) {
+function HeroPage({ dark, onJump }) {
   const bg = dark?"#080c16":"#f7f9ff";
   const txt = dark?"#e4e8f4":"#0a0f1e";
   const sub = dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
@@ -362,10 +370,10 @@ function HeroPage({ dark, setPage }) {
           </div>
 
           <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
-            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)"}}>
               ✦ Talk to My AI
             </button>
-            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
           </div>
@@ -403,7 +411,7 @@ function HeroPage({ dark, setPage }) {
           </div>
           <div style={{position:"absolute",bottom:"30%",right:"0%",background:dark?"rgba(249,115,22,0.12)":"rgba(249,115,22,0.08)",border:"1px solid rgba(249,115,22,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
             <div style={{color:"#F97316",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>35+ ETL</div>
-            <div style={{color:sub,fontSize:10}}>Azure / AWS / GCP</div>
+            <div style={{color:sub,fontSize:10}}>Production Pipelines</div>
           </div>
         </div>
       </div>
@@ -547,17 +555,47 @@ function ProjectsPage({ dark }) {
                   <div style={{padding:"0 20px 20px",animation:"fadeUp 0.3s ease"}}>
                     <div style={{height:1,background:`linear-gradient(90deg,${p.color}28,transparent)`,marginBottom:14}}/>
                     <p style={{color:sub,fontSize:13,lineHeight:1.75,marginBottom:14}}>{p.desc}</p>
-                    {p.bullets.map((b,i)=>(
+                    {p.bullets&&p.bullets.map((b,i)=>(
                       <div key={i} style={{display:"flex",gap:10,marginBottom:9}}>
                         <span style={{width:18,height:18,borderRadius:"50%",background:p.color+"18",border:`1px solid ${p.color}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:p.color,flexShrink:0,marginTop:2,fontWeight:700}}>{i+1}</span>
                         <span style={{color:sub,fontSize:12.5,lineHeight:1.65}}>{b}</span>
                       </div>
                     ))}
+                    <div style={{marginTop:14,paddingTop:12,borderTop:`1px dashed ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.08)"}`}}>
+                      {p.blog ? (
+                        <a href={p.blog} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{display:"inline-flex",alignItems:"center",gap:8,color:p.color,fontSize:12,fontWeight:600,textDecoration:"none"}}>
+                          📝 Read full Medium write-up →
+                        </a>
+                      ) : (
+                        <span style={{display:"inline-flex",alignItems:"center",gap:8,color:sub,fontSize:11.5,fontStyle:"italic"}}>
+                          📝 Detailed Medium write-up coming soon
+                        </span>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
             );
           })}
+        </div>
+
+        {/* Write-ups coming soon — lists every project without a blog link */}
+        <div style={{marginTop:40,background:dark?"rgba(124,92,252,0.06)":"rgba(124,92,252,0.05)",border:`1px dashed ${dark?"rgba(124,92,252,0.28)":"rgba(124,92,252,0.32)"}`,borderRadius:16,padding:"22px 26px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+            <span style={{fontSize:18}}>📝</span>
+            <div style={{color:"#7C5CFC",fontSize:11,letterSpacing:"0.12em",fontWeight:700,textTransform:"uppercase"}}>Medium Write-ups · Coming Soon</div>
+          </div>
+          <p style={{color:sub,fontSize:13,lineHeight:1.7,marginBottom:14}}>
+            Each of the projects below will get its own detailed Medium blog — architecture, trade-offs, code samples, and lessons learned. As each is published, the card above will link directly to it.
+          </p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(min(100%,260px),1fr))",gap:8}}>
+            {allProjects.filter(p=>!p.blog).map(p=>(
+              <div key={p.id} style={{display:"flex",alignItems:"center",gap:10,background:dark?"rgba(255,255,255,0.025)":"rgba(255,255,255,0.6)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:10,padding:"10px 12px"}}>
+                <span style={{width:6,height:6,borderRadius:"50%",background:p.color,flexShrink:0}}/>
+                <span style={{color:txt,fontSize:12,fontWeight:500,lineHeight:1.35}}>{p.title}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -749,13 +787,33 @@ function ContactPage({ dark }) {
 
 /* ── ROOT ── */
 export default function Portfolio() {
-  const [page, setPage] = useState("Home");
+  const [active, setActive] = useState("home");
   const [dark, setDark] = useState(true);
+  const onJump = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  useEffect(()=>{
+    const ids = ["home","experience","projects","skills","publications","aichat","contact"];
+    const onScroll = () => {
+      const y = window.scrollY + 120;
+      let cur = "home";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) cur = id;
+      }
+      setActive(cur);
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  },[]);
   useEffect(()=>{
     const s=document.createElement("style");
     s.textContent=`
       @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@300;400;500&display=swap');
       *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
       body{background:#060a12}
       @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
       @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
@@ -765,20 +823,21 @@ export default function Portfolio() {
       ::-webkit-scrollbar-thumb{background:rgba(0,212,170,0.2);border-radius:2px}
       input::placeholder{color:rgba(128,128,128,0.4)!important}
       details summary::-webkit-details-marker{display:none}
+      section[id]{scroll-margin-top:70px}
     `;
     document.head.appendChild(s);
     return()=>document.head.removeChild(s);
   },[]);
   return (
-    <div style={{fontFamily:"'Instrument Sans',sans-serif",minHeight:"100vh"}}>
-      <Nav page={page} setPage={setPage} dark={dark} setDark={setDark}/>
-      {page==="Home"&&<HeroPage dark={dark} setPage={setPage}/>}
-      {page==="Experience"&&<ExperiencePage dark={dark}/>}
-      {page==="Projects"&&<ProjectsPage dark={dark}/>}
-      {page==="Skills"&&<SkillsPage dark={dark}/>}
-      {page==="Publications"&&<PublicationsPage dark={dark}/>}
-      {page==="AI Chat"&&<AIChatPage dark={dark}/>}
-      {page==="Contact"&&<ContactPage dark={dark}/>}
+    <div style={{fontFamily:"'Instrument Sans',sans-serif",minHeight:"100vh",background:dark?"#080c16":"#f7f9ff"}}>
+      <Nav active={active} dark={dark} setDark={setDark} onJump={onJump}/>
+      <section id="home"><HeroPage dark={dark} onJump={onJump}/></section>
+      <section id="experience"><ExperiencePage dark={dark}/></section>
+      <section id="projects"><ProjectsPage dark={dark}/></section>
+      <section id="skills"><SkillsPage dark={dark}/></section>
+      <section id="publications"><PublicationsPage dark={dark}/></section>
+      <section id="aichat"><AIChatPage dark={dark}/></section>
+      <section id="contact"><ContactPage dark={dark}/></section>
     </div>
   );
 }
