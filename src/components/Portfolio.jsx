@@ -370,10 +370,10 @@ function HeroPage({ dark, onJump }) {
           </div>
 
           <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
-            <button onClick={()=>setPage("AI Chat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)"}}>
               ✦ Talk to My AI
             </button>
-            <button onClick={()=>setPage("Projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
+            <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
           </div>
