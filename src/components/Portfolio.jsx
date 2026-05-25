@@ -561,41 +561,18 @@ function ProjectsPage({ dark }) {
                         <span style={{color:sub,fontSize:12.5,lineHeight:1.65}}>{b}</span>
                       </div>
                     ))}
-                    <div style={{marginTop:14,paddingTop:12,borderTop:`1px dashed ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.08)"}`}}>
-                      {p.blog ? (
+                    {p.blog && (
+                      <div style={{marginTop:14,paddingTop:12,borderTop:`1px dashed ${dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.08)"}`}}>
                         <a href={p.blog} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{display:"inline-flex",alignItems:"center",gap:8,color:p.color,fontSize:12,fontWeight:600,textDecoration:"none"}}>
                           📝 Read full Medium write-up →
                         </a>
-                      ) : (
-                        <span style={{display:"inline-flex",alignItems:"center",gap:8,color:sub,fontSize:11.5,fontStyle:"italic"}}>
-                          📝 Detailed Medium write-up coming soon
-                        </span>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             );
           })}
-        </div>
-
-        {/* Write-ups coming soon — lists every project without a blog link */}
-        <div style={{marginTop:40,background:dark?"rgba(124,92,252,0.06)":"rgba(124,92,252,0.05)",border:`1px dashed ${dark?"rgba(124,92,252,0.28)":"rgba(124,92,252,0.32)"}`,borderRadius:16,padding:"22px 26px"}}>
-          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-            <span style={{fontSize:18}}>📝</span>
-            <div style={{color:"#7C5CFC",fontSize:11,letterSpacing:"0.12em",fontWeight:700,textTransform:"uppercase"}}>Medium Write-ups · Coming Soon</div>
-          </div>
-          <p style={{color:sub,fontSize:13,lineHeight:1.7,marginBottom:14}}>
-            Each of the projects below will get its own detailed Medium blog — architecture, trade-offs, code samples, and lessons learned. As each is published, the card above will link directly to it.
-          </p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(min(100%,260px),1fr))",gap:8}}>
-            {allProjects.filter(p=>!p.blog).map(p=>(
-              <div key={p.id} style={{display:"flex",alignItems:"center",gap:10,background:dark?"rgba(255,255,255,0.025)":"rgba(255,255,255,0.6)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:10,padding:"10px 12px"}}>
-                <span style={{width:6,height:6,borderRadius:"50%",background:p.color,flexShrink:0}}/>
-                <span style={{color:txt,fontSize:12,fontWeight:500,lineHeight:1.35}}>{p.title}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
