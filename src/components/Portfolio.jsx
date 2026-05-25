@@ -787,13 +787,33 @@ function ContactPage({ dark }) {
 
 /* ── ROOT ── */
 export default function Portfolio() {
-  const [page, setPage] = useState("Home");
+  const [active, setActive] = useState("home");
   const [dark, setDark] = useState(true);
+  const onJump = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  useEffect(()=>{
+    const ids = ["home","experience","projects","skills","publications","aichat","contact"];
+    const onScroll = () => {
+      const y = window.scrollY + 120;
+      let cur = "home";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) cur = id;
+      }
+      setActive(cur);
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  },[]);
   useEffect(()=>{
     const s=document.createElement("style");
     s.textContent=`
       @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@300;400;500&display=swap');
       *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
       body{background:#060a12}
       @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
       @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
@@ -803,20 +823,21 @@ export default function Portfolio() {
       ::-webkit-scrollbar-thumb{background:rgba(0,212,170,0.2);border-radius:2px}
       input::placeholder{color:rgba(128,128,128,0.4)!important}
       details summary::-webkit-details-marker{display:none}
+      section[id]{scroll-margin-top:70px}
     `;
     document.head.appendChild(s);
     return()=>document.head.removeChild(s);
   },[]);
   return (
-    <div style={{fontFamily:"'Instrument Sans',sans-serif",minHeight:"100vh"}}>
-      <Nav page={page} setPage={setPage} dark={dark} setDark={setDark}/>
-      {page==="Home"&&<HeroPage dark={dark} setPage={setPage}/>}
-      {page==="Experience"&&<ExperiencePage dark={dark}/>}
-      {page==="Projects"&&<ProjectsPage dark={dark}/>}
-      {page==="Skills"&&<SkillsPage dark={dark}/>}
-      {page==="Publications"&&<PublicationsPage dark={dark}/>}
-      {page==="AI Chat"&&<AIChatPage dark={dark}/>}
-      {page==="Contact"&&<ContactPage dark={dark}/>}
+    <div style={{fontFamily:"'Instrument Sans',sans-serif",minHeight:"100vh",background:dark?"#080c16":"#f7f9ff"}}>
+      <Nav active={active} dark={dark} setDark={setDark} onJump={onJump}/>
+      <section id="home"><HeroPage dark={dark} onJump={onJump}/></section>
+      <section id="experience"><ExperiencePage dark={dark}/></section>
+      <section id="projects"><ProjectsPage dark={dark}/></section>
+      <section id="skills"><SkillsPage dark={dark}/></section>
+      <section id="publications"><PublicationsPage dark={dark}/></section>
+      <section id="aichat"><AIChatPage dark={dark}/></section>
+      <section id="contact"><ContactPage dark={dark}/></section>
     </div>
   );
 }
