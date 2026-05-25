@@ -403,7 +403,7 @@ function HeroPage({ dark, setPage }) {
           </div>
           <div style={{position:"absolute",bottom:"30%",right:"0%",background:dark?"rgba(249,115,22,0.12)":"rgba(249,115,22,0.08)",border:"1px solid rgba(249,115,22,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
             <div style={{color:"#F97316",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>35+ ETL</div>
-            <div style={{color:sub,fontSize:10}}>Azure / AWS / GCP</div>
+            <div style={{color:sub,fontSize:10}}>Production Pipelines</div>
           </div>
         </div>
       </div>
