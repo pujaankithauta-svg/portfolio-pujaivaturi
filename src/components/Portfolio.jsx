@@ -340,19 +340,29 @@ function HeroPage({ dark, onJump }) {
   const sub = dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:60,position:"relative",overflow:"hidden"}}>
-      <div style={{position:"absolute",width:600,height:600,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(0,212,170,0.07) 0%,transparent 70%)":"radial-gradient(circle,rgba(0,212,170,0.12) 0%,transparent 70%)",top:"-100px",left:"-100px",pointerEvents:"none"}}/>
-      <div style={{position:"absolute",width:500,height:500,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(124,92,252,0.06) 0%,transparent 70%)":"radial-gradient(circle,rgba(124,92,252,0.1) 0%,transparent 70%)",bottom:"0px",right:"-80px",pointerEvents:"none"}}/>
+      {/* Animated mesh gradient backdrop */}
+      <div style={{position:"absolute",inset:0,background:dark
+        ? "radial-gradient(60% 50% at 15% 20%, rgba(0,212,170,0.18), transparent 60%), radial-gradient(50% 50% at 85% 30%, rgba(124,92,252,0.18), transparent 60%), radial-gradient(50% 50% at 50% 90%, rgba(249,115,22,0.14), transparent 60%)"
+        : "radial-gradient(60% 50% at 15% 20%, rgba(0,212,170,0.28), transparent 60%), radial-gradient(50% 50% at 85% 30%, rgba(124,92,252,0.22), transparent 60%), radial-gradient(50% 50% at 50% 90%, rgba(249,115,22,0.18), transparent 60%)",
+        animation:"meshShift 18s ease-in-out infinite alternate",pointerEvents:"none"}}/>
+      {/* Floating orbs */}
+      <div style={{position:"absolute",width:280,height:280,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,212,170,0.35),transparent 70%)",top:"12%",left:"6%",animation:"floatA 9s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      <div style={{position:"absolute",width:220,height:220,borderRadius:"50%",background:"radial-gradient(circle,rgba(124,92,252,0.32),transparent 70%)",top:"30%",right:"8%",animation:"floatB 11s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      <div style={{position:"absolute",width:180,height:180,borderRadius:"50%",background:"radial-gradient(circle,rgba(249,115,22,0.28),transparent 70%)",bottom:"10%",left:"40%",animation:"floatA 13s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      {/* Subtle dot grid */}
+      <div style={{position:"absolute",inset:0,backgroundImage:`radial-gradient(${dark?"rgba(255,255,255,0.07)":"rgba(10,15,30,0.08)"} 1px, transparent 1px)`,backgroundSize:"22px 22px",pointerEvents:"none",maskImage:"radial-gradient(ellipse at center, black 40%, transparent 80%)"}}/>
 
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"32px 20px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",alignItems:"start",gap:36}}>
-        <div style={{animation:"fadeUp 0.9s ease both"}}>
+      <div style={{maxWidth:980,margin:"0 auto",padding:"40px 20px 60px",position:"relative",zIndex:2}}>
+        <div style={{textAlign:"center",animation:"fadeUp 0.9s ease both"}}>
           <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:20,maxWidth:"100%"}}>
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(34px,5.6vw,64px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
-            Puja{" "}
-            <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,7vw,84px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
+            Puja Ankitha{" "}
+            <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundSize:"200% 200%",backgroundClip:"text",animation:"gradientShift 6s ease infinite"}}>Ivaturi</span>
           </h1>
+
 
           {/* Animated headline */}
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(20px,2.6vw,30px)",fontWeight:700,lineHeight:1.25,color:txt,marginBottom:22,letterSpacing:"-0.02em",minHeight:"2.6em"}}>
