@@ -377,7 +377,7 @@ function HeroPage({ dark, onJump }) {
       {/* Subtle dot grid */}
       <div style={{position:"absolute",inset:0,backgroundImage:`radial-gradient(${dark?"rgba(255,255,255,0.07)":"rgba(10,15,30,0.08)"} 1px, transparent 1px)`,backgroundSize:"22px 22px",pointerEvents:"none",maskImage:"radial-gradient(ellipse at center, black 40%, transparent 80%)"}}/>
 
-      <div style={{maxWidth:980,margin:"0 auto",padding:"40px 20px 60px",position:"relative",zIndex:2}}>
+      <div style={{maxWidth:1180,margin:"0 auto",padding:"40px 20px 60px",position:"relative",zIndex:2}}>
         <div style={{textAlign:"center",animation:"fadeUp 0.9s ease both"}}>
           <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:20,maxWidth:"100%"}}>
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
