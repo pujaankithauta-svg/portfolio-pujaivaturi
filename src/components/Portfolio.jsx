@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import heroMain from "@/assets/hero-main.png";
+import heroMain from "@/assets/hero-main.jpg";
 import storySlide01 from "@/assets/story-slide-01.png";
 import storySlide02 from "@/assets/story-slide-02.png";
 import storySlide03 from "@/assets/story-slide-03.png";
@@ -435,17 +435,17 @@ function HeroPage({ dark, onJump }) {
           <div style={{position:"absolute",width:"min(78vw,620px)",height:"min(78vw,620px)",borderRadius:"50%",border:"1px dashed rgba(124,92,252,0.24)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"spinSlow 18s linear infinite reverse"}}/>
           <div style={{position:"absolute",width:"min(100vw,860px)",height:"min(100vw,860px)",borderRadius:"50%",background:"radial-gradient(circle,rgba(0,212,170,0.18),transparent 65%)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"pulseGlow 4s ease-in-out infinite",filter:"blur(20px)"}}/>
           <img src={heroMain} alt="Puja Ankitha Ivaturi in a data engineering command center" fetchPriority="high" loading="eager" style={{width:"100%",maxWidth:760,objectFit:"cover",borderRadius:28,position:"relative",zIndex:2,boxShadow:"0 30px 80px -30px rgba(0,212,170,0.42)",animation:"floatA 6s ease-in-out infinite",aspectRatio:"16 / 10"}}/>
-          <div style={{position:"absolute",top:"8%",right:"max(2%, 12px)",background:dark?"rgba(0,212,170,0.18)":"rgba(0,212,170,0.16)",border:"1px solid rgba(0,212,170,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 7s ease-in-out infinite"}}>
-            <div style={{color:"#00D4AA",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5,000+</div>
-            <div style={{color:sub,fontSize:10}}>Tables · 42 DBs</div>
+          <div style={{position:"absolute",top:"6%",right:"max(2%, 12px)",background:dark?"rgba(8,12,22,0.92)":"rgba(255,255,255,0.96)",border:"1.5px solid rgba(0,212,170,0.55)",borderRadius:12,padding:"10px 14px",zIndex:3,backdropFilter:"blur(8px)",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.5)",animation:"floatB 7s ease-in-out infinite"}}>
+            <div style={{color:"#00D4AA",fontWeight:800,fontSize:16,fontFamily:"'Bricolage Grotesque',sans-serif",lineHeight:1.1}}>5,000+</div>
+            <div style={{color:dark?"#e4e8f4":"#0a0f1e",fontSize:11,fontWeight:500,marginTop:2}}>Tables · 42 DBs</div>
           </div>
-          <div style={{position:"absolute",bottom:"8%",left:"max(2%, 12px)",background:dark?"rgba(124,92,252,0.18)":"rgba(124,92,252,0.14)",border:"1px solid rgba(124,92,252,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatA 8s ease-in-out infinite"}}>
-            <div style={{color:"#7C5CFC",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5 Agents</div>
-            <div style={{color:sub,fontSize:10}}>AI/GenAI Systems</div>
+          <div style={{position:"absolute",bottom:"6%",right:"max(2%, 12px)",background:dark?"rgba(8,12,22,0.92)":"rgba(255,255,255,0.96)",border:"1.5px solid rgba(124,92,252,0.55)",borderRadius:12,padding:"10px 14px",zIndex:3,backdropFilter:"blur(8px)",boxShadow:"0 10px 30px -10px rgba(124,92,252,0.5)",animation:"floatA 8s ease-in-out infinite"}}>
+            <div style={{color:"#7C5CFC",fontWeight:800,fontSize:16,fontFamily:"'Bricolage Grotesque',sans-serif",lineHeight:1.1}}>5 Agents</div>
+            <div style={{color:dark?"#e4e8f4":"#0a0f1e",fontSize:11,fontWeight:500,marginTop:2}}>AI/GenAI Systems</div>
           </div>
-          <div style={{position:"absolute",top:"42%",left:"max(1.5%, 8px)",background:dark?"rgba(249,115,22,0.18)":"rgba(249,115,22,0.14)",border:"1px solid rgba(249,115,22,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 9s ease-in-out infinite"}}>
-            <div style={{color:"#F97316",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>35+ ETL</div>
-            <div style={{color:sub,fontSize:10}}>Production Pipelines</div>
+          <div style={{position:"absolute",top:"45%",left:"max(2%, 10px)",background:dark?"rgba(8,12,22,0.92)":"rgba(255,255,255,0.96)",border:"1.5px solid rgba(249,115,22,0.55)",borderRadius:12,padding:"10px 14px",zIndex:3,backdropFilter:"blur(8px)",boxShadow:"0 10px 30px -10px rgba(249,115,22,0.5)",animation:"floatB 9s ease-in-out infinite"}}>
+            <div style={{color:"#F97316",fontWeight:800,fontSize:16,fontFamily:"'Bricolage Grotesque',sans-serif",lineHeight:1.1}}>35+ ETL</div>
+            <div style={{color:dark?"#e4e8f4":"#0a0f1e",fontSize:11,fontWeight:500,marginTop:2}}>Production Pipelines</div>
           </div>
         </div>
       </div>
