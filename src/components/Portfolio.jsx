@@ -708,7 +708,7 @@ function AIChatPage({ dark }) {
               <div style={{width:32,height:32,borderRadius:"50%",background:"linear-gradient(135deg,#00D4AA,#7C5CFC)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800,color:"#fff"}}>P</div>
               <div><div style={{color:txt,fontWeight:600,fontSize:13}}>Puja AI</div><div style={{color:"#00D4AA",fontSize:10}}>● online · knows everything</div></div>
             </div>
-            <div style={{flex:1,overflowY:"auto",padding:"14px",display:"flex",flexDirection:"column",gap:9}}>
+            <div ref={scrollRef} style={{flex:1,overflowY:"auto",padding:"14px",display:"flex",flexDirection:"column",gap:9}}>
               {messages.map((m,i)=>(
                 <div key={i} style={{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start"}}>
                   <div className="chat-md" style={{maxWidth:"85%",padding:"10px 14px",borderRadius:m.role==="user"?"14px 14px 4px 14px":"14px 14px 14px 4px",background:m.role==="user"?"linear-gradient(135deg,#00D4AA,#0099ff)":(dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"),color:m.role==="user"?"#fff":txt,fontSize:13,lineHeight:1.65}}>
