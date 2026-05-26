@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import heroMain from "@/assets/hero-main.jpg";
+import pujaAiScene from "@/assets/puja-ai-scene.png";
 import storySlide01 from "@/assets/story-slide-01.png";
 import storySlide02 from "@/assets/story-slide-02.png";
 import storySlide03 from "@/assets/story-slide-03.png";
