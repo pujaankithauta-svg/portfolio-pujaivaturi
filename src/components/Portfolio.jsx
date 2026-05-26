@@ -383,11 +383,11 @@ function HeroPage({ dark, onJump }) {
           </h2>
 
           {/* About me — concise, professional pitch */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"left"}}>
-            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400}}>
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"justify"}}>
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400,textAlign:"justify"}}>
               I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with experience building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$25B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
-            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400}}>
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400,textAlign:"justify"}}>
               Beyond pipelines, I've shipped <strong>5 production AI agents</strong> — document intelligence over loan portfolios, real-time clinical dictation, RAG over 2M+ patient records, an interview-prep voice agent, and a marketing content agent — delivering each end-to-end across data, AI backend, and React frontend.
             </p>
           </div>
