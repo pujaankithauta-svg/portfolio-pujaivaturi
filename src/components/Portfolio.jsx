@@ -705,7 +705,27 @@ function AIChatPage({ dark }) {
             <div style={{flex:1,overflowY:"auto",padding:"14px",display:"flex",flexDirection:"column",gap:9}}>
               {messages.map((m,i)=>(
                 <div key={i} style={{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start"}}>
-                  <div style={{maxWidth:"80%",padding:"9px 13px",borderRadius:m.role==="user"?"14px 14px 4px 14px":"14px 14px 14px 4px",background:m.role==="user"?"linear-gradient(135deg,#00D4AA,#0099ff)":(dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"),color:m.role==="user"?"#fff":txt,fontSize:13,lineHeight:1.6,whiteSpace:"pre-wrap"}}>{m.content}</div>
+                  <div className="chat-md" style={{maxWidth:"85%",padding:"10px 14px",borderRadius:m.role==="user"?"14px 14px 4px 14px":"14px 14px 14px 4px",background:m.role==="user"?"linear-gradient(135deg,#00D4AA,#0099ff)":(dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"),color:m.role==="user"?"#fff":txt,fontSize:13,lineHeight:1.65}}>
+                    {m.role==="user" ? (
+                      <div style={{whiteSpace:"pre-wrap"}}>{m.content}</div>
+                    ) : (
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({node, ...p}) => <p style={{margin:"0 0 8px"}} {...p}/>,
+                          ul: ({node, ...p}) => <ul style={{margin:"4px 0 10px",paddingLeft:18}} {...p}/>,
+                          ol: ({node, ...p}) => <ol style={{margin:"4px 0 10px",paddingLeft:18}} {...p}/>,
+                          li: ({node, ...p}) => <li style={{margin:"2px 0"}} {...p}/>,
+                          h1: ({node, ...p}) => <h3 style={{fontSize:14,fontWeight:700,margin:"10px 0 6px",color:"#00D4AA"}} {...p}/>,
+                          h2: ({node, ...p}) => <h3 style={{fontSize:13.5,fontWeight:700,margin:"10px 0 6px",color:"#00D4AA"}} {...p}/>,
+                          h3: ({node, ...p}) => <h4 style={{fontSize:13,fontWeight:700,margin:"8px 0 4px",color:"#00D4AA"}} {...p}/>,
+                          strong: ({node, ...p}) => <strong style={{fontWeight:700,color:dark?"#fff":"#0a0f1e"}} {...p}/>,
+                          code: ({node, ...p}) => <code style={{background:dark?"rgba(255,255,255,0.08)":"rgba(0,0,0,0.06)",padding:"1px 5px",borderRadius:4,fontSize:12}} {...p}/>,
+                          a: ({node, ...p}) => <a style={{color:"#00D4AA"}} target="_blank" rel="noreferrer" {...p}/>,
+                        }}
+                      >{m.content}</ReactMarkdown>
+                    )}
+                  </div>
                 </div>
               ))}
               {loading&&<div style={{display:"flex"}}><div style={{background:dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)",borderRadius:"14px 14px 14px 4px"}}><TypingDots/></div></div>}
