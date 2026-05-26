@@ -655,6 +655,7 @@ function AIChatPage({ dark }) {
   },[messages,loading]);
   async function send(text) {
     const msg=text||input.trim(); if(!msg) return;
+    hasInteracted.current=true;
     setInput(""); const updated=[...messages,{role:"user",content:msg}];
     setMessages(updated); setLoading(true);
     try {
