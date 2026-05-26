@@ -745,8 +745,10 @@ function AIChatPage({ dark }) {
           </div>
         </div>
       </div>
-      <div style={{marginTop:48,width:"100%",borderTop:`1px solid ${cardBorder}`,borderBottom:`1px solid ${cardBorder}`,background:dark?"#05080f":"#eef1ff"}}>
-        <img src={pujaAiScene} alt="Puja Ivaturi — Data & Agentic AI Engineer illustration" style={{display:"block",width:"100%",height:"auto"}}/>
+      <div style={{maxWidth:1100,margin:"40px auto 0",padding:"0 clamp(16px,4vw,60px)"}}>
+        <div style={{borderRadius:24,overflow:"hidden",border:`1px solid ${cardBorder}`,boxShadow:dark?"0 24px 70px rgba(0,0,0,0.55)":"0 24px 70px rgba(124,92,252,0.22)"}}>
+          <img src={pujaAiScene} alt="Puja Ivaturi — Data & Agentic AI Engineer illustration" style={{display:"block",width:"100%",height:"auto"}}/>
+        </div>
       </div>
     </div>
   );
