@@ -875,7 +875,7 @@ export default function Portfolio() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   useEffect(()=>{
-    const ids = ["home","experience","projects","skills","publications","aichat","contact"];
+    const ids = ["home","story","experience","projects","skills","publications","aichat","contact"];
     const onScroll = () => {
       const y = window.scrollY + 120;
       let cur = "home";
