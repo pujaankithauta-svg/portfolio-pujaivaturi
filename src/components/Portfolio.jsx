@@ -443,7 +443,7 @@ function HeroPage({ dark, onJump }) {
             <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
-            <ResumeDownload dark={dark}/>
+            <ResumeDownload dark={dark} variant="primary"/>
           </div>
 
           {/* Compact stats row */}
