@@ -237,14 +237,27 @@ function ResumeDownload({ dark }) {
   }
 
   async function downloadResume(type) {
+    const html2pdf = (await import("html2pdf.js")).default;
     const res = await fetch(fileFor(type));
     const html = await res.text();
-    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.html" : "Puja_Ivaturi_Agentic_AI.html";
-    const blob = new Blob([html], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = name; a.click();
-    URL.revokeObjectURL(url);
+    const iframe = document.createElement("iframe");
+    iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:850px;height:1100px;border:0;";
+    document.body.appendChild(iframe);
+    iframe.srcdoc = html;
+    await new Promise(r => { iframe.onload = r; });
+    try { await iframe.contentDocument.fonts?.ready; } catch {}
+    await new Promise(r => setTimeout(r, 400));
+    const element = iframe.contentDocument.body;
+    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
+    await html2pdf().from(element).set({
+      margin: 0,
+      filename: name,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, windowWidth: 850, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+    }).save();
+    document.body.removeChild(iframe);
     setOpen(false);
   }
 
@@ -370,11 +383,11 @@ function HeroPage({ dark, onJump }) {
           </h2>
 
           {/* About me — concise, professional pitch */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"left"}}>
-            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400}}>
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"justify"}}>
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400,textAlign:"justify"}}>
               I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with experience building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$25B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
-            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400}}>
+            <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400,textAlign:"justify"}}>
               Beyond pipelines, I've shipped <strong>5 production AI agents</strong> — document intelligence over loan portfolios, real-time clinical dictation, RAG over 2M+ patient records, an interview-prep voice agent, and a marketing content agent — delivering each end-to-end across data, AI backend, and React frontend.
             </p>
           </div>
