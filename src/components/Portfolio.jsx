@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import heroMain from "@/assets/hero-main.jpg";
+import pujaAiScene from "@/assets/puja-ai-scene.png";
 import storySlide01 from "@/assets/story-slide-01.png";
 import storySlide02 from "@/assets/story-slide-02.png";
 import storySlide03 from "@/assets/story-slide-03.png";
@@ -741,8 +742,12 @@ function AIChatPage({ dark }) {
               <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&!loading&&send()} placeholder="Ask about experience, projects, skills…" style={{flex:1,background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.04)",border:`1px solid ${cardBorder}`,borderRadius:10,padding:"9px 13px",color:txt,fontSize:12.5,outline:"none"}}/>
               <button onClick={()=>!loading&&send()} disabled={loading||!input.trim()} style={{width:35,height:35,borderRadius:9,background:input.trim()?"linear-gradient(135deg,#00D4AA,#0099ff)":(dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.06)"),border:"none",cursor:input.trim()?"pointer":"default",color:input.trim()?"#fff":sub,fontSize:15,display:"flex",alignItems:"center",justifyContent:"center"}}>↑</button>
             </div>
-          </div>
         </div>
+        <div style={{marginTop:40,borderRadius:18,overflow:"hidden",border:`1px solid ${cardBorder}`,boxShadow:dark?"0 20px 60px rgba(0,0,0,0.5)":"0 20px 60px rgba(124,92,252,0.18)"}}>
+          <img src={pujaAiScene} alt="Puja Ivaturi — Data & Agentic AI Engineer illustration" style={{display:"block",width:"100%",height:"auto"}}/>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
   );
