@@ -384,8 +384,7 @@ function HeroPage({ dark, onJump }) {
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
           <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,7vw,84px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
-            Puja Ankitha{" "}
-            <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundSize:"200% 200%",backgroundClip:"text",animation:"gradientShift 6s ease infinite"}}>Ivaturi</span>
+            Puja Ankitha Ivaturi
           </h1>
 
 
