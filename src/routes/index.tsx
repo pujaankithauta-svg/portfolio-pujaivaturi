@@ -4,7 +4,7 @@ import Portfolio from "@/components/Portfolio.jsx";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Puja Ivaturi — Software Engineer · Data & Agentic AI" },
+      { title: "Puja Ankitha Ivaturi — Software Engineer · Data & Agentic AI" },
       {
         name: "description",
         content:
