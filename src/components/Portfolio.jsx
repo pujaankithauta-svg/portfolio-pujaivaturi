@@ -747,6 +747,7 @@ function AIChatPage({ dark }) {
           <img src={pujaAiScene} alt="Puja Ivaturi — Data & Agentic AI Engineer illustration" style={{display:"block",width:"100%",height:"auto"}}/>
         </div>
       </div>
+      </div>
     </div>
   );
 }
