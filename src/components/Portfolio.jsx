@@ -802,13 +802,13 @@ function StoryPage({ dark }) {
   const sub = "rgba(232,236,248,0.68)";
   const slides = useMemo(
     () => [
-      { image: storySlide01, title: "The Foundation", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
-      { image: storySlide02, title: "The Signal", caption: "Analytics, reporting, and warehouse design moving from raw data to business-ready insight." },
-      { image: storySlide03, title: "The Release", caption: "Deployment orchestration with live environments, Airflow DAGs, and production health in focus." },
-      { image: storySlide04, title: "The Impact", caption: "A business outcomes frame connecting systems, dashboards, and global operational reach." },
-      { image: storySlide05, title: "The Intelligence Layer", caption: "RAG, document intelligence, multi-agent systems, and monitored LLM operations." },
-      { image: storySlide06, title: "The Command Center", caption: "An executive-scale systems view across cloud, governance, software, and data operations." },
-      { image: storySlide07, title: "The Vision", caption: "A cinematic closing frame for intelligent systems built with data, AI, automation, and impact." },
+      { image: storySlide01, title: "Lakehouse Architecture", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
+      { image: storySlide02, title: "Analytics & Reporting", caption: "Analytics, reporting, and warehouse design moving from raw data to business-ready insight." },
+      { image: storySlide03, title: "Deployment & Orchestration", caption: "Deployment orchestration with live environments, Airflow DAGs, and production health in focus." },
+      { image: storySlide04, title: "Business Outcomes", caption: "Business outcomes connecting systems, dashboards, and global operational reach." },
+      { image: storySlide05, title: "AI & Agentic Systems", caption: "RAG, document intelligence, multi-agent systems, and monitored LLM operations." },
+      { image: storySlide06, title: "Systems Overview", caption: "An executive-scale systems view across cloud, governance, software, and data operations." },
+      { image: storySlide07, title: "Platform Vision", caption: "End-to-end intelligent systems built with data, AI, automation, and impact." },
     ],
     [],
   );
