@@ -797,77 +797,173 @@ function ContactPage({ dark }) {
 
 /* ── STORY ── */
 function StoryPage({ dark }) {
-  const bg = dark?"#05080f":"#0a0f1e";
+  const bg = dark ? "#05080f" : "#0a0f1e";
   const txt = "#e8ecf8";
-  const sub = "rgba(232,236,248,0.6)";
-  const [active, setActive] = useState(null);
-  const chapters = [
-    { n:"01", title:"The Entrance",      caption:"She arrives. The systems wake." },
-    { n:"02", title:"The Intervention",  caption:"She fixes what's broken. Pipelines flow again." },
-    { n:"03", title:"The Architecture",  caption:"She orchestrates intelligence at scale." },
-    { n:"04", title:"The Synchronization",caption:"Every system connects. Every insight comes alive." },
-    { n:"05", title:"The Frame",         caption:"Building intelligent systems at scale. This is her world." },
-  ];
-  return (
-    <div style={{minHeight:"100vh",background:bg,position:"relative",overflow:"hidden",padding:"90px 0 100px"}}>
-      {/* cinematic backdrop */}
-      <div style={{position:"absolute",inset:0,background:"radial-gradient(60% 50% at 20% 20%, rgba(124,92,252,0.25), transparent 60%), radial-gradient(50% 50% at 85% 70%, rgba(0,212,170,0.22), transparent 60%), radial-gradient(50% 50% at 50% 110%, rgba(249,115,22,0.18), transparent 60%)",animation:"meshShift 22s ease-in-out infinite alternate",pointerEvents:"none"}}/>
-      <div style={{position:"absolute",inset:0,backgroundImage:"radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",backgroundSize:"26px 26px",pointerEvents:"none",maskImage:"radial-gradient(ellipse at center, black 30%, transparent 80%)"}}/>
+  const sub = "rgba(232,236,248,0.68)";
+  const slides = useMemo(
+    () => [
+      { image: storySlide01, title: "The Foundation", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
+      { image: storySlide02, title: "The Signal", caption: "Analytics, reporting, and warehouse design moving from raw data to business-ready insight." },
+      { image: storySlide03, title: "The Release", caption: "Deployment orchestration with live environments, Airflow DAGs, and production health in focus." },
+      { image: storySlide04, title: "The Impact", caption: "A business outcomes frame connecting systems, dashboards, and global operational reach." },
+      { image: storySlide05, title: "The Intelligence Layer", caption: "RAG, document intelligence, multi-agent systems, and monitored LLM operations." },
+      { image: storySlide06, title: "The Command Center", caption: "An executive-scale systems view across cloud, governance, software, and data operations." },
+      { image: storySlide07, title: "The Vision", caption: "A cinematic closing frame for intelligent systems built with data, AI, automation, and impact." },
+    ],
+    [],
+  );
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
-      <div style={{maxWidth:1240,margin:"0 auto",padding:"0 20px",position:"relative",zIndex:2}}>
-        <div style={{textAlign:"center",marginBottom:46}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(124,92,252,0.12)",border:"1px solid rgba(124,92,252,0.3)",borderRadius:40,padding:"6px 14px",marginBottom:18}}>
-            <span style={{width:6,height:6,borderRadius:"50%",background:"#7C5CFC",animation:"pulse 2s infinite"}}/>
-            <span style={{fontSize:11,fontWeight:600,color:"#b9a8ff",letterSpacing:"0.14em"}}>VISUAL CHRONICLE</span>
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (lightboxOpen || media.matches) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slides.length);
+    }, 7000);
+    return () => window.clearInterval(timer);
+  }, [lightboxOpen, slides.length]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setLightboxOpen(false);
+      if (event.key === "ArrowRight") setActiveIndex((current) => (current + 1) % slides.length);
+      if (event.key === "ArrowLeft") setActiveIndex((current) => (current - 1 + slides.length) % slides.length);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [lightboxOpen, slides.length]);
+
+  const activeSlide = slides[activeIndex];
+
+  return (
+    <div style={{ minHeight: "100vh", background: bg, position: "relative", overflow: "hidden", padding: "90px 0 100px" }}>
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(60% 50% at 20% 20%, rgba(124,92,252,0.25), transparent 60%), radial-gradient(50% 50% at 85% 70%, rgba(0,212,170,0.22), transparent 60%), radial-gradient(50% 50% at 50% 110%, rgba(249,115,22,0.18), transparent 60%)", animation: "meshShift 22s ease-in-out infinite alternate", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "26px 26px", pointerEvents: "none", maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)" }} />
+
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
+        <div style={{ textAlign: "center", marginBottom: 34 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(124,92,252,0.12)", border: "1px solid rgba(124,92,252,0.3)", borderRadius: 40, padding: "6px 14px", marginBottom: 18 }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#7C5CFC", animation: "pulse 2s infinite" }} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#b9a8ff", letterSpacing: "0.14em" }}>VISUAL CHRONICLE</span>
           </div>
-          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(36px,5.5vw,64px)",letterSpacing:"-0.04em",color:txt,lineHeight:1.05}}>
-            Building Intelligent Systems <br/>
-            <span style={{background:"linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundSize:"200% 200%",animation:"gradientShift 8s ease infinite"}}>at Scale</span>
+          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 800, fontSize: "clamp(36px,5.5vw,64px)", letterSpacing: "-0.04em", color: txt, lineHeight: 1.05 }}>
+            Building Intelligent Systems <br />
+            <span style={{ background: "linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 8s ease infinite" }}>at Scale</span>
           </h2>
-          <p style={{color:sub,fontSize:15,marginTop:14,maxWidth:640,marginLeft:"auto",marginRight:"auto",lineHeight:1.6}}>
-            A five-act visual story of how data wakes up, how AI agents take shape, and how the work comes together.
+          <p style={{ color: sub, fontSize: 15, marginTop: 14, maxWidth: 700, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>
+            A responsive story carousel moving through the systems, releases, impact, and intelligence layers behind the portfolio.
           </p>
         </div>
 
-        {/* Hero cinematic image with parallax-zoom hover */}
-        <div style={{position:"relative",borderRadius:24,overflow:"hidden",border:"1px solid rgba(255,255,255,0.08)",boxShadow:"0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,92,252,0.15) inset",marginBottom:38}}>
-          <img src={story5} alt="Puja Ivaturi — five-panel visual story of building data and AI systems" style={{width:"100%",display:"block",transition:"transform 1.2s ease",transform:"scale(1)"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.04)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/>
-          <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg, transparent 40%, rgba(5,8,15,0.55) 100%)",pointerEvents:"none"}}/>
-          <div style={{position:"absolute",left:24,bottom:20,color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:13,letterSpacing:"0.2em",textTransform:"uppercase",opacity:0.85}}>Act I — V · A five-panel arrival</div>
+        <div style={{ display: "grid", gap: 18, marginBottom: 18, gridTemplateColumns: "repeat(auto-fit,minmax(84px,1fr))" }}>
+          {slides.map((slide, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <button
+                key={slide.title}
+                onClick={() => setActiveIndex(index)}
+                style={{ background: isActive ? "rgba(124,92,252,0.18)" : "rgba(255,255,255,0.04)", border: `1px solid ${isActive ? "rgba(124,92,252,0.38)" : "rgba(255,255,255,0.08)"}`, borderRadius: 999, padding: 0, cursor: "pointer", overflow: "hidden", height: 8 }}
+                aria-label={`Go to ${slide.title}`}
+              >
+                <div style={{ width: isActive ? "100%" : index < activeIndex ? "100%" : "0%", height: "100%", background: isActive ? "linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)" : "rgba(255,255,255,0.28)", transition: isActive ? "width 7s linear" : "width 0.35s ease" }} />
+              </button>
+            );
+          })}
         </div>
 
-        {/* Chapter chips */}
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:14,marginBottom:60}}>
-          {chapters.map((c,i)=>(
-            <div key={i}
-              onMouseEnter={()=>setActive(i)} onMouseLeave={()=>setActive(null)}
-              style={{
-                background:active===i?"rgba(124,92,252,0.18)":"rgba(255,255,255,0.04)",
-                border:`1px solid ${active===i?"rgba(124,92,252,0.45)":"rgba(255,255,255,0.08)"}`,
-                borderRadius:16,padding:"16px 16px 18px",cursor:"default",
-                transform:active===i?"translateY(-4px)":"none",
-                boxShadow:active===i?"0 18px 40px rgba(124,92,252,0.25)":"none",
-                transition:"all 0.35s cubic-bezier(.2,.8,.2,1)"
-              }}>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:11,letterSpacing:"0.22em",color:"#7C5CFC",fontWeight:700}}>{c.n}</div>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:17,fontWeight:700,color:txt,marginTop:4,letterSpacing:"-0.01em"}}>{c.title}</div>
-              <div style={{fontSize:12.5,color:sub,marginTop:6,lineHeight:1.5}}>{c.caption}</div>
+        <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,92,252,0.15) inset", background: "rgba(6,10,18,0.78)" }}>
+          <button
+            onClick={() => setLightboxOpen(true)}
+            style={{ display: "block", width: "100%", border: "none", background: "transparent", padding: 0, cursor: "zoom-in" }}
+            aria-label={`Open ${activeSlide.title} image`}
+          >
+            <div style={{ position: "relative", aspectRatio: "16 / 9", overflow: "hidden" }}>
+              <div style={{ display: "flex", width: `${slides.length * 100}%`, transform: `translateX(-${activeIndex * (100 / slides.length)}%)`, transition: "transform 0.85s cubic-bezier(.2,.8,.2,1)" }}>
+                {slides.map((slide, index) => (
+                  <div key={slide.title} style={{ width: `${100 / slides.length}%`, flexShrink: 0, position: "relative" }}>
+                    <img
+                      src={slide.image}
+                      alt={`${slide.title} — ${slide.caption}`}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      decoding="async"
+                      sizes="(max-width: 768px) 100vw, 1200px"
+                      style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", transform: index === activeIndex ? "scale(1.01)" : "scale(1)", transition: "transform 0.9s ease" }}
+                    />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(5,8,15,0.04) 0%, rgba(5,8,15,0.58) 100%)" }} />
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ position: "absolute", insetInline: 0, bottom: 0, padding: "clamp(16px,3vw,28px)", display: "grid", gap: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+                  <div>
+                    <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#7C5CFC", fontWeight: 700, marginBottom: 6 }}>
+                      Scene {String(activeIndex + 1).padStart(2, "0")}
+                    </div>
+                    <h3 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: "clamp(22px,4vw,38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.03em" }}>{activeSlide.title}</h3>
+                  </div>
+                  <div style={{ display: "flex", gap: 10 }}>
+                    <button onClick={(e) => { e.stopPropagation(); setActiveIndex((current) => (current - 1 + slides.length) % slides.length); }} style={{ width: 42, height: 42, borderRadius: 999, border: "1px solid rgba(255,255,255,0.16)", background: "rgba(5,8,15,0.42)", color: "#fff", cursor: "pointer" }} aria-label="Previous slide">←</button>
+                    <button onClick={(e) => { e.stopPropagation(); setActiveIndex((current) => (current + 1) % slides.length); }} style={{ width: 42, height: 42, borderRadius: 999, border: "1px solid rgba(255,255,255,0.16)", background: "rgba(5,8,15,0.42)", color: "#fff", cursor: "pointer" }} aria-label="Next slide">→</button>
+                  </div>
+                </div>
+                <p style={{ color: "rgba(255,255,255,0.82)", fontSize: "clamp(13px,2vw,16px)", lineHeight: 1.65, maxWidth: 780 }}>{activeSlide.caption}</p>
+              </div>
             </div>
-          ))}
+          </button>
         </div>
 
-        {/* Ten-panel deep cut */}
-        <div style={{textAlign:"center",marginBottom:22}}>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:11,letterSpacing:"0.24em",color:"#00D4AA",fontWeight:700,marginBottom:8}}>THE EXTENDED CUT</div>
-          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:"clamp(24px,3.4vw,36px)",color:txt,letterSpacing:"-0.03em"}}>Ten scenes. One operator. One throughline.</h3>
-          <p style={{color:sub,fontSize:14,marginTop:10,maxWidth:620,marginLeft:"auto",marginRight:"auto"}}>From the entrance to the vision — entrance, intervention, architecture, data flow, automation, quality, cloud scale, impact, command center, and what's next.</p>
-        </div>
-
-        <div style={{position:"relative",borderRadius:24,overflow:"hidden",border:"1px solid rgba(255,255,255,0.08)",boxShadow:"0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,212,170,0.15) inset"}}>
-          <img src={story10} alt="Puja Ivaturi — ten-panel extended visual story of data engineering and agentic AI work" style={{width:"100%",display:"block",transition:"transform 1.2s ease"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.03)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/>
-          <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg, transparent 50%, rgba(5,8,15,0.5) 100%)",pointerEvents:"none"}}/>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 14, marginTop: 18 }}>
+          {slides.map((slide, index) => {
+            const isActive = index === activeIndex;
+            const isHovered = hoveredIndex === index;
+            return (
+              <button
+                key={slide.title + "-thumb"}
+                onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                style={{ textAlign: "left", borderRadius: 16, overflow: "hidden", border: `1px solid ${isActive ? "rgba(0,212,170,0.35)" : "rgba(255,255,255,0.08)"}`, background: isActive ? "rgba(0,212,170,0.09)" : "rgba(255,255,255,0.04)", padding: 0, cursor: "pointer", transform: isHovered ? "translateY(-2px)" : "none", transition: "all 0.25s ease" }}
+              >
+                <div style={{ aspectRatio: "16 / 10", overflow: "hidden" }}>
+                  <img src={slide.image} alt={slide.title} loading="lazy" decoding="async" sizes="(max-width: 768px) 50vw, 180px" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", transform: isActive ? "scale(1.03)" : "scale(1)", transition: "transform 0.35s ease" }} />
+                </div>
+                <div style={{ padding: 12 }}>
+                  <div style={{ color: isActive ? "#00D4AA" : "#7C5CFC", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", marginBottom: 6 }}>0{index + 1}</div>
+                  <div style={{ color: txt, fontWeight: 700, fontSize: 14, marginBottom: 4 }}>{slide.title}</div>
+                  <div style={{ color: sub, fontSize: 12, lineHeight: 1.45 }}>{slide.caption}</div>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
+
+      {lightboxOpen && (
+        <div onClick={() => setLightboxOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(2,4,10,0.92)", zIndex: 300, display: "grid", placeItems: "center", padding: 20 }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ width: "min(1200px, 100%)", display: "grid", gap: 14 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ color: "#7C5CFC", fontSize: 11, letterSpacing: "0.14em", fontWeight: 700, marginBottom: 4 }}>LIGHTBOX</div>
+                <div style={{ color: "#fff", fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 800, fontSize: "clamp(22px,4vw,34px)" }}>{activeSlide.title}</div>
+              </div>
+              <button onClick={() => setLightboxOpen(false)} style={{ width: 42, height: 42, borderRadius: 999, border: "1px solid rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.06)", color: "#fff", cursor: "pointer" }} aria-label="Close lightbox">✕</button>
+            </div>
+            <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)" }}>
+              <img src={activeSlide.image} alt={`${activeSlide.title} enlarged`} decoding="async" style={{ width: "100%", maxHeight: "78vh", objectFit: "contain", display: "block", background: "#05080f" }} />
+            </div>
+            <p style={{ color: "rgba(255,255,255,0.76)", fontSize: 15, lineHeight: 1.7 }}>{activeSlide.caption}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
