@@ -4,13 +4,13 @@ import Portfolio from "@/components/Portfolio.jsx";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Puja Ankitha Ivaturi — Software Engineer · Data & Agentic AI" },
+      { title: "Puja Ankitha Ivaturi , Software Engineer · Data & Agentic AI" },
       {
         name: "description",
         content:
-          "Portfolio of Puja Ivaturi — 4+ years building enterprise lakehouses, ETL/migrations, and agentic AI systems across Azure, AWS, GCP, Databricks, and Snowflake.",
+          "Portfolio of Puja Ivaturi , 4+ years building enterprise lakehouses, ETL/migrations, and agentic AI systems across Azure, AWS, GCP, Databricks, and Snowflake.",
       },
-      { property: "og:title", content: "Puja Ivaturi — Software Engineer · Data & Agentic AI" },
+      { property: "og:title", content: "Puja Ivaturi , Software Engineer · Data & Agentic AI" },
       {
         property: "og:description",
         content:
