@@ -370,7 +370,7 @@ function HeroPage({ dark, onJump }) {
           </h2>
 
           {/* About me — concise, professional pitch */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:580}}>
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"left"}}>
             <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400}}>
               I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with experience building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$25B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
@@ -379,8 +379,8 @@ function HeroPage({ dark, onJump }) {
             </p>
           </div>
 
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
-            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)"}}>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28,justifyContent:"center"}}>
+            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)",transition:"transform 0.25s",}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.06)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
               ✦ Talk to My AI
             </button>
             <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
@@ -389,37 +389,37 @@ function HeroPage({ dark, onJump }) {
           </div>
 
           {/* Compact stats row */}
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:28,maxWidth:560}}>
-            {[{n:"4",l:"Industries"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
-              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.7)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"10px 12px"}}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:22,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:32,maxWidth:620,marginInline:"auto"}}>
+            {[{n:"4",l:"Industries"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map((s,i)=>(
+              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.75)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"12px 14px",animation:`fadeUp 0.7s ease ${0.2+i*0.1}s both`,transition:"transform 0.25s, box-shadow 0.25s"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px) scale(1.04)";e.currentTarget.style.boxShadow="0 12px 30px -12px rgba(0,212,170,0.4)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:24,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
                 <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
               </div>
             ))}
           </div>
 
           {/* Skill ticker */}
-          <div>
+          <div style={{marginBottom:40}}>
             <div style={{fontSize:10,color:sub,letterSpacing:"0.1em",marginBottom:8,fontWeight:500}}>TOOLS & TECHNOLOGIES</div>
             <SkillTicker dark={dark}/>
           </div>
         </div>
 
-
-        {/* Right illustration */}
-        <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative"}}>
-          <div style={{position:"absolute",width:400,height:400,borderRadius:"50%",border:"1px solid rgba(0,212,170,0.1)",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
-          <div style={{position:"absolute",width:320,height:320,borderRadius:"50%",border:"1px solid rgba(124,92,252,0.08)",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
-          <img src={img1_engineer} alt="" style={{width:"85%",maxWidth:400,objectFit:"contain",borderRadius:20,position:"relative",zIndex:2}}/>
-          <div style={{position:"absolute",top:"8%",right:"0%",background:dark?"rgba(0,212,170,0.12)":"rgba(0,212,170,0.1)",border:"1px solid rgba(0,212,170,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+        {/* Portrait — after the text, centered, with animated halo */}
+        <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative",marginTop:24,animation:"zoomIn 1s cubic-bezier(.2,.8,.2,1) both"}}>
+          <div style={{position:"absolute",width:420,height:420,borderRadius:"50%",border:"1px dashed rgba(0,212,170,0.35)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"spinSlow 28s linear infinite"}}/>
+          <div style={{position:"absolute",width:340,height:340,borderRadius:"50%",border:"1px dashed rgba(124,92,252,0.3)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"spinSlow 18s linear infinite reverse"}}/>
+          <div style={{position:"absolute",width:480,height:480,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,212,170,0.18),transparent 65%)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"pulseGlow 4s ease-in-out infinite",filter:"blur(20px)"}}/>
+          <img src={img1_engineer} alt="Puja Ankitha Ivaturi" style={{width:"82%",maxWidth:380,objectFit:"contain",borderRadius:24,position:"relative",zIndex:2,boxShadow:"0 30px 80px -30px rgba(0,212,170,0.5)",animation:"floatA 6s ease-in-out infinite"}}/>
+          <div style={{position:"absolute",top:"6%",right:"6%",background:dark?"rgba(0,212,170,0.18)":"rgba(0,212,170,0.16)",border:"1px solid rgba(0,212,170,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 7s ease-in-out infinite"}}>
             <div style={{color:"#00D4AA",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5,000+</div>
             <div style={{color:sub,fontSize:10}}>Tables · 42 DBs</div>
           </div>
-          <div style={{position:"absolute",bottom:"12%",left:"0%",background:dark?"rgba(124,92,252,0.12)":"rgba(124,92,252,0.08)",border:"1px solid rgba(124,92,252,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+          <div style={{position:"absolute",bottom:"8%",left:"4%",background:dark?"rgba(124,92,252,0.18)":"rgba(124,92,252,0.14)",border:"1px solid rgba(124,92,252,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatA 8s ease-in-out infinite"}}>
             <div style={{color:"#7C5CFC",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5 Agents</div>
             <div style={{color:sub,fontSize:10}}>AI/GenAI Systems</div>
           </div>
-          <div style={{position:"absolute",bottom:"30%",right:"0%",background:dark?"rgba(249,115,22,0.12)":"rgba(249,115,22,0.08)",border:"1px solid rgba(249,115,22,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+          <div style={{position:"absolute",top:"40%",left:"2%",background:dark?"rgba(249,115,22,0.18)":"rgba(249,115,22,0.14)",border:"1px solid rgba(249,115,22,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 9s ease-in-out infinite"}}>
             <div style={{color:"#F97316",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>35+ ETL</div>
             <div style={{color:sub,fontSize:10}}>Production Pipelines</div>
           </div>
@@ -428,6 +428,7 @@ function HeroPage({ dark, onJump }) {
     </div>
   );
 }
+
 
 /* ── EXPERIENCE ── */
 function ExperiencePage({ dark }) {
