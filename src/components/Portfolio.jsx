@@ -831,9 +831,9 @@ function ContactPage({ dark }) {
 
 /* ── STORY ── */
 function StoryPage({ dark }) {
-  const bg = dark ? "#05080f" : "#0a0f1e";
-  const txt = "#e8ecf8";
-  const sub = "rgba(232,236,248,0.68)";
+  const bg = dark ? "#05080f" : "#f7f9ff";
+  const txt = dark ? "#e8ecf8" : "#0a0f1e";
+  const sub = dark ? "rgba(232,236,248,0.68)" : "rgba(10,15,30,0.7)";
   const slides = useMemo(
     () => [
       { image: storySlide01, title: "Lakehouse Architecture", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
