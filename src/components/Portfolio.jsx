@@ -789,6 +789,83 @@ function ContactPage({ dark }) {
   );
 }
 
+/* ── STORY ── */
+function StoryPage({ dark }) {
+  const bg = dark?"#05080f":"#0a0f1e";
+  const txt = "#e8ecf8";
+  const sub = "rgba(232,236,248,0.6)";
+  const [active, setActive] = useState(null);
+  const chapters = [
+    { n:"01", title:"The Entrance",      caption:"She arrives. The systems wake." },
+    { n:"02", title:"The Intervention",  caption:"She fixes what's broken. Pipelines flow again." },
+    { n:"03", title:"The Architecture",  caption:"She orchestrates intelligence at scale." },
+    { n:"04", title:"The Synchronization",caption:"Every system connects. Every insight comes alive." },
+    { n:"05", title:"The Frame",         caption:"Building intelligent systems at scale. This is her world." },
+  ];
+  return (
+    <div style={{minHeight:"100vh",background:bg,position:"relative",overflow:"hidden",padding:"90px 0 100px"}}>
+      {/* cinematic backdrop */}
+      <div style={{position:"absolute",inset:0,background:"radial-gradient(60% 50% at 20% 20%, rgba(124,92,252,0.25), transparent 60%), radial-gradient(50% 50% at 85% 70%, rgba(0,212,170,0.22), transparent 60%), radial-gradient(50% 50% at 50% 110%, rgba(249,115,22,0.18), transparent 60%)",animation:"meshShift 22s ease-in-out infinite alternate",pointerEvents:"none"}}/>
+      <div style={{position:"absolute",inset:0,backgroundImage:"radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",backgroundSize:"26px 26px",pointerEvents:"none",maskImage:"radial-gradient(ellipse at center, black 30%, transparent 80%)"}}/>
+
+      <div style={{maxWidth:1240,margin:"0 auto",padding:"0 20px",position:"relative",zIndex:2}}>
+        <div style={{textAlign:"center",marginBottom:46}}>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(124,92,252,0.12)",border:"1px solid rgba(124,92,252,0.3)",borderRadius:40,padding:"6px 14px",marginBottom:18}}>
+            <span style={{width:6,height:6,borderRadius:"50%",background:"#7C5CFC",animation:"pulse 2s infinite"}}/>
+            <span style={{fontSize:11,fontWeight:600,color:"#b9a8ff",letterSpacing:"0.14em"}}>VISUAL CHRONICLE</span>
+          </div>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(36px,5.5vw,64px)",letterSpacing:"-0.04em",color:txt,lineHeight:1.05}}>
+            Building Intelligent Systems <br/>
+            <span style={{background:"linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundSize:"200% 200%",animation:"gradientShift 8s ease infinite"}}>at Scale</span>
+          </h2>
+          <p style={{color:sub,fontSize:15,marginTop:14,maxWidth:640,marginLeft:"auto",marginRight:"auto",lineHeight:1.6}}>
+            A five-act visual story of how data wakes up, how AI agents take shape, and how the work comes together.
+          </p>
+        </div>
+
+        {/* Hero cinematic image with parallax-zoom hover */}
+        <div style={{position:"relative",borderRadius:24,overflow:"hidden",border:"1px solid rgba(255,255,255,0.08)",boxShadow:"0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,92,252,0.15) inset",marginBottom:38}}>
+          <img src={story5} alt="Puja Ivaturi — five-panel visual story of building data and AI systems" style={{width:"100%",display:"block",transition:"transform 1.2s ease",transform:"scale(1)"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.04)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg, transparent 40%, rgba(5,8,15,0.55) 100%)",pointerEvents:"none"}}/>
+          <div style={{position:"absolute",left:24,bottom:20,color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:13,letterSpacing:"0.2em",textTransform:"uppercase",opacity:0.85}}>Act I — V · A five-panel arrival</div>
+        </div>
+
+        {/* Chapter chips */}
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:14,marginBottom:60}}>
+          {chapters.map((c,i)=>(
+            <div key={i}
+              onMouseEnter={()=>setActive(i)} onMouseLeave={()=>setActive(null)}
+              style={{
+                background:active===i?"rgba(124,92,252,0.18)":"rgba(255,255,255,0.04)",
+                border:`1px solid ${active===i?"rgba(124,92,252,0.45)":"rgba(255,255,255,0.08)"}`,
+                borderRadius:16,padding:"16px 16px 18px",cursor:"default",
+                transform:active===i?"translateY(-4px)":"none",
+                boxShadow:active===i?"0 18px 40px rgba(124,92,252,0.25)":"none",
+                transition:"all 0.35s cubic-bezier(.2,.8,.2,1)"
+              }}>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:11,letterSpacing:"0.22em",color:"#7C5CFC",fontWeight:700}}>{c.n}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:17,fontWeight:700,color:txt,marginTop:4,letterSpacing:"-0.01em"}}>{c.title}</div>
+              <div style={{fontSize:12.5,color:sub,marginTop:6,lineHeight:1.5}}>{c.caption}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Ten-panel deep cut */}
+        <div style={{textAlign:"center",marginBottom:22}}>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:11,letterSpacing:"0.24em",color:"#00D4AA",fontWeight:700,marginBottom:8}}>THE EXTENDED CUT</div>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:"clamp(24px,3.4vw,36px)",color:txt,letterSpacing:"-0.03em"}}>Ten scenes. One operator. One throughline.</h3>
+          <p style={{color:sub,fontSize:14,marginTop:10,maxWidth:620,marginLeft:"auto",marginRight:"auto"}}>From the entrance to the vision — entrance, intervention, architecture, data flow, automation, quality, cloud scale, impact, command center, and what's next.</p>
+        </div>
+
+        <div style={{position:"relative",borderRadius:24,overflow:"hidden",border:"1px solid rgba(255,255,255,0.08)",boxShadow:"0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,212,170,0.15) inset"}}>
+          <img src={story10} alt="Puja Ivaturi — ten-panel extended visual story of data engineering and agentic AI work" style={{width:"100%",display:"block",transition:"transform 1.2s ease"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.03)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg, transparent 50%, rgba(5,8,15,0.5) 100%)",pointerEvents:"none"}}/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── ROOT ── */
 export default function Portfolio() {
   const [active, setActive] = useState("home");
