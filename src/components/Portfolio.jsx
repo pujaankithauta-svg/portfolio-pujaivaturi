@@ -297,6 +297,7 @@ function ResumeDownload({ dark }) {
 /* ── NAV (single-page anchor scroll) ── */
 const pages = [
   { label:"Home",         id:"home" },
+  { label:"Story",        id:"story" },
   { label:"Experience",   id:"experience" },
   { label:"Projects",     id:"projects" },
   { label:"Skills",       id:"skills" },
