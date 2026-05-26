@@ -802,13 +802,13 @@ function StoryPage({ dark }) {
   const sub = "rgba(232,236,248,0.68)";
   const slides = useMemo(
     () => [
-      { image: storySlide01, title: "The Foundation", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
-      { image: storySlide02, title: "The Signal", caption: "Analytics, reporting, and warehouse design moving from raw data to business-ready insight." },
-      { image: storySlide03, title: "The Release", caption: "Deployment orchestration with live environments, Airflow DAGs, and production health in focus." },
-      { image: storySlide04, title: "The Impact", caption: "A business outcomes frame connecting systems, dashboards, and global operational reach." },
-      { image: storySlide05, title: "The Intelligence Layer", caption: "RAG, document intelligence, multi-agent systems, and monitored LLM operations." },
-      { image: storySlide06, title: "The Command Center", caption: "An executive-scale systems view across cloud, governance, software, and data operations." },
-      { image: storySlide07, title: "The Vision", caption: "A cinematic closing frame for intelligent systems built with data, AI, automation, and impact." },
+      { image: storySlide01, title: "Lakehouse Architecture", caption: "Lakehouse architecture, ETL pipelines, lineage, and quality controls in one working view." },
+      { image: storySlide02, title: "Analytics & Reporting", caption: "Analytics, reporting, and warehouse design moving from raw data to business-ready insight." },
+      { image: storySlide03, title: "Deployment & Orchestration", caption: "Deployment orchestration with live environments, Airflow DAGs, and production health in focus." },
+      { image: storySlide04, title: "Business Outcomes", caption: "Business outcomes connecting systems, dashboards, and global operational reach." },
+      { image: storySlide05, title: "AI & Agentic Systems", caption: "RAG, document intelligence, multi-agent systems, and monitored LLM operations." },
+      { image: storySlide06, title: "Systems Overview", caption: "An executive-scale systems view across cloud, governance, software, and data operations." },
+      { image: storySlide07, title: "Platform Vision", caption: "End-to-end intelligent systems built with data, AI, automation, and impact." },
     ],
     [],
   );
@@ -851,14 +851,14 @@ function StoryPage({ dark }) {
         <div style={{ textAlign: "center", marginBottom: 34 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(124,92,252,0.12)", border: "1px solid rgba(124,92,252,0.3)", borderRadius: 40, padding: "6px 14px", marginBottom: 18 }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#7C5CFC", animation: "pulse 2s infinite" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: "#b9a8ff", letterSpacing: "0.14em" }}>VISUAL CHRONICLE</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#b9a8ff", letterSpacing: "0.14em" }}>PROJECT GALLERY</span>
           </div>
           <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 800, fontSize: "clamp(36px,5.5vw,64px)", letterSpacing: "-0.04em", color: txt, lineHeight: 1.05 }}>
             Building Intelligent Systems <br />
             <span style={{ background: "linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 8s ease infinite" }}>at Scale</span>
           </h2>
           <p style={{ color: sub, fontSize: 15, marginTop: 14, maxWidth: 700, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>
-            A responsive story carousel moving through the systems, releases, impact, and intelligence layers behind the portfolio.
+            A gallery of the systems, deployments, outcomes, and AI layers behind the portfolio.
           </p>
         </div>
 
@@ -906,7 +906,7 @@ function StoryPage({ dark }) {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                   <div>
                     <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#7C5CFC", fontWeight: 700, marginBottom: 6 }}>
-                      Scene {String(activeIndex + 1).padStart(2, "0")}
+                      Slide {String(activeIndex + 1).padStart(2, "0")}
                     </div>
                     <h3 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: "clamp(22px,4vw,38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.03em" }}>{activeSlide.title}</h3>
                   </div>
