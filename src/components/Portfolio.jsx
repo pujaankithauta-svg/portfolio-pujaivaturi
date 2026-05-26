@@ -239,7 +239,7 @@ function SkillGrid({ dark }) {
 }
 
 /* ── RESUME DROPDOWN ── */
-function ResumeDownload({ dark }) {
+function ResumeDownload({ dark, variant = "default" }) {
   const [open, setOpen] = useState(false);
   const txt = dark ? "#e4e8f0" : "#0a0f1e";
 
@@ -276,27 +276,60 @@ function ResumeDownload({ dark }) {
     window.open(fileFor(type), "_blank");
   }
 
+  const isPrimary = variant === "primary";
 
   return (
     <div style={{position:"relative"}}>
-      <button onClick={()=>setOpen(!open)} style={{background:"rgba(0,212,170,0.08)",border:"1px solid rgba(0,212,170,0.25)",borderRadius:10,padding:"8px 18px",color:"#00D4AA",fontSize:12,cursor:"pointer",fontWeight:600,letterSpacing:"0.04em",display:"flex",alignItems:"center",gap:6}}>
-        ↓ Resume {open?"▲":"▼"}
+      <button onClick={()=>setOpen(!open)} style={isPrimary ? {
+          background:"linear-gradient(135deg,#00D4AA,#0099ff)",
+          border:"none",
+          borderRadius:12,
+          padding:"13px 24px",
+          color:"#fff",
+          fontSize:14,
+          cursor:"pointer",
+          fontWeight:700,
+          letterSpacing:"0.04em",
+          display:"flex",
+          alignItems:"center",
+          gap:6,
+          boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)",
+          transition:"transform 0.25s",
+        } : {
+          background:"rgba(0,212,170,0.08)",
+          border:"1px solid rgba(0,212,170,0.25)",
+          borderRadius:10,
+          padding:"8px 18px",
+          color:"#00D4AA",
+          fontSize:12,
+          cursor:"pointer",
+          fontWeight:600,
+          letterSpacing:"0.04em",
+          display:"flex",
+          alignItems:"center",
+          gap:6,
+        }} onMouseEnter={isPrimary ? e=>e.currentTarget.style.transform="scale(1.06)" : undefined} onMouseLeave={isPrimary ? e=>e.currentTarget.style.transform="scale(1)" : undefined}>
+        {isPrimary && "✦ "}↓ Resume {open?"▲":"▼"}
       </button>
       {open && (
         <div style={{position:"absolute",top:"calc(100% + 8px)",right:0,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,minWidth:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:200}}>
           {[
             {type:"data",label:"Software Engineer – Data",color:"#00897B",desc:"Data pipelines, lakehouse, migrations"},
             {type:"ai",label:"Software Engineer – Agentic AI",color:"#6C47FF",desc:"AI agents, RAG, LLMs, voice AI"},
-          ].map(r=>(
+          ].map(r=>{
+            const btnRadius = isPrimary ? 8 : 6;
+            const btnPad = isPrimary ? "7px 12px" : "5px 10px";
+            const btnSize = isPrimary ? 12 : 11;
+            return (
             <div key={r.type} style={{padding:"10px 12px",borderRadius:8,marginBottom:4,background:dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.02)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`}}>
               <div style={{color:r.color,fontSize:11,fontWeight:700,marginBottom:2}}>{r.label}</div>
               <div style={{color:dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.4)",fontSize:10.5,marginBottom:8}}>{r.desc}</div>
               <div style={{display:"flex",gap:6}}>
-                <button onClick={()=>openResume(r.type)} style={{flex:1,background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:6,padding:"5px 10px",color:r.color,fontSize:11,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
-                <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:6,padding:"5px 10px",color:"#fff",fontSize:11,cursor:"pointer",fontWeight:600}}>↓ Download</button>
+                <button onClick={()=>openResume(r.type)} style={{flex:1,background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
+                <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:btnRadius,padding:btnPad,color:"#fff",fontSize:btnSize,cursor:"pointer",fontWeight:600}}>↓ Download</button>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       )}
     </div>
