@@ -340,19 +340,29 @@ function HeroPage({ dark, onJump }) {
   const sub = dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
   return (
     <div style={{minHeight:"100vh",background:bg,paddingTop:60,position:"relative",overflow:"hidden"}}>
-      <div style={{position:"absolute",width:600,height:600,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(0,212,170,0.07) 0%,transparent 70%)":"radial-gradient(circle,rgba(0,212,170,0.12) 0%,transparent 70%)",top:"-100px",left:"-100px",pointerEvents:"none"}}/>
-      <div style={{position:"absolute",width:500,height:500,borderRadius:"50%",background:dark?"radial-gradient(circle,rgba(124,92,252,0.06) 0%,transparent 70%)":"radial-gradient(circle,rgba(124,92,252,0.1) 0%,transparent 70%)",bottom:"0px",right:"-80px",pointerEvents:"none"}}/>
+      {/* Animated mesh gradient backdrop */}
+      <div style={{position:"absolute",inset:0,background:dark
+        ? "radial-gradient(60% 50% at 15% 20%, rgba(0,212,170,0.18), transparent 60%), radial-gradient(50% 50% at 85% 30%, rgba(124,92,252,0.18), transparent 60%), radial-gradient(50% 50% at 50% 90%, rgba(249,115,22,0.14), transparent 60%)"
+        : "radial-gradient(60% 50% at 15% 20%, rgba(0,212,170,0.28), transparent 60%), radial-gradient(50% 50% at 85% 30%, rgba(124,92,252,0.22), transparent 60%), radial-gradient(50% 50% at 50% 90%, rgba(249,115,22,0.18), transparent 60%)",
+        animation:"meshShift 18s ease-in-out infinite alternate",pointerEvents:"none"}}/>
+      {/* Floating orbs */}
+      <div style={{position:"absolute",width:280,height:280,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,212,170,0.35),transparent 70%)",top:"12%",left:"6%",animation:"floatA 9s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      <div style={{position:"absolute",width:220,height:220,borderRadius:"50%",background:"radial-gradient(circle,rgba(124,92,252,0.32),transparent 70%)",top:"30%",right:"8%",animation:"floatB 11s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      <div style={{position:"absolute",width:180,height:180,borderRadius:"50%",background:"radial-gradient(circle,rgba(249,115,22,0.28),transparent 70%)",bottom:"10%",left:"40%",animation:"floatA 13s ease-in-out infinite",pointerEvents:"none",filter:"blur(10px)"}}/>
+      {/* Subtle dot grid */}
+      <div style={{position:"absolute",inset:0,backgroundImage:`radial-gradient(${dark?"rgba(255,255,255,0.07)":"rgba(10,15,30,0.08)"} 1px, transparent 1px)`,backgroundSize:"22px 22px",pointerEvents:"none",maskImage:"radial-gradient(ellipse at center, black 40%, transparent 80%)"}}/>
 
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"32px 20px",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",alignItems:"start",gap:36}}>
-        <div style={{animation:"fadeUp 0.9s ease both"}}>
+      <div style={{maxWidth:980,margin:"0 auto",padding:"40px 20px 60px",position:"relative",zIndex:2}}>
+        <div style={{textAlign:"center",animation:"fadeUp 0.9s ease both"}}>
           <div style={{display:"inline-flex",alignItems:"center",gap:8,background:dark?"rgba(0,212,170,0.08)":"rgba(0,212,170,0.12)",border:"1px solid rgba(0,212,170,0.22)",borderRadius:40,padding:"6px 14px",marginBottom:20,maxWidth:"100%"}}>
             <span style={{width:6,height:6,borderRadius:"50%",background:"#00D4AA",display:"inline-block",animation:"pulse 2s infinite",flexShrink:0}}/>
             <span style={{color:"#00D4AA",fontSize:10.5,letterSpacing:"0.08em",fontWeight:600,lineHeight:1.3}}>OPEN TO · DATA ENGINEER · FULL STACK AGENTIC AI ENGINEER</span>
           </div>
-          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(34px,5.6vw,64px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
-            Puja{" "}
-            <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundClip:"text"}}>Ivaturi</span>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(40px,7vw,84px)",fontWeight:800,lineHeight:1.02,color:txt,marginBottom:14,letterSpacing:"-0.035em"}}>
+            Puja Ankitha{" "}
+            <span style={{WebkitTextFillColor:"transparent",WebkitBackgroundClip:"text",backgroundImage:"linear-gradient(130deg,#00D4AA 0%,#7C5CFC 55%,#F97316 100%)",backgroundSize:"200% 200%",backgroundClip:"text",animation:"gradientShift 6s ease infinite"}}>Ivaturi</span>
           </h1>
+
 
           {/* Animated headline */}
           <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(20px,2.6vw,30px)",fontWeight:700,lineHeight:1.25,color:txt,marginBottom:22,letterSpacing:"-0.02em",minHeight:"2.6em"}}>
@@ -360,7 +370,7 @@ function HeroPage({ dark, onJump }) {
           </h2>
 
           {/* About me — concise, professional pitch */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:580}}>
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"left"}}>
             <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400}}>
               I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with experience building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$25B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
@@ -369,8 +379,8 @@ function HeroPage({ dark, onJump }) {
             </p>
           </div>
 
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
-            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)"}}>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28,justifyContent:"center"}}>
+            <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)",transition:"transform 0.25s",}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.06)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
               ✦ Talk to My AI
             </button>
             <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
@@ -379,37 +389,37 @@ function HeroPage({ dark, onJump }) {
           </div>
 
           {/* Compact stats row */}
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:28,maxWidth:560}}>
-            {[{n:"4",l:"Industries"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map(s=>(
-              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.7)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"10px 12px"}}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:22,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:32,maxWidth:620,marginInline:"auto"}}>
+            {[{n:"4",l:"Industries"},{n:"$25B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map((s,i)=>(
+              <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.75)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"12px 14px",animation:`fadeUp 0.7s ease ${0.2+i*0.1}s both`,transition:"transform 0.25s, box-shadow 0.25s"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px) scale(1.04)";e.currentTarget.style.boxShadow="0 12px 30px -12px rgba(0,212,170,0.4)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:24,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
                 <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
               </div>
             ))}
           </div>
 
           {/* Skill ticker */}
-          <div>
+          <div style={{marginBottom:40}}>
             <div style={{fontSize:10,color:sub,letterSpacing:"0.1em",marginBottom:8,fontWeight:500}}>TOOLS & TECHNOLOGIES</div>
             <SkillTicker dark={dark}/>
           </div>
         </div>
 
-
-        {/* Right illustration */}
-        <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative"}}>
-          <div style={{position:"absolute",width:400,height:400,borderRadius:"50%",border:"1px solid rgba(0,212,170,0.1)",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
-          <div style={{position:"absolute",width:320,height:320,borderRadius:"50%",border:"1px solid rgba(124,92,252,0.08)",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
-          <img src={img1_engineer} alt="" style={{width:"85%",maxWidth:400,objectFit:"contain",borderRadius:20,position:"relative",zIndex:2}}/>
-          <div style={{position:"absolute",top:"8%",right:"0%",background:dark?"rgba(0,212,170,0.12)":"rgba(0,212,170,0.1)",border:"1px solid rgba(0,212,170,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+        {/* Portrait — after the text, centered, with animated halo */}
+        <div style={{display:"flex",justifyContent:"center",alignItems:"center",position:"relative",marginTop:24,animation:"zoomIn 1s cubic-bezier(.2,.8,.2,1) both"}}>
+          <div style={{position:"absolute",width:420,height:420,borderRadius:"50%",border:"1px dashed rgba(0,212,170,0.35)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"spinSlow 28s linear infinite"}}/>
+          <div style={{position:"absolute",width:340,height:340,borderRadius:"50%",border:"1px dashed rgba(124,92,252,0.3)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"spinSlow 18s linear infinite reverse"}}/>
+          <div style={{position:"absolute",width:480,height:480,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,212,170,0.18),transparent 65%)",top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:"pulseGlow 4s ease-in-out infinite",filter:"blur(20px)"}}/>
+          <img src={img1_engineer} alt="Puja Ankitha Ivaturi" style={{width:"82%",maxWidth:380,objectFit:"contain",borderRadius:24,position:"relative",zIndex:2,boxShadow:"0 30px 80px -30px rgba(0,212,170,0.5)",animation:"floatA 6s ease-in-out infinite"}}/>
+          <div style={{position:"absolute",top:"6%",right:"6%",background:dark?"rgba(0,212,170,0.18)":"rgba(0,212,170,0.16)",border:"1px solid rgba(0,212,170,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 7s ease-in-out infinite"}}>
             <div style={{color:"#00D4AA",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5,000+</div>
             <div style={{color:sub,fontSize:10}}>Tables · 42 DBs</div>
           </div>
-          <div style={{position:"absolute",bottom:"12%",left:"0%",background:dark?"rgba(124,92,252,0.12)":"rgba(124,92,252,0.08)",border:"1px solid rgba(124,92,252,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+          <div style={{position:"absolute",bottom:"8%",left:"4%",background:dark?"rgba(124,92,252,0.18)":"rgba(124,92,252,0.14)",border:"1px solid rgba(124,92,252,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatA 8s ease-in-out infinite"}}>
             <div style={{color:"#7C5CFC",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>5 Agents</div>
             <div style={{color:sub,fontSize:10}}>AI/GenAI Systems</div>
           </div>
-          <div style={{position:"absolute",bottom:"30%",right:"0%",background:dark?"rgba(249,115,22,0.12)":"rgba(249,115,22,0.08)",border:"1px solid rgba(249,115,22,0.3)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)"}}>
+          <div style={{position:"absolute",top:"40%",left:"2%",background:dark?"rgba(249,115,22,0.18)":"rgba(249,115,22,0.14)",border:"1px solid rgba(249,115,22,0.35)",borderRadius:12,padding:"8px 14px",zIndex:3,backdropFilter:"blur(8px)",animation:"floatB 9s ease-in-out infinite"}}>
             <div style={{color:"#F97316",fontWeight:700,fontSize:15,fontFamily:"'Bricolage Grotesque',sans-serif"}}>35+ ETL</div>
             <div style={{color:sub,fontSize:10}}>Production Pipelines</div>
           </div>
@@ -418,6 +428,7 @@ function HeroPage({ dark, onJump }) {
     </div>
   );
 }
+
 
 /* ── EXPERIENCE ── */
 function ExperiencePage({ dark }) {
@@ -765,7 +776,7 @@ function ContactPage({ dark }) {
 /* ── ROOT ── */
 export default function Portfolio() {
   const [active, setActive] = useState("home");
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const onJump = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -785,22 +796,42 @@ export default function Portfolio() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   },[]);
+  // Scroll-reveal: zoom-in each section as it enters the viewport
+  useEffect(()=>{
+    const els = document.querySelectorAll("section[id]");
+    els.forEach(el=>{ el.style.opacity="0"; el.style.transform="translateY(40px) scale(0.97)"; el.style.transition="opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.8,.2,1)"; });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.style.opacity="1"; e.target.style.transform="none"; io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    els.forEach(el=>io.observe(el));
+    return ()=>io.disconnect();
+  },[]);
   useEffect(()=>{
     const s=document.createElement("style");
     s.textContent=`
       @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@300;400;500&display=swap');
       *{box-sizing:border-box;margin:0;padding:0}
       html{scroll-behavior:smooth}
-      body{background:#060a12}
+      body{background:#f7f9ff}
       @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
       @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
       @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
       @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+      @keyframes floatA{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(8px)}}
+      @keyframes floatB{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(14px) translateX(-10px)}}
+      @keyframes spinSlow{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+      @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+      @keyframes meshShift{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(-2%,1%)}}
+      @keyframes zoomIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+      @keyframes pulseGlow{0%,100%{opacity:0.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.95;transform:translate(-50%,-50%) scale(1.08)}}
       ::-webkit-scrollbar{width:3px}
       ::-webkit-scrollbar-thumb{background:rgba(0,212,170,0.2);border-radius:2px}
       input::placeholder{color:rgba(128,128,128,0.4)!important}
       details summary::-webkit-details-marker{display:none}
       section[id]{scroll-margin-top:70px}
+      @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
     `;
     document.head.appendChild(s);
     return()=>document.head.removeChild(s);
@@ -818,3 +849,4 @@ export default function Portfolio() {
     </div>
   );
 }
+
