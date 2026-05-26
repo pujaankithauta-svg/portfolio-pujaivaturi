@@ -776,7 +776,7 @@ function ContactPage({ dark }) {
 /* ── ROOT ── */
 export default function Portfolio() {
   const [active, setActive] = useState("home");
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const onJump = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -796,22 +796,42 @@ export default function Portfolio() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   },[]);
+  // Scroll-reveal: zoom-in each section as it enters the viewport
+  useEffect(()=>{
+    const els = document.querySelectorAll("section[id]");
+    els.forEach(el=>{ el.style.opacity="0"; el.style.transform="translateY(40px) scale(0.97)"; el.style.transition="opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.8,.2,1)"; });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.style.opacity="1"; e.target.style.transform="none"; io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    els.forEach(el=>io.observe(el));
+    return ()=>io.disconnect();
+  },[]);
   useEffect(()=>{
     const s=document.createElement("style");
     s.textContent=`
       @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@300;400;500&display=swap');
       *{box-sizing:border-box;margin:0;padding:0}
       html{scroll-behavior:smooth}
-      body{background:#060a12}
+      body{background:#f7f9ff}
       @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
       @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
       @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
       @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+      @keyframes floatA{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(8px)}}
+      @keyframes floatB{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(14px) translateX(-10px)}}
+      @keyframes spinSlow{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+      @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+      @keyframes meshShift{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(-2%,1%)}}
+      @keyframes zoomIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+      @keyframes pulseGlow{0%,100%{opacity:0.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.95;transform:translate(-50%,-50%) scale(1.08)}}
       ::-webkit-scrollbar{width:3px}
       ::-webkit-scrollbar-thumb{background:rgba(0,212,170,0.2);border-radius:2px}
       input::placeholder{color:rgba(128,128,128,0.4)!important}
       details summary::-webkit-details-marker{display:none}
       section[id]{scroll-margin-top:70px}
+      @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
     `;
     document.head.appendChild(s);
     return()=>document.head.removeChild(s);
@@ -829,3 +849,4 @@ export default function Portfolio() {
     </div>
   );
 }
+
