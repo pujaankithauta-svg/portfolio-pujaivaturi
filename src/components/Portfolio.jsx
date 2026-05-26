@@ -879,10 +879,10 @@ function StoryPage({ dark }) {
         <div style={{ textAlign: "center", marginBottom: 34 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(124,92,252,0.12)", border: "1px solid rgba(124,92,252,0.3)", borderRadius: 40, padding: "6px 14px", marginBottom: 18 }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#7C5CFC", animation: "pulse 2s infinite" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: "#b9a8ff", letterSpacing: "0.14em" }}>PROJECT GALLERY</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#b9a8ff", letterSpacing: "0.14em" }}>STORY GALLERY</span>
           </div>
           <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 800, fontSize: "clamp(36px,5.5vw,64px)", letterSpacing: "-0.04em", color: txt, lineHeight: 1.05 }}>
-            Building Intelligent Systems <br />
+            Where <span style={{ background: "linear-gradient(90deg,#00D4AA,#06b6d4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Data</span> Meets <span style={{ background: "linear-gradient(90deg,#7C5CFC,#F97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>AI</span> <br />
             <span style={{ background: "linear-gradient(90deg,#00D4AA,#7C5CFC,#F97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 8s ease infinite" }}>at Scale</span>
           </h2>
           <p style={{ color: sub, fontSize: 15, marginTop: 14, maxWidth: 700, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>
