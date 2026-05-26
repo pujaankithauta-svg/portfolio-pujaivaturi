@@ -933,6 +933,7 @@ export default function Portfolio() {
     <div style={{fontFamily:"'Instrument Sans',sans-serif",minHeight:"100vh",background:dark?"#080c16":"#f7f9ff"}}>
       <Nav active={active} dark={dark} setDark={setDark} onJump={onJump}/>
       <section id="home"><HeroPage dark={dark} onJump={onJump}/></section>
+      <section id="story"><StoryPage dark={dark}/></section>
       <section id="experience"><ExperiencePage dark={dark}/></section>
       <section id="projects"><ProjectsPage dark={dark}/></section>
       <section id="skills"><SkillsPage dark={dark}/></section>
