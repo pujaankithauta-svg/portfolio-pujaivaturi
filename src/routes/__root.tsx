@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Puja Ankitha Ivaturi's Portfolio" },
+      { name: "description", content: "Take a sneak peek into my professional journey as a Data and Agentic AI Engineer." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Puja Ankitha Ivaturi's Portfolio" },
+      { property: "og:description", content: "Take a sneak peek into my professional journey as a Data and Agentic AI Engineer." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Puja Ankitha Ivaturi's Portfolio" },
+      { name: "twitter:description", content: "Take a sneak peek into my professional journey as a Data and Agentic AI Engineer." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/539cc423-36e0-4ccf-972e-642d13a4ab8d" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/539cc423-36e0-4ccf-972e-642d13a4ab8d" },
     ],
     links: [
       {
