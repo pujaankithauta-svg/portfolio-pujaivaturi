@@ -395,33 +395,35 @@ function HeroPage({ dark, onJump }) {
           </h2>
 
           {/* About me — concise, professional pitch */}
-          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:620,marginInline:"auto",textAlign:"justify"}}>
+          <div style={{borderLeft:`3px solid #00D4AA`,paddingLeft:16,marginBottom:24,maxWidth:820,marginInline:"auto",textAlign:"justify"}}>
             <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,marginBottom:14,fontWeight:400,textAlign:"justify"}}>
               I'm a <strong style={{color:"#00D4AA",fontWeight:700}}>Data Engineer</strong> and <strong style={{color:"#7C5CFC",fontWeight:700}}>Full Stack Agentic AI Engineer</strong> with experience building enterprise data platforms and production AI systems across <strong>Finance, Healthcare, and Social Networking</strong>. I currently own a <strong>$40B mortgage lakehouse</strong> with 5,000+ tables across 42 databases — from ingestion and modeling all the way to governed Gold marts and Power BI semantic layers.
             </p>
             <p style={{fontSize:15,color:dark?"rgba(228,232,244,0.82)":"rgba(10,15,30,0.78)",lineHeight:1.7,fontWeight:400,textAlign:"justify"}}>
-              Beyond pipelines, I've shipped <strong>5 production AI agents</strong> — document intelligence over loan portfolios, real-time clinical dictation, RAG over 2M+ patient records, an interview-prep voice agent, and a marketing content agent — delivering each end-to-end across data, AI backend, and React frontend.
+              Beyond pipelines, I've shipped <strong>4 production AI agents</strong> — document intelligence over loan portfolios, real-time clinical dictation, RAG over 2M+ patient records, and an interview-prep voice agent — delivering each end-to-end across data, AI backend, and React frontend.
             </p>
           </div>
 
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28,justifyContent:"center"}}>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28,justifyContent:"center",alignItems:"center"}}>
             <button onClick={()=>onJump("aichat")} style={{background:"linear-gradient(135deg,#00D4AA,#0099ff)",border:"none",borderRadius:12,padding:"13px 24px",color:"#fff",fontWeight:700,fontSize:14,cursor:"pointer",boxShadow:"0 10px 30px -10px rgba(0,212,170,0.55)",transition:"transform 0.25s",}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.06)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
               ✦ Talk to My AI
             </button>
             <button onClick={()=>onJump("projects")} style={{background:dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.05)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:"13px 24px",color:txt,fontWeight:500,fontSize:14,cursor:"pointer"}}>
               View Projects →
             </button>
+            <ResumeDownload dark={dark}/>
           </div>
 
           {/* Compact stats row */}
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:32,maxWidth:620,marginInline:"auto"}}>
-            {[{n:"4",l:"Industries"},{n:"$40B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"5",l:"AI Agents"}].map((s,i)=>(
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:14,marginBottom:32,maxWidth:820,marginInline:"auto"}}>
+            {[{n:"4",l:"Industries"},{n:"$40B",l:"Lakehouse"},{n:"30+",l:"Projects"},{n:"4",l:"AI Agents"}].map((s,i)=>(
               <div key={s.l} style={{background:dark?"rgba(255,255,255,0.03)":"rgba(255,255,255,0.75)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`,borderRadius:12,padding:"12px 14px",animation:`fadeUp 0.7s ease ${0.2+i*0.1}s both`,transition:"transform 0.25s, box-shadow 0.25s"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px) scale(1.04)";e.currentTarget.style.boxShadow="0 12px 30px -12px rgba(0,212,170,0.4)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
                 <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:24,fontWeight:800,color:"#00D4AA",letterSpacing:"-0.02em"}}>{s.n}</div>
                 <div style={{fontSize:10.5,color:sub,marginTop:1}}>{s.l}</div>
               </div>
             ))}
           </div>
+
 
           {/* Skill ticker */}
           <div style={{marginBottom:40}}>
