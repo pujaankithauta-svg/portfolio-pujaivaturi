@@ -906,7 +906,7 @@ function StoryPage({ dark }) {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                   <div>
                     <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#7C5CFC", fontWeight: 700, marginBottom: 6 }}>
-                      Scene {String(activeIndex + 1).padStart(2, "0")}
+                      Slide {String(activeIndex + 1).padStart(2, "0")}
                     </div>
                     <h3 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: "clamp(22px,4vw,38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.03em" }}>{activeSlide.title}</h3>
                   </div>
