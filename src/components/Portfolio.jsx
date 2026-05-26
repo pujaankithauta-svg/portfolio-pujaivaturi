@@ -748,8 +748,6 @@ function AIChatPage({ dark }) {
         </div>
       </div>
     </div>
-      </div>
-    </div>
   );
 }
 
