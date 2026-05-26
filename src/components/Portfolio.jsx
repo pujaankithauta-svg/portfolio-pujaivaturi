@@ -1005,7 +1005,7 @@ function StoryPage({ dark }) {
 /* ── ROOT ── */
 export default function Portfolio() {
   const [active, setActive] = useState("home");
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const onJump = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
