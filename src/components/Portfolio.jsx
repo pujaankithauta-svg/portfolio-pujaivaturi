@@ -642,14 +642,20 @@ function AIChatPage({ dark }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const endRef = useRef(null);
+  const scrollRef = useRef(null);
+  const hasInteracted = useRef(false);
   const bg=dark?"#080c16":"#f7f9ff"; const txt=dark?"#e4e8f4":"#0a0f1e";
   const sub=dark?"rgba(228,232,244,0.45)":"rgba(10,15,30,0.5)";
   const cardBg=dark?"rgba(255,255,255,0.025)":"rgba(255,255,255,0.85)";
   const cardBorder=dark?"rgba(255,255,255,0.07)":"rgba(0,0,0,0.07)";
   const quick=["What makes Puja stand out?","Tell me about her 5 AI agents","Biggest project she's owned?","Summarize for a Data Engineer role","What is her telehealth AI tool?","What full-stack work has she done?"];
-  useEffect(()=>{endRef.current?.scrollIntoView({behavior:"smooth"});},[messages,loading]);
+  useEffect(()=>{
+    if(!hasInteracted.current) return;
+    const c=scrollRef.current; if(c) c.scrollTop=c.scrollHeight;
+  },[messages,loading]);
   async function send(text) {
     const msg=text||input.trim(); if(!msg) return;
+    hasInteracted.current=true;
     setInput(""); const updated=[...messages,{role:"user",content:msg}];
     setMessages(updated); setLoading(true);
     try {
@@ -702,7 +708,7 @@ function AIChatPage({ dark }) {
               <div style={{width:32,height:32,borderRadius:"50%",background:"linear-gradient(135deg,#00D4AA,#7C5CFC)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800,color:"#fff"}}>P</div>
               <div><div style={{color:txt,fontWeight:600,fontSize:13}}>Puja AI</div><div style={{color:"#00D4AA",fontSize:10}}>● online · knows everything</div></div>
             </div>
-            <div style={{flex:1,overflowY:"auto",padding:"14px",display:"flex",flexDirection:"column",gap:9}}>
+            <div ref={scrollRef} style={{flex:1,overflowY:"auto",padding:"14px",display:"flex",flexDirection:"column",gap:9}}>
               {messages.map((m,i)=>(
                 <div key={i} style={{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start"}}>
                   <div className="chat-md" style={{maxWidth:"85%",padding:"10px 14px",borderRadius:m.role==="user"?"14px 14px 4px 14px":"14px 14px 14px 4px",background:m.role==="user"?"linear-gradient(135deg,#00D4AA,#0099ff)":(dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"),color:m.role==="user"?"#fff":txt,fontSize:13,lineHeight:1.65}}>
