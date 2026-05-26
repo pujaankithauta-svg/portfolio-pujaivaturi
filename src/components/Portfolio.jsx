@@ -237,14 +237,27 @@ function ResumeDownload({ dark }) {
   }
 
   async function downloadResume(type) {
+    const html2pdf = (await import("html2pdf.js")).default;
     const res = await fetch(fileFor(type));
     const html = await res.text();
-    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.html" : "Puja_Ivaturi_Agentic_AI.html";
-    const blob = new Blob([html], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = name; a.click();
-    URL.revokeObjectURL(url);
+    const iframe = document.createElement("iframe");
+    iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:850px;height:1100px;border:0;";
+    document.body.appendChild(iframe);
+    iframe.srcdoc = html;
+    await new Promise(r => { iframe.onload = r; });
+    try { await iframe.contentDocument.fonts?.ready; } catch {}
+    await new Promise(r => setTimeout(r, 400));
+    const element = iframe.contentDocument.body;
+    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
+    await html2pdf().from(element).set({
+      margin: 0,
+      filename: name,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, windowWidth: 850, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+    }).save();
+    document.body.removeChild(iframe);
     setOpen(false);
   }
 
