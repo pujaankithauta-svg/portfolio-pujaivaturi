@@ -244,8 +244,11 @@ function ResumeDownload({ dark, variant = "default" }) {
   const txt = dark ? "#e4e8f0" : "#0a0f1e";
 
   function fileFor(type) {
-    return type === "data" ? "/resume_data_engineer.html" : "/resume_agentic_ai.html";
+    if (type === "data") return "/resume_data_engineer.html";
+    if (type === "combined") return "/resume_combined.html";
+    return "/resume_agentic_ai.html";
   }
+
 
   async function downloadResume(type) {
     const html2pdf = (await import("html2pdf.js")).default;
