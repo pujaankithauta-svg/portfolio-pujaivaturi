@@ -239,32 +239,36 @@ function SkillGrid({ dark }) {
       ))}
     </div>
   );
-}
-
-/* ── RESUME DROPDOWN ── */
 function ResumeDownload({ dark, variant = "default" }) {
   const [open, setOpen] = useState(false);
   const txt = dark ? "#e4e8f0" : "#0a0f1e";
 
-  function fileFor(type) {
-    if (type === "data") return "/resume_data_engineer.html";
-    if (type === "combined") return "/resume_combined.html";
-    return "/resume_agentic_ai.html";
+  function htmlFor(type) {
+    if (type === "data") return resumeDataHtml;
+    if (type === "combined") return resumeCombinedHtml;
+    return resumeAiHtml;
   }
 
+  const urlCacheRef = useRef({});
+  function urlFor(type) {
+    if (!urlCacheRef.current[type]) {
+      const blob = new Blob([htmlFor(type)], { type: "text/html" });
+      urlCacheRef.current[type] = URL.createObjectURL(blob);
+    }
+    return urlCacheRef.current[type];
+  }
 
   async function downloadResume(type) {
     const html2pdf = (await import("html2pdf.js")).default;
-    const res = await fetch(fileFor(type));
-    const html = await res.text();
     const iframe = document.createElement("iframe");
     iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:850px;height:1100px;border:0;";
     document.body.appendChild(iframe);
-    iframe.srcdoc = html;
+    iframe.srcdoc = htmlFor(type);
     await new Promise(r => { iframe.onload = r; });
     try { await iframe.contentDocument.fonts?.ready; } catch {}
     await new Promise(r => setTimeout(r, 400));
     const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : type === "combined" ? "Puja_Ivaturi_Full_Resume.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
+    const element = iframe.contentDocument.body;
     await html2pdf().from(element).set({
       margin: 0,
       filename: name,
@@ -278,6 +282,9 @@ function ResumeDownload({ dark, variant = "default" }) {
   }
 
   function openResume(type) {
+    window.open(urlFor(type), "_blank");
+  }
+
     window.open(fileFor(type), "_blank");
   }
 
