@@ -338,7 +338,8 @@ function ResumeDownload({ dark, variant = "default" }) {
               <div style={{color:r.color,fontSize:11,fontWeight:700,marginBottom:2}}>{r.label}</div>
               <div style={{color:dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.4)",fontSize:10.5,marginBottom:8}}>{r.desc}</div>
               <div style={{display:"flex",gap:6}}>
-                <a href={fileFor(r.type)} target="_blank" rel="noopener noreferrer" style={{flex:1,textAlign:"center",textDecoration:"none",background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</a>
+                <button onClick={()=>openResume(r.type)} style={{flex:1,textAlign:"center",background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
+
                 <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:btnRadius,padding:btnPad,color:"#fff",fontSize:btnSize,cursor:"pointer",fontWeight:600}}>↓ Download</button>
               </div>
             </div>
