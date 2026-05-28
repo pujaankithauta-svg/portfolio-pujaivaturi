@@ -361,8 +361,8 @@ function Nav({ active, dark, setDark, onJump }) {
         ))}
       </div>
       <div style={{display:"flex",gap:10,alignItems:"center"}}>
-        <button onClick={()=>setDark(!dark)} style={{background:dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.06)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.1)"}`,borderRadius:9,padding:"6px 11px",cursor:"pointer",color:dark?"#fff":"#0a0f1e",fontSize:14}}>
-          {dark?"☀":"🌙"}
+        <button onClick={()=>setDark(!dark)} style={{background:dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.06)",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.1)"}`,borderRadius:9,padding:"6px 12px",cursor:"pointer",color:dark?"#fff":"#0a0f1e",fontSize:12,fontWeight:600,letterSpacing:"0.02em",whiteSpace:"nowrap"}}>
+          {dark?"Light mode":"Dark mode"}
         </button>
         <ResumeDownload dark={dark}/>
       </div>
