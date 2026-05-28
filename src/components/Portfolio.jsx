@@ -261,7 +261,8 @@ function ResumeDownload({ dark, variant = "default" }) {
     await new Promise(r => { iframe.onload = r; });
     try { await iframe.contentDocument.fonts?.ready; } catch {}
     await new Promise(r => setTimeout(r, 400));
-    const element = iframe.contentDocument.body;
+    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : type === "combined" ? "Puja_Ivaturi_Full_Resume.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
+
     const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
     await html2pdf().from(element).set({
       margin: 0,
