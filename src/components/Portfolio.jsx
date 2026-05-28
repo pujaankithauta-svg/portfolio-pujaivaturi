@@ -314,6 +314,7 @@ function ResumeDownload({ dark, variant = "default" }) {
       {open && (
         <div style={{position:"absolute",top:"calc(100% + 8px)",right:0,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,minWidth:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:200}}>
           {[
+            {type:"combined",label:"Full Resume , Data + Agentic AI",color:"#0099ff",desc:"Combined experience across data and AI"},
             {type:"data",label:"Software Engineer – Data",color:"#00897B",desc:"Data pipelines, lakehouse, migrations"},
             {type:"ai",label:"Software Engineer – Agentic AI",color:"#6C47FF",desc:"AI agents, RAG, LLMs, voice AI"},
           ].map(r=>{
@@ -325,11 +326,12 @@ function ResumeDownload({ dark, variant = "default" }) {
               <div style={{color:r.color,fontSize:11,fontWeight:700,marginBottom:2}}>{r.label}</div>
               <div style={{color:dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.4)",fontSize:10.5,marginBottom:8}}>{r.desc}</div>
               <div style={{display:"flex",gap:6}}>
-                <button onClick={()=>openResume(r.type)} style={{flex:1,background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
+                <a href={fileFor(r.type)} target="_blank" rel="noopener noreferrer" style={{flex:1,textAlign:"center",textDecoration:"none",background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</a>
                 <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:btnRadius,padding:btnPad,color:"#fff",fontSize:btnSize,cursor:"pointer",fontWeight:600}}>↓ Download</button>
               </div>
             </div>
           )})}
+
         </div>
       )}
     </div>
