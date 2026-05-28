@@ -911,7 +911,7 @@ function StoryPage({ dark }) {
   const activeSlide = slides[activeIndex];
 
   return (
-    <div style={{ minHeight: "100vh", background: bg, position: "relative", overflow: "hidden", padding: "90px 0 100px" }}>
+    <div style={{ background: bg, position: "relative", overflow: "hidden", padding: "90px 0 100px" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(60% 50% at 20% 20%, rgba(124,92,252,0.25), transparent 60%), radial-gradient(50% 50% at 85% 70%, rgba(0,212,170,0.22), transparent 60%), radial-gradient(50% 50% at 50% 110%, rgba(249,115,22,0.18), transparent 60%)", animation: "meshShift 22s ease-in-out infinite alternate", pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "26px 26px", pointerEvents: "none", maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)" }} />
 
