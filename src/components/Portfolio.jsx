@@ -239,6 +239,8 @@ function SkillGrid({ dark }) {
       ))}
     </div>
   );
+}
+
 function ResumeDownload({ dark, variant = "default" }) {
   const [open, setOpen] = useState(false);
   const txt = dark ? "#e4e8f0" : "#0a0f1e";
