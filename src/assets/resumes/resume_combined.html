@@ -120,7 +120,7 @@
           <li>Deployed DynamoDB for session/notification state at 1M+ scale and layered Redis caching on hot read paths; built real-time user-activity pipelines on Kinesis Data Streams + Analytics with stateful SQL aggregations.</li>
           <li>Shipped an end-to-end Interview Preparation AI agent (React + Flask + RAG + voice AI): candidate uploads resume + JD, RAG generates role-specific questions, real-time STT captures spoken answers, LLM scores fluency, content, and STAR structure with coaching feedback, used by hundreds of candidates in pilot.</li>
           <li>Built a Marketing Content AI agent: product catalog + engagement signals, LLM generates platform-tuned LinkedIn/email/ad copy with brand-voice guardrails and A/B variants, human-in-the-loop approval queue, ~80% reduction in manual content creation.</li>
-          <li>Engineered 2 more agentic systems on the same backbone: embedding-based candidate-job match scoring and a personalized recommendation agent over user interaction history, exposed via Flask REST APIs, async job queues, Redis caching, and React UI components.</li>
+          <li>Engineered 2 more agentic systems on the same backbone: semantic embedding-based candidate-job match scoring (sentence-transformers + cosine similarity, scikit-learn ranking models) and a personalized recommendation agent over user interaction history using NLP feature extraction and MCP tool orchestration, exposed via Flask REST APIs, async job queues, Redis caching, and React UI components.</li>
           <li>Hardened the platform with RBAC, OAuth 2.0, IAM policies, secrets management, and KMS encryption; delivered React/TypeScript frontend integrated with serverless APIs and Java Spring Boot microservices.</li>
         </ul>
       </div>
