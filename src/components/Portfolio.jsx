@@ -50,7 +50,7 @@ const toolGroups = [
   { label:"Databases", color:"#336791", tools:["Snowflake","PostgreSQL","MySQL","SQL Server","Oracle","MongoDB","Redis","Delta Lake","Apache Parquet","Cassandra"] },
   { label:"Pipeline", color:"#00D4AA", tools:["Apache Kafka","Apache Spark","PySpark","Apache Airflow","dbt","Great Expectations","Delta MERGE","CDC / DMS"] },
   { label:"DevOps", color:"#7C5CFC", tools:["Terraform","Docker","Kubernetes","CI/CD","Git","GitHub Actions","IAM / RBAC","Data Lineage"] },
-  { label:"AI & LLM", color:"#F97316", tools:["LangChain","OpenAI GPT-4o","Azure OpenAI","AWS Bedrock","Whisper","AssemblyAI","RAG","Vector DBs","n8n","Embeddings"] },
+  { label:"AI & LLM", color:"#F97316", tools:["LangChain","OpenAI GPT-4o","Azure OpenAI","AWS Bedrock","Whisper","AssemblyAI","RAG","Vector DBs","n8n","Embeddings","NLP","Tokenization","Similarity Search","Conversational AI","Semantic Search","MCP","sentence-transformers","scikit-learn","pgvector"] },
   { label:"Languages", color:"#EC4899", tools:["Python","PySpark","SQL / T-SQL","JavaScript","React","Flask","Scala","Bash"] },
 ];
 
