@@ -105,7 +105,7 @@
           <li>Delivered Tableau and Athena dashboards tuned to clinical KPIs (Patient Retention, No-Show Rate, Revenue per Patient, Clinic Utilization); 30% lift in pipeline success via retry + dead-letter patterns; 40% faster healthcare queries via 3NF refactor + indexing.</li>
           <li>Shipped an AI Dictation + Telehealth Notes agent: real-time streaming speech-to-text on the live visit, LLM structures the transcript into specialty-specific SOAP notes, validation + redaction guardrails, write-back into the EMR chart; React UI for physicians to review/edit before submit.</li>
           <li>Cut post-visit documentation time by 60% with full visit-to-EMR-note loop under 90 seconds; rolled out across 3 specialties (primary care, dermatology, mental health).</li>
-          <li>Designed a clinical RAG chatbot over 2M+ HIPAA-controlled patient records with tenant-scoped retrieval, multi-step reasoning, citation-required answers, and PHI redaction; reduced chart-review time and improved continuity of care.</li>
+          <li>Designed a clinical RAG chatbot over 2M+ HIPAA-controlled patient records using NLP preprocessing, semantic embeddings (sentence-transformers) with pgvector retrieval, MCP-style tool calling for EMR lookups, and scikit-learn classifiers for intent routing and PHI redaction; tenant-scoped retrieval, multi-step reasoning, citation-required answers; reduced chart-review time and improved continuity of care.</li>
         </ul>
       </div>
 
