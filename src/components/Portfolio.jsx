@@ -287,10 +287,6 @@ function ResumeDownload({ dark, variant = "default" }) {
     window.open(urlFor(type), "_blank");
   }
 
-    window.open(urlFor(type), "_blank");
-
-  }
-
   const isPrimary = variant === "primary";
 
   return (
