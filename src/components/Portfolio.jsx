@@ -289,10 +289,37 @@ function ResumeDownload({ dark, variant = "default" }) {
   }
 
   const isPrimary = variant === "primary";
+  const btnRef = useRef(null);
+  const [pos, setPos] = useState(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function update() {
+      if (!btnRef.current) return;
+      const r = btnRef.current.getBoundingClientRect();
+      const width = 260;
+      const left = Math.max(8, Math.min(window.innerWidth - width - 8, r.right - width));
+      setPos({ top: r.bottom + 8, left });
+    }
+    update();
+    window.addEventListener("scroll", update, true);
+    window.addEventListener("resize", update);
+    function onDoc(e) {
+      if (btnRef.current && !btnRef.current.contains(e.target) && !e.target.closest?.("[data-resume-menu]")) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => {
+      window.removeEventListener("scroll", update, true);
+      window.removeEventListener("resize", update);
+      document.removeEventListener("mousedown", onDoc);
+    };
+  }, [open]);
 
   return (
     <div style={{position:"relative"}}>
-      <button onClick={()=>setOpen(!open)} style={isPrimary ? {
+      <button ref={btnRef} onClick={()=>setOpen(!open)} style={isPrimary ? {
           background:"linear-gradient(135deg,#00D4AA,#0099ff)",
           border:"none",
           borderRadius:12,
@@ -323,8 +350,8 @@ function ResumeDownload({ dark, variant = "default" }) {
         }} onMouseEnter={isPrimary ? e=>e.currentTarget.style.transform="scale(1.06)" : undefined} onMouseLeave={isPrimary ? e=>e.currentTarget.style.transform="scale(1)" : undefined}>
         {isPrimary && "✦ "}↓ Resume {open?"▲":"▼"}
       </button>
-      {open && (
-        <div style={{position:"absolute",top:"calc(100% + 8px)",right:0,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,minWidth:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:200}}>
+      {open && pos && typeof document !== "undefined" && createPortal(
+        <div data-resume-menu style={{position:"fixed",top:pos.top,left:pos.left,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,width:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:9999}}>
           {[
             {type:"combined",label:"Full Resume , Data + Agentic AI",color:"#0099ff",desc:"Combined experience across data and AI"},
             {type:"data",label:"Software Engineer – Data",color:"#00897B",desc:"Data pipelines, lakehouse, migrations"},
@@ -345,7 +372,8 @@ function ResumeDownload({ dark, variant = "default" }) {
             </div>
           )})}
 
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
