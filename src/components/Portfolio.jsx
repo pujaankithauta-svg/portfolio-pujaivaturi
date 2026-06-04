@@ -261,31 +261,23 @@ function ResumeDownload({ dark, variant = "default" }) {
     return urlCacheRef.current[type];
   }
 
-  async function downloadResume(type) {
-    const html2pdf = (await import("html2pdf.js")).default;
-    const iframe = document.createElement("iframe");
-    iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:850px;height:1100px;border:0;";
-    document.body.appendChild(iframe);
-    iframe.srcdoc = htmlFor(type);
-    await new Promise(r => { iframe.onload = r; });
-    try { await iframe.contentDocument.fonts?.ready; } catch {}
-    await new Promise(r => setTimeout(r, 400));
-    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : type === "combined" ? "Puja_Ivaturi_Full_Resume.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
-    const element = iframe.contentDocument.body;
-    await html2pdf().from(element).set({
-      margin: 0,
-      filename: name,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, windowWidth: 850, backgroundColor: "#ffffff" },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
-    }).save();
-    document.body.removeChild(iframe);
+  function downloadResume(type) {
+    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer" : type === "combined" ? "Puja_Ivaturi_Full_Resume" : "Puja_Ivaturi_Agentic_AI";
+    const html = htmlFor(type).replace(
+      /<\/head>/i,
+      `<title>${name}</title><script>window.addEventListener('load',function(){setTimeout(function(){window.focus();window.print();},500);});<\/script></head>`
+    );
+    const w = window.open("", "_blank");
+    if (!w) { alert("Please allow popups to download the resume."); return; }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
     setOpen(false);
   }
 
   function openResume(type) {
     window.open(urlFor(type), "_blank");
+    setOpen(false);
   }
 
   const isPrimary = variant === "primary";
@@ -351,28 +343,30 @@ function ResumeDownload({ dark, variant = "default" }) {
         {isPrimary && "✦ "}↓ Resume {open?"▲":"▼"}
       </button>
       {open && pos && typeof document !== "undefined" && createPortal(
-        <div data-resume-menu style={{position:"fixed",top:pos.top,left:pos.left,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,width:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:9999}}>
-          {[
-            {type:"combined",label:"Full Resume , Data + Agentic AI",color:"#0099ff",desc:"Combined experience across data and AI"},
-            {type:"data",label:"Software Engineer – Data",color:"#00897B",desc:"Data pipelines, lakehouse, migrations"},
-            {type:"ai",label:"Software Engineer – Agentic AI",color:"#6C47FF",desc:"AI agents, RAG, LLMs, voice AI"},
-          ].map(r=>{
-            const btnRadius = isPrimary ? 8 : 6;
-            const btnPad = isPrimary ? "7px 12px" : "5px 10px";
-            const btnSize = isPrimary ? 12 : 11;
-            return (
-            <div key={r.type} style={{padding:"10px 12px",borderRadius:8,marginBottom:4,background:dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.02)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`}}>
-              <div style={{color:r.color,fontSize:11,fontWeight:700,marginBottom:2}}>{r.label}</div>
-              <div style={{color:dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.4)",fontSize:10.5,marginBottom:8}}>{r.desc}</div>
-              <div style={{display:"flex",gap:6}}>
-                <button onClick={()=>openResume(r.type)} style={{flex:1,textAlign:"center",background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
+        <>
+          <div onClick={()=>setOpen(false)} style={{position:"fixed",inset:0,background:"transparent",zIndex:9998}} />
+          <div data-resume-menu style={{position:"fixed",top:pos.top,left:pos.left,background:dark?"#111827":"#fff",border:`1px solid ${dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.08)"}`,borderRadius:12,padding:8,width:260,boxShadow:"0 16px 48px rgba(0,0,0,0.25)",zIndex:9999}}>
+            {[
+              {type:"combined",label:"Full Resume , Data + Agentic AI",color:"#0099ff",desc:"Combined experience across data and AI"},
+              {type:"data",label:"Software Engineer – Data",color:"#00897B",desc:"Data pipelines, lakehouse, migrations"},
+              {type:"ai",label:"Software Engineer – Agentic AI",color:"#6C47FF",desc:"AI agents, RAG, LLMs, voice AI"},
+            ].map(r=>{
+              const btnRadius = isPrimary ? 8 : 6;
+              const btnPad = isPrimary ? "7px 12px" : "5px 10px";
+              const btnSize = isPrimary ? 12 : 11;
+              return (
+              <div key={r.type} style={{padding:"10px 12px",borderRadius:8,marginBottom:4,background:dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.02)",border:`1px solid ${dark?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.05)"}`}}>
+                <div style={{color:r.color,fontSize:11,fontWeight:700,marginBottom:2}}>{r.label}</div>
+                <div style={{color:dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.4)",fontSize:10.5,marginBottom:8}}>{r.desc}</div>
+                <div style={{display:"flex",gap:6}}>
+                  <button onClick={()=>openResume(r.type)} style={{flex:1,textAlign:"center",background:r.color+"18",border:`1px solid ${r.color}40`,borderRadius:btnRadius,padding:btnPad,color:r.color,fontSize:btnSize,cursor:"pointer",fontWeight:600}}>👁 Preview</button>
 
-                <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:btnRadius,padding:btnPad,color:"#fff",fontSize:btnSize,cursor:"pointer",fontWeight:600}}>↓ Download</button>
+                  <button onClick={()=>downloadResume(r.type)} style={{flex:1,background:r.color,border:"none",borderRadius:btnRadius,padding:btnPad,color:"#fff",fontSize:btnSize,cursor:"pointer",fontWeight:600}}>↓ Download</button>
+                </div>
               </div>
-            </div>
-          )})}
-
-        </div>,
+            )})}
+          </div>
+        </>,
         document.body
       )}
     </div>
