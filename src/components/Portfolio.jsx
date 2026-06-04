@@ -261,31 +261,23 @@ function ResumeDownload({ dark, variant = "default" }) {
     return urlCacheRef.current[type];
   }
 
-  async function downloadResume(type) {
-    const html2pdf = (await import("html2pdf.js")).default;
-    const iframe = document.createElement("iframe");
-    iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:850px;height:1100px;border:0;";
-    document.body.appendChild(iframe);
-    iframe.srcdoc = htmlFor(type);
-    await new Promise(r => { iframe.onload = r; });
-    try { await iframe.contentDocument.fonts?.ready; } catch {}
-    await new Promise(r => setTimeout(r, 400));
-    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer.pdf" : type === "combined" ? "Puja_Ivaturi_Full_Resume.pdf" : "Puja_Ivaturi_Agentic_AI.pdf";
-    const element = iframe.contentDocument.body;
-    await html2pdf().from(element).set({
-      margin: 0,
-      filename: name,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, windowWidth: 850, backgroundColor: "#ffffff" },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
-    }).save();
-    document.body.removeChild(iframe);
+  function downloadResume(type) {
+    const name = type === "data" ? "Puja_Ivaturi_Data_Engineer" : type === "combined" ? "Puja_Ivaturi_Full_Resume" : "Puja_Ivaturi_Agentic_AI";
+    const html = htmlFor(type).replace(
+      /<\/head>/i,
+      `<title>${name}</title><script>window.addEventListener('load',function(){setTimeout(function(){window.focus();window.print();},500);});<\/script></head>`
+    );
+    const w = window.open("", "_blank");
+    if (!w) { alert("Please allow popups to download the resume."); return; }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
     setOpen(false);
   }
 
   function openResume(type) {
     window.open(urlFor(type), "_blank");
+    setOpen(false);
   }
 
   const isPrimary = variant === "primary";
